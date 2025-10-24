@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Gilroy", sans-serif;
+}
+
+.highest-width {
+        @apply mx-auto px-4 sm:px-6 lg:px-16
+}
+
+button {
+  @apply items-center px-4 py-2 border border-[#225AD6] rounded-lg font-thin transition duration-300
+}
+
+.solid-btn {
+  @apply bg-[#225AD6] items-center text-white px-4 py-2 rounded-lg font-thin hover:bg-[#1a43b8] transition duration-300
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 100;
+}
+
+a {
+  font-size: 15px;
+  font-weight: 100;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: "Gilroy", sans-serif;
+   font-size: 15px;
+}    
+
+header {
+  font-family: "Gilroy";
+  font-weight: 700;
+  padding: 20px 0;
+}     
+
+nav {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 500;
+}
+
+nav a {
+  margin-right: 15px;
+}
+
+footer {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  padding: 20px 0;
+}
