@@ -10,4 +10,20 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+
+  app: {
+    head: {
+      title: 'Logistics Journey',
+      meta: [
+        {
+          name: 'Logistics Journey Management',
+          content:
+            'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.',
+        },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/Navbar/2/Logistics Journey Logo.png' },
+      ],
+    },
+  },
 })

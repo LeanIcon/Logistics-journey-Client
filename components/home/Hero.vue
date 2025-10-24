@@ -8,7 +8,7 @@
                       <span class="border-l bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] border-l-[#225AD6] text-[#225AD6]">Lower Costs! </span>
                     </h1>
                     <p class="mb-6 text-base font-normal leading-7 lg:w-3/4 text-grey-900">
-                        Say goodbye to endless hours spent on building templates from scratch. Experience the quickest, most responsive, and trendiest dashboard solution available. Seriously.
+                        Logistic Journey gives you full control, real-time visibility, and reliable deliveries-without the chaos of paper and spreadsheets.
                     </p>
                     <div class="flex flex-col gap-4 lg:flex-row">
                         <button class="solid-btn" style="padding: 12px;">Book a Demo</button>
