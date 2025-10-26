@@ -11,11 +11,11 @@
                     </button>
                 </div>
                 <div class="items-center justify-between hidden gap-12 text-black lg:flex">
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="/">Home</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/features">Features</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/resources">Resources</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/about-us">About Us</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/contact">Contact Us</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/" active-class="active">Home</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/features" active-class="active">Features</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/resources" active-class="active">Resources</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/about-us" active-class="active">About Us</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/contact" active-class="active">Contact Us</NuxtLink>
                 </div>
                 <div class="items-center hidden gap-4 lg:flex">
                     <button class="">Log In</button>
@@ -23,11 +23,12 @@
                         Get Started Now
                     </button>
                 </div>
-                <div class="absolute flex lg:hidden transition-all duration-300 ease-in-out flex-col items-start shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 rounded-2xl group-[.open]:max-h-64 top-full">
-                    <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Product</a>
-                    <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
-                    <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Pricing</a>
-                    <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a>
+                <div class="absolute flex lg:hidden transition-all duration-300 ease-in-out flex-col items-start z-30 shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 rounded-2xl group-[.open]:max-h-80 top-full">
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/" active-class="active">Home</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/features" active-class="active">Features</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/resources" active-class="active">Resources</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/about-us" active-class="active">About Us</NuxtLink>
+                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/contact" active-class="active">Contact Us</NuxtLink>
                     <button class="">Log In</button>
                     <button class="solid-btn">Sign Up</button>
                 </div>
@@ -42,6 +43,23 @@ const toggleMenu = () => {
 }
 </script>
 
-<style>
+<style scoped>
+.active {
+  border-bottom: 2px solid #3b82f6;
+}
 
+a {
+  position: relative;
+  padding-bottom: 10px; /* adjust if needed to match navbar height */
+}
+
+a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px; /* aligns exactly with the existing border-b */
+  width: 100%;
+  height: 2px;
+  background-color: #3b82f6; /* blue-500 */
+}
 </style>
