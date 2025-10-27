@@ -7,6 +7,11 @@
     <home-start />
     <home-tools />
     <home-how-it-works />
+    <home-pricing />
+    <home-blogs />
+    <home-testimonials />
+    <home-mobile_app />
+    <home-case-study />
   </div>
 </template>
 

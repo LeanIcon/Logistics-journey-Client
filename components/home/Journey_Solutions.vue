@@ -2,10 +2,9 @@
   <div class="bg-[#102A63]">
     <div class="highest-width text-white text-center space-y-6 py-20 mx-auto">
         <div class="text-center space-y-6 pb-20 mx-auto">
-            <h2>The Problem with Deliveries Today</h2>
+            <h2>The Logistic Journey Solution</h2>
             <p class="max-w-lg mx-auto">
-                Without real-time visibility, your fleet becomes a silent money drain. 
-                Here’s what it’s costing you today
+               From failed deliveries to full control — here’s how we help teams move smarter.
             </p> 
         </div>  
         <div class="order-1 md:order-2 grid sm:grid-cols-3 items-stretch gap-8">
@@ -45,6 +44,8 @@
     });
 </script>
 
-<style>
-
+<style scoped>
+    p {
+        color: white;
+    }
 </style>

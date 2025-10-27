@@ -2,7 +2,7 @@
   <div class="">
     <div class="highest-width text-center space-y-6 py-20 mx-auto">
         <div class="text-center space-y-6 pb-8 mx-auto">
-            <div class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center justify-center max-w-32 mx-auto">
+            <div class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center justify-center max-w-26 mx-auto">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.4001 4.62683C13.4001 4.98683 13.2068 5.3135 12.9001 5.48016L11.7401 6.10683L10.7534 6.6335L8.70676 7.74016C8.48676 7.86016 8.24676 7.92016 8.0001 7.92016C7.75343 7.92016 7.51343 7.86016 7.29343 7.74016L3.1001 5.48016C2.79343 5.3135 2.6001 4.98683 2.6001 4.62683C2.6001 4.26683 2.79343 3.94016 3.1001 3.7735L4.41343 3.06683L5.4601 2.50016L7.29343 1.5135C7.73343 1.2735 8.26676 1.2735 8.70676 1.5135L12.9001 3.7735C13.2068 3.94016 13.4001 4.26683 13.4001 4.62683Z" fill="#DF900A"/>
                     <path d="M6.5999 8.52676L2.6999 6.58009C2.3999 6.42676 2.05323 6.44676 1.76657 6.62009C1.4799 6.79343 1.31323 7.10009 1.31323 7.43343V11.1201C1.31323 11.7601 1.66657 12.3334 2.2399 12.6201L6.1399 14.5668C6.27323 14.6334 6.4199 14.6668 6.56657 14.6668C6.7399 14.6668 6.91323 14.6201 7.06657 14.5201C7.35323 14.3468 7.5199 14.0401 7.5199 13.7068V10.0201C7.52657 9.38676 7.17323 8.81343 6.5999 8.52676Z" fill="#DF900A"/>
@@ -10,7 +10,7 @@
                     <path d="M11.74 6.10667L10.7533 6.63333L4.41333 3.06667L5.46 2.5L11.58 5.95333C11.6467 5.99333 11.7 6.04667 11.74 6.10667Z" fill="#DF900A"/>
                     <path d="M11.8333 7.31348V8.82681C11.8333 9.10014 11.6066 9.32681 11.3333 9.32681C11.0599 9.32681 10.8333 9.10014 10.8333 8.82681V7.81348L11.8333 7.31348Z" fill="#DF900A"/>
                 </svg>
-                <h6 class="text-[#DF900A]">Features</h6>
+                <span class="text-[15px] " style="color: #DF900A;">Features</span>
             </div>
             <h2>All the Tools You Need, in One Platform.</h2>
             <p class="max-w-lg mx-auto">
@@ -19,12 +19,12 @@
         </div>  
         <div class="order-1 md:order-2 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
             <div v-for="tool in toolList" :key="tool.id" class="">
-                <div class="text-white bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg">
+                <div class="bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg">
                     <div class="">
                          <img :src="tool.icon" alt="Delivery Icon" class="w-12 h-12 mb-4" />
                     </div>
-                    <h6 class="text-xl text-start font-semibold mb-4">{{ tool.title }}</h6>
-                    <p class="grow text-start">{{ tool.description }}</p>                 
+                    <h6 class="text-white text-xl text-start font-semibold mb-4">{{ tool.title }}</h6>
+                    <p class="grow text-start" style="color: white;">{{ tool.description }}</p>                 
                 </div>
 
             </div>
@@ -64,5 +64,7 @@
 </script>
 
 <style>
-
+     p {
+        color: white;
+    }
 </style>

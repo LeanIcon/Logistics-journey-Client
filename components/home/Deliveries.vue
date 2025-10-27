@@ -42,5 +42,7 @@
 </script>
 
 <style>
-
+    p {
+        color: #ffffff;
+    }
 </style>

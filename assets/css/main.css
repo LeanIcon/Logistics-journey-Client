@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xss: 280px;
+}
+
 body {
   font-family: "Gilroy", sans-serif;
 }
@@ -85,4 +89,8 @@ footer {
   font-weight: 400;
   text-align: center;
   padding: 20px 0;
+}
+
+.xxs {
+  @apply max-w-[500px];
 }

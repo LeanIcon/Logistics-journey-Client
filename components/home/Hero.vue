@@ -3,10 +3,10 @@
         <div class="flex flex-col mx-auto bg-[#E9EFFD] sm:bg-white">
             <div class="flex flex-col md:flex-row w-full mt-14 md:gap-5 justify-between items-center">
                 <div class="w-full md:w-1/2 pl-4 sm:pl-6 lg:pl-16 pr-4 sm:pr-6 lg:pr-16">
-                    <h1 class="mb-8">
-                      Smarter Deliveries. Happier Customers. 
-                      <span class="border-l-2 bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] border-l-[#225AD6] text-[#225AD6]">Lower Costs! </span>
-                    </h1>
+                    <div class="mb-8">
+                      <h1 style="margin-bottom: -1px;"> Deliveries. Happier Customers. </h1>
+                      <span class="border-l-2 bg-linear-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] border-l-[#225AD6] text-[#225AD6] text-[41px]" style="color: #225AD6; font-weight: 800;">Lower Costs! </span>
+                    </div>
                     <p class="mb-6 text-base font-normal leading-7 lg:w-3/4 text-grey-900">
                         Logistic Journey gives you full control, real-time visibility, and reliable deliveries-without the chaos of paper and spreadsheets.
                     </p>
@@ -42,5 +42,5 @@
 </script>
 
 <style scoped>
-
+    
 </style>

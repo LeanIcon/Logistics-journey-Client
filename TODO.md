@@ -1,0 +1,5 @@
+- [x] Fix the type definition for testimonialList in components/home/Testimonials.vue
+- [x] Correct the mapping in onMounted to properly assign properties from testimonials data
+- [x] Update the template to display data from testimonialList (using the first testimonial)
+- [x] Define xss: 400px breakpoint in assets/css/main.css
+- [x] Update components/home/Mobile_App.vue to use xss: instead of sm: for responsive classes
