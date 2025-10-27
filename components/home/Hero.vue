@@ -4,7 +4,7 @@
             <div class="flex w-full mt-10 mb-8 md:gap-5 justify-between items-center">
                 <div class="w-full md:w-1/2 pl-4 sm:pl-6 lg:pl-16 pr-4 sm:pr-6 lg:pr-16">
                     <h1 class="mb-8">
-                      Smarter Deliveries. Happier Customers. 
+                      Smarter Deliveries. Happier Customer. 
                       <span class="border-l bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] border-l-[#225AD6] text-[#225AD6]">Lower Costs! </span>
                     </h1>
                     <p class="mb-6 text-base font-normal leading-7 lg:w-3/4 text-grey-900">
@@ -30,6 +30,7 @@
                 <img class="w-[27%] rounded-md" src="/public/images/Header/Header 3/1/Group 8.png" alt="header image">
             </div>
         </div>
+
   </div>
 </template>
 
