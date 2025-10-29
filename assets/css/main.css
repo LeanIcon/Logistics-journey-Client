@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xss: 280px;
+}
+
 body {
   font-family: "Gilroy", sans-serif;
 }
@@ -9,24 +13,45 @@ body {
 }
 
 button {
-  @apply items-center px-4 py-2 border border-[#225AD6] rounded-lg font-thin transition duration-300
+  @apply items-center px-5 py-3 border border-[#225AD6] rounded-lg font-thin transition duration-300
 }
 
 .solid-btn {
-  @apply bg-[#225AD6] items-center text-white px-4 py-2 rounded-lg font-thin hover:bg-[#1a43b8] transition duration-300
+  @apply bg-[#225AD6] items-center text-white px-5 py-3 rounded-lg font-thin hover:bg-[#1a43b8] transition duration-300
+}
+
+.solid-btn2 {
+  @apply items-center bg-white px-5 py-3 rounded-lg font-thin hover:bg-[#d8d8d8] transition duration-300
+}
+
+.solid-btn3 {
+  @apply text-[#225AD6] items-center bg-white px-5 py-3 rounded-lg font-thin hover:bg-[#d8d8d8] transition duration-300
 }
 
 h1 {
-  font-size: 50px;
+  @apply text-[35px] lg:text-[38px] xl:text-[50px] -mt-1
+}
+
+h2 {
+  @apply text-[28px] lg:text-[32px] xl:text-[35px] -mt-1
+}
+
+h6 {
+  @apply text-[18px] lg:text-[21px] xl:text-[18px] font-medium
+}
+
+h1 {
   font-weight: 800;
 }
 
-h2, h3, h4, h5, h6 {
+h2, h4 {
   font-weight: 700;
 }
 
 p {
-  font-weight: 100;
+  font-size: medium;
+  font-weight: 10;
+  line-height: 26px;
 }
 
 a {
@@ -64,4 +89,8 @@ footer {
   font-weight: 400;
   text-align: center;
   padding: 20px 0;
+}
+
+.xxs {
+  @apply max-w-[500px];
 }
