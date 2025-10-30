@@ -1,6 +1,6 @@
 <template>
   <div>
-    About Us Page
+    <about-hero />
   </div>
 </template>
 
@@ -8,6 +8,6 @@
 
 </script>
 
-<style>
+<style scoped>
 
 </style>

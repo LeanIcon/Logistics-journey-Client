@@ -1,5 +1,5 @@
 <template>
-  <!-- Section4 -->
+  
   <section class="highest-width flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 py-20 bg-white">
     <!-- Left: Image -->
     <div class="w-full lg:w-1/2 flex justify-center lg:justify-end order-2 lg:order-1 relative overflow-hidden rounded-3xl">
@@ -20,7 +20,7 @@
       <p class="text-[#23272A] text-lg mb-8">
         With the Logistic mobile app, drivers stay connected, informed, and efficient — every step of the way.
       </p>
-      <ul class="space-y-6">
+      <ul class="space-y-6 feature-list">
         <li class="flex items-start gap-3">
           <span class="mt-1">
             <svg width="20" height="20" fill="none">
@@ -29,7 +29,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold text-[#23272A]">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
+            <span class="font-bold feature-title">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -40,7 +40,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold text-[#23272A]">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
+            <span class="font-bold feature-title">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -51,7 +51,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold text-[#23272A]">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
+            <span class="font-bold feature-title">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -62,7 +62,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold text-[#23272A]">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
+            <span class="font-bold feature-title">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
           </span>
         </li>
       </ul>
@@ -70,6 +70,18 @@
   </section>
 </template>
 
+<script lang="ts" setup>
+
+</script>
+
+
 <style scoped>
-/* You can fine-tune the background shape to match your sample */
+.feature-list {
+  color: #4B5563; /* gray for body text */
+}
+
+.feature-title {
+  color: #23272A; /* dark title same as heading */
+  font-weight: 700;
+}
 </style>

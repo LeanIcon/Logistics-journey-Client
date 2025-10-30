@@ -1,5 +1,5 @@
 <template>
-  <!-- CTA split section: blue text panel left, image right -->
+  <!-- CTA split section -->
   <section class="highest-width py-20">
     <div class="max-w-7xl mx-auto bg-white rounded-3xl overflow-hidden flex flex-col lg:flex-row items-stretch shadow-sm">
       <!-- Left: blue panel -->

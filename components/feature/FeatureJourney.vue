@@ -1,5 +1,5 @@
 <template>
-  <!-- Section3 -->
+  
   <section class="highest-width flex flex-col lg:flex-row items-center justify-between gap-9 py-20 bg-gray-50">
     <!-- Left: Text and features -->
     <div class="w-full lg:w-1/2 order-1 lg:order-1">
@@ -25,26 +25,9 @@
       </ul>
     </div>
 
-    <!-- Right: Images -->
-    <!-- <div class="w-full lg:w-1/2 h-[80] flex flex-col items-center  order-2 lg:order-2">
-      <img class="rounded-md w-full max-w-sm" src="/public/images/Feature/Feature2/form.jpg" alt="Feature image">
-      <img class="hidden rounded-xl justify-end w-full max-w-md -mt-70 lg:-mt-35" src="/public/images/Feature/Feature2/Feature4/3.jpg" alt="Feature image">
-    </div> -->
+    
 
-    <!-- <div class="max-w-lg md:max-w-full md:w-2/5 lg:w-2/4 xl:w-2/3 px-4 sm:px-0">
-                  <div class="hidden md:flex justify-end -mb-28">
-                      <img class=" rounded-md" src="/public/images/Feature/Feature2/Feature3/circle.jpg" alt="Feature image">
-                  </div>
-                  <div class="hidden md:flex items-center max-w-sm col-span-1">
-                      <img class="rounded-md" src="/public/images/Feature/Feature2/form.jpg" alt="Feature image">
-                  </div>
-    </div>
-            
-             <div class="hidden md:flex -mt-20 lg:-mt-24 justify-end pr-[6cm] lg:pr-[12.4cm] xl:pr-[16cm] ">
-                <img class="w-[90%] rounded-md" src="/public/images/Feature/Feature2/Feature3/Feature4/3.jpg" alt="Feature image">
-            </div> -->
-
-            <div class="w-full lg:w-1/2 flex flex-col order-2 lg:order-2 mb-10 lg:mb-20 md:w-2/3 lg:mr-20">
+  <div class="w-full lg:w-1/2 flex flex-col order-2 lg:order-2 mb-10 lg:mb-20 md:w-2/3 lg:mr-20">
   <!-- Desktop form image -->
   <div class="items-center justify-end hidden md:flex col-span-1">
     <img
@@ -54,7 +37,7 @@
     />
   </div>
 
-  <!-- Mobile image (fixed alignment) -->
+  <!-- Mobile image  -->
   <div class="flex justify-center md:hidden relative overflow-hidden rounded-3xl px-4">
     <img
       class="w-full rounded-3xl object-cover"
