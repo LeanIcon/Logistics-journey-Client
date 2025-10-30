@@ -1,6 +1,7 @@
 <template>
   <div>
-    <about-hero />
+    <policy-hero />
+    <policy-content />
   </div>
 </template>
 
@@ -8,6 +9,6 @@
 
 </script>
 
-<style scoped>
+<style>
 
 </style>

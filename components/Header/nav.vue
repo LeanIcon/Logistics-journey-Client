@@ -45,12 +45,13 @@ const toggleMenu = () => {
 
 <style scoped>
 .active {
+  color: #3b82f6;
   border-bottom: 2px solid #3b82f6;
 }
 
 a {
   position: relative;
-  padding-bottom: 10px; /* adjust if needed to match navbar height */
+  padding-bottom: 10px; 
 }
 
 a.active::after {

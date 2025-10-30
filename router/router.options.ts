@@ -32,7 +32,11 @@ export default <RouterConfig>{
             name: 'demo',
             path: '/demo',
             component: '~/pages/Request_demo.vue',
+        },
+        {
+            name: 'privacy-policy', 
+            path: '/privacy-policy', 
+            component: '~/pages/policy.vue',
         }
-
     ],
 };

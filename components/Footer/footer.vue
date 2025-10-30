@@ -40,8 +40,8 @@
                 <div>
                     <h3 class="font-semibold text-lg mb-3">Quick Links</h3>
                     <ul class="space-y-2 text-sm text-gray-200">
-                    <li><a href="#" class="hover:text-white">Features</a></li>
-                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="/features" class="hover:text-white">Features</a></li>
+                    <li><a href="/contact" class="hover:text-white">Contact</a></li>
                     <li><a href="#" class="hover:text-white">Blog</a></li>
                     <li><a href="#" class="hover:text-white">FAQs</a></li>
                     </ul>
@@ -51,8 +51,8 @@
                 <div>
                     <h3 class="font-semibold text-lg mb-3">Company</h3>
                     <ul class="space-y-2 text-sm text-gray-200">
-                    <li><a href="#" class="hover:text-white">About Us</a></li>
-                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="/about-us" class="hover:text-white">About Us</a></li>
+                    <li><a href="/policy" class="hover:text-white">Privacy Policy</a></li>
                     <li><a href="#" class="hover:text-white">Terms of Service</a></li>
                     </ul>
                 </div>

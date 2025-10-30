@@ -22,5 +22,9 @@ export const links = [
     {
         name: 'demo',
         to: '/demo'
+    },
+    {
+        name: 'Privacy Policy',
+        to: '/privacy-policy'
     }
 ];
