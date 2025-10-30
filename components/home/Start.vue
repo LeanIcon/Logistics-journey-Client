@@ -8,9 +8,11 @@
                 <h2 class="text-white">
                     Stop firefighting. <br> Start delivering with confidence.
                 </h2>
-                <button class="solid-btn2">
-                    Book a Demo Now
-                </button>
+                <NuxtLink to="/Request_demo">
+                    <button class="solid-btn2">
+                        Book a Demo Now
+                    </button>
+                </NuxtLink>
             </div>
 
             <div class="hidden sm:flex w-1/2">

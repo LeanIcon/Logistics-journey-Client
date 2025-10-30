@@ -20,29 +20,41 @@
         <!-- Steps -->
         <div class="flex flex-col max-w-5xl mx-auto md:flex-row items-stretch justify-center gap-8 p-8 min-h-[400px]">
         <!-- Left Steps -->
+    <div
+    class="flex flex-col justify-center w-full md:w-1/2 bg-white space-y-6 relative"
+    >
+    <!-- vertical track -->
+    <div class="absolute left-3 top-0 bottom-0 w-px bg-gray-200"></div>
+    <!-- active progress: single segment highlighted based on currentStep -->
+    <div
+      class="absolute left-3 w-px bg-blue-600 transition-all duration-300"
+      :style="{ top: progressTop, height: segmentHeight }"
+    ></div>
+    <div
+      v-for="(step, index) in steps"
+      :key="index"
+      @click="currentStep = index"
+      class="flex items-start gap-3 cursor-pointer transition-all"
+    >
+      <!-- marker column: circle sits above the track (z-10) -->
+      <div class="flex flex-col items-center">
         <div
-        class="flex flex-col justify-center w-full md:w-1/2 bg-white space-y-6"
+        class="w-6 h-6 rounded-full flex items-center justify-center border shrink-0 relative z-10"
+        :class="{
+          'bg-blue-600 text-white border-blue-600': currentStep === index,
+          'bg-[#E9EFFD] text-[#225AD6] border-gray-300': currentStep !== index
+        }"
         >
-        <div
-            v-for="(step, index) in steps"
-            :key="index"
-            @click="currentStep = index"
-            class="flex items-start gap-3 cursor-pointer transition-all"
-        >
-            <div
-            class="w-6 h-6 rounded-full flex items-center justify-center border shrink-0"
-            :class="{
-                'bg-blue-600 text-white border-blue-600': currentStep === index,
-                'bg-white text-gray-600 border-gray-300': currentStep !== index
-            }"
-            >
-            {{ index + 1 }}
-            </div>
+        {{ index + 1 }}
+        </div>
+        <!-- small spacer to keep consistent spacing between markers (the main track is absolute) -->
+        <div v-if="index !== steps.length - 1" class="h-6"></div>
+      </div>
 
             <div>
             <h3
-                class="text-start font-semibold"
-                :class="currentStep === index ? 'text-black' : 'text-gray-500'"
+                class="text-start"
+                :class="currentStep === index ? 'text-black font-semibold' : 'font-medium text-[#6B7280]'"
             >
                 {{ step.title }}
             </h3>
@@ -71,7 +83,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const currentStep = ref(0);
 
@@ -102,6 +114,19 @@ const steps = [
     image: "/images/step5.jpg",
   },
 ];
+
+// compute top and height (percentages) so we highlight only one segment at a time
+const progressTop = computed(() => {
+  if (steps.length <= 1) return "0%";
+  const ratio = currentStep.value / (steps.length - 1);
+  return `${ratio * 100}%`;
+});
+
+const segmentHeight = computed(() => {
+  if (steps.length <= 1) return "0%";
+  const frac = 1 / (steps.length - 1);
+  return `${frac * 100}%`;
+});
 </script>
 
 <style>

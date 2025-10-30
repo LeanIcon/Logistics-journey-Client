@@ -10,7 +10,7 @@ export const testimonials = [
   },
   {
     id: 2,      
-    name: "John Smith",
+    name: "Joan Smith",
     title: "CTO, Sample Inc.",
     image:
       "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
@@ -31,7 +31,7 @@ export const testimonials = [
     name: "Bob Williams",
     title: "Founder, Test Co.",     
     image:      
-        "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",    
+        "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",    
     feedback:      
       "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
   }

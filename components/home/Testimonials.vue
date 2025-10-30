@@ -17,7 +17,7 @@
             </p>    
         </div> 
 
-        <div class="">
+        <div class="px-4 sm:px-0">
             <div ref="carousel" class="flex gap-6 items-stretch overflow-hidden scroll-smooth" v-if="testimonialList.length > 0" role="list">
                 <div v-for="(testimonial, index) in testimonialList" :key="testimonial.id" role="listitem" class="testimonial-card-container">
                     <div
@@ -136,8 +136,8 @@ onUnmounted(() => {
 });
 </script>
 <style scoped>
-.indicator span{ width:64px; height:8px; background: #BBCFF9; transition: all .25s ease; }
-.indicator-active span{ width:64px; height:8px; background: #0a2e6c; }
+.indicator span{ width:64px; height:6px; background: #BBCFF9; transition: all .25s ease; }
+.indicator-active span{ width:64px; height:6px; background: #0a2e6c; }
 
 /* responsive tweaks */
 @media (max-width: 640px) {

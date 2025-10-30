@@ -27,6 +27,11 @@ export default <RouterConfig>{
             name: 'contact',
             path: '/contact',
             component: '~/pages/contact.vue',
+        },
+        {
+            name: 'demo',
+            path: '/demo',
+            component: '~/pages/Request_demo.vue',
         }
 
     ],
