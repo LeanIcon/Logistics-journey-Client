@@ -15,7 +15,7 @@
 
       <!-- Right: image -->
       <div class="hidden lg:block w-full lg:w-1/2">
-        <img src="/public/images/Feature/Feature2/cta-delivery.jpg" alt="Delivery" class="w-full h-full object-cover" />
+        <img src="/public/images/About/image.png" alt="About CTA" class="w-full h-full object-cover" />
       </div>
     </div>
   </section>

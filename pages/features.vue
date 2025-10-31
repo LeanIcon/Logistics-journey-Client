@@ -1,5 +1,5 @@
 ﻿<template>
-  <div >
+  <div>
     <feature-hero />
     <feature-dashboard />
     <feature-journey />
