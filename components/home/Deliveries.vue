@@ -7,7 +7,7 @@
         Here’s what it’s costing you today
       </p>
     </div>
-    <div class="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center justify-center">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center justify-center">
       <div class="order-2 md:order-1 mx-auto max-w-md">
         <img src="/public/images/Deliveries/Placeholder Image.png" alt="">
       </div>
@@ -42,7 +42,5 @@
 </script>
 
 <style>
-    p {
-        color: #ffffff;
-    }
+  
 </style>

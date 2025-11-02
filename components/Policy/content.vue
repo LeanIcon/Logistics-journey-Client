@@ -1,10 +1,10 @@
 <template>
-  <div class="policy-wrap">
+  <div class="highest-width policy-wrap">
     <div class="policy-container">
       <main class="policy-main">
         <h2 id="background">Background</h2>
 
-        <p class="lead">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
+        <p class="lead text-[#16181B]">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
 
         <h2 id="information-we-collect">Information We Collect</h2>
 
@@ -72,7 +72,7 @@
           <li>Request data portability.</li>
           <li>Withdraw consent (where applicable).</li>
         </ul>
-        <p>To exercise these rights, contact us at <a href="mailto:support@logisticjourney.com">support@logisticjourney.com</a>.</p>
+        <p>To exercise these rights, contact us at <a class="text-blue-500" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a>.</p>
 
         <h2 id="cookies">Cookies &amp; Tracking Technologies</h2>
         <p>We use cookies to:</p>
@@ -91,12 +91,12 @@
           70 Seventh Avenue<br>
           Parktown North, Johannesburg<br>
           Gauteng, South Africa<br>
-          Email: <a href="mailto:support@logisticjourney.com">support@logisticjourney.com</a><br>
-          Phone: +27 11 568 7109
+          <span class="font-semibold text-[#16181B]">Email:</span> <a class="underline" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a><br>
+          <span class="font-semibold text-[#16181B]">Phone:</span> <span class="underline text-[#16181B]">+27 11 568 7109</span>
         </address>
       </main>
 
-      <aside class="policy-toc" aria-label="Table of contents">
+      <aside class="policy-toc lg:fixed lg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents">
         <nav>
           <ul>
             <li><a href="#background">Background</a></li>
@@ -217,8 +217,8 @@ onBeforeUnmount(() => {
   align-items: start;
 }
 .policy-main {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  color: #111827;
+  font-family: monospace, monospace;
+  color: #16181B;
 }
 .policy-main h1 {
   font-size: 22px;
@@ -246,7 +246,7 @@ onBeforeUnmount(() => {
 .policy-main address {
   font-size: 14px;
   line-height: 1.6;
-  color: #111827;
+  color: #16181B;
 }
 .policy-main ul { 
   margin-left: 20px;
@@ -259,7 +259,7 @@ onBeforeUnmount(() => {
   font-style: normal;
 }
 .policy-toc {
-  position: relative;
+
 }
 .policy-toc nav {
   position: sticky;

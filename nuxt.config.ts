@@ -1,14 +1,15 @@
-import tailwindcss from "@tailwindcss/vite";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  ssr: true,
   devtools: { enabled: true },
-   css: ['~/assets/css/main.css', '~/assets/css/fonts.css'], 
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+  compatibilityDate: '2025-10-31',
+  css: ['~/assets/css/main.css', '~/assets/css/fonts.css'],
+  modules: ['@nuxtjs/tailwindcss'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
 
   app: {
@@ -23,6 +24,10 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/Navbar/2/Logistics Journey Logo.png' },
+        // Preload critical fonts
+        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Regular.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
+        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Medium.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
+        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Bold.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
       ],
     },
   },

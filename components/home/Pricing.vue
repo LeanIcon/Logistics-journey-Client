@@ -50,16 +50,16 @@
                 <div
                     class="relative pb-4 m-0 flex items-center justify-between space-x-8 mb-8 overflow-hidden text-center border-b rounded-none shadow-none bg-clip-border">
                     <div class="text-start">
-                         <span class=" font-bold leading-normal">
+                         <span class="font-bold text-black leading-normal">
                           Basic plan
                          </span> <br>
                         <span class="font-thin text-[15px]">Perfect for logistics teams </span>
                     </div>
                    
-                    <div class="flex gap-1 font-sans antialiased font-normal tracking-normal">
-                        <h1 class="text-4xl">$129</h1>
-                        <span class="font-light" style="color: black">/</span>
-                        <span class="text-lg">mo</span>
+                    <div class="flex gap-[0.5px] antialiased font-normal tracking-normal items-end ">
+                        <h1 class="text-4xl">R129</h1>
+                        <span class="font-light text-black">/</span>
+                        <span class="text-lg text-black font-semibold">mo</span>
                     </div>
                 </div>
 

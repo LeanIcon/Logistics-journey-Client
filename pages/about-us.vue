@@ -1,6 +1,13 @@
 <template>
   <div>
     <about-hero />
+    <about-our-story/>
+    <about-so-we-built/>
+    <about-truth/>
+    <about-team/>
+    <about-cta/>
+    <about-insight/>
+  
   </div>
 </template>
 
