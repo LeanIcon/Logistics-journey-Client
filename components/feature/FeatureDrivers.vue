@@ -1,8 +1,8 @@
 <template>
   
-  <section class="highest-width flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 py-20 bg-white">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-8 lg:gap-20 py-20 bg-white">
     <!-- Left: Image -->
-    <div class="w-full lg:w-1/2 flex justify-center lg:justify-end order-2 lg:order-1 relative overflow-hidden rounded-3xl">
+    <div class="w-full mlg:w-1/2 flex justify-center mlg:justify-end order-2 mlg:order-1 relative overflow-hidden rounded-3xl">
       <img 
         class="w-full max-w-2xl rounded-3xl object-cover "
         src="/public/images/Feature/Feature2/phone-map.jpg"
@@ -13,11 +13,11 @@
     </div>
 
     <!-- Right: Text and features -->
-    <div class="w-full lg:w-1/2 order-1 lg:order-2">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-[#23272A] mb-6">
+    <div class="w-full mlg:w-1/2 order-1 mlg:order-2">
+      <h2 class="mb-6">
         Empower Drivers On the Go
       </h2>
-      <p class="text-[#23272A] text-lg mb-8">
+      <p class="text-[#23272A] text-mlg mb-8">
         With the Logistic mobile app, drivers stay connected, informed, and efficient — every step of the way.
       </p>
       <ul class="space-y-6 feature-list">
@@ -29,7 +29,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold feature-title">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
+            <span class="font-medium feature-title">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -40,7 +40,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold feature-title">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
+            <span class="font-medium feature-title">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -51,7 +51,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold feature-title">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
+            <span class="font-medium feature-title">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
           </span>
         </li>
         <li class="flex items-start gap-3">
@@ -62,7 +62,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-bold feature-title">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
+            <span class="font-medium feature-title">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
           </span>
         </li>
       </ul>
@@ -82,6 +82,6 @@
 
 .feature-title {
   color: #23272A; /* dark title same as heading */
-  font-weight: 700;
+  font-weight: 400;
 }
 </style>

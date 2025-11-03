@@ -5,6 +5,8 @@
     <feature-journey />
     <FeatureCTA />
     <feature-drivers />
+    <HomeFaqs />
+    <home-transform />
   </div>
 </template>
 

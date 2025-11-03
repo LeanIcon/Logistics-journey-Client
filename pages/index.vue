@@ -10,8 +10,10 @@
     <home-pricing />
     <home-blogs />
     <home-testimonials />
-    <home-mobile_app />
     <home-case-study />
+    <home-mobile_app />
+    <home-faqs />
+    <home-transform />
   </div>
 </template>
 

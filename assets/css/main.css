@@ -4,6 +4,14 @@
   --breakpoint-xss: 280px;
 }
 
+@theme {
+  --breakpoint-xs: 375px;
+}
+
+@theme {
+  --breakpoint-mlg: 820px;
+}
+
 body {
   font-family: "Gilroy", sans-serif;
 }
@@ -93,4 +101,8 @@ footer {
 
 .xxs {
   @apply max-w-[500px];
+}
+
+.custom-spacing > * + * {
+  margin-top: 1.5rem; /* same as Tailwind's space-y-4 */
 }

@@ -17,7 +17,7 @@
                 Logistic Journey is designed to streamline logistics operations, enhance efficiency, and provide real-time visibility into fleet movements.
             </p> 
         </div>  
-        <div class="order-1 md:order-2 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        <div class="order-1 md:order-2 sm:p-6 sm:rounded-xl sm:bg-[#102A63] grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             <div v-for="tool in toolList" :key="tool.id" class="">
                 <div class="bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg">
                     <div class="">
@@ -33,12 +33,14 @@
                 </div>
                 <div class="justify-center flex h-full items-center">
                     <div class="mx-auto relative z-10 text-center text-white">
-                        <button class="solid-btn3 text-center flex space-x-2 mx-auto justify-center">
-                            <span>More Features</span>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z" fill="#225AD6"/>
-                            </svg>
-                        </button>
+                        <NuxtLink to="/features">
+                            <button class="solid-btn3 no-underline text-center flex space-x-2 mx-auto justify-center">
+                                <span>More Features</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z" fill="#225AD6"/>
+                                </svg>
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>

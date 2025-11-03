@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#eef4f9]">
-    <div class="highest-width py-20 mx-auto text-center">
+    <div class="highest-width hidden sm:flex py-20 mx-auto text-center">
       <div class="mb-12">
         <h2 class="text-3xl md:text-4xl font-bold">So we built Logistics Journey</h2>
       </div>
