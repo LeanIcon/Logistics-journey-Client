@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-[#eef4f9]">
-    <div class="highest-width hidden sm:flex py-20 mx-auto text-center">
-      <div class="mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold">So we built Logistics Journey</h2>
-      </div>
+  <div class="bg-[#eef4f9] hidden sm:flex">
+    <div class="highest-width text-center space-y-6 py-20">
+        <div class="text-center space-y-6 pb-20">
+            <h2 class="text-3xl md:text-4xl font-bold">So we built Logistics Journey</h2>
+        </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left">
         <div v-for="item in built_items" :key="item.id" class="flex flex-col items-start">
           <img :src="item.icon" :alt="`${item.title} icon`" class="w-10 h-10 mb-4" />
           <h3 class="text-xl font-semibold mb-3">{{ item.title }}</h3>

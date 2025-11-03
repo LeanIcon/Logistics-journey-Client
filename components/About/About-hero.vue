@@ -1,5 +1,5 @@
 <template>
-  <div class=" hidden sm:flex relative w-full min-h-[220px] sm:min-h-[260px]  items-center justify-center overflow-hidden">
+  <div class="hidden sm:flex relative w-full min-h-[220px] sm:min-h-[260px] items-center justify-center overflow-hidden highest-width mx-auto py-20 px-4 sm:px-6 md:px-8 lg:px-12">
     <img src="/images/About/download.jpg" alt="About Hero" class="absolute inset-0 w-full h-full object-cover object-center z-0" />
     <div class="absolute inset-0 bg-black/20 z-0"></div>
    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
