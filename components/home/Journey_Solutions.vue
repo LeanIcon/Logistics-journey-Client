@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#102A63]">
-    <div class="highest-width text-white text-center space-y-6 py-20 mx-auto">
-        <div class="text-center space-y-6 pb-20 mx-auto">
+    <div class="highest-width text-white text-center space-y-6 py-24 mx-auto">
+        <div class="text-center space-y-6 pb-14 mx-auto">
             <h2>The Logistic Journey Solution</h2>
             <p class="max-w-lg mx-auto">
                From failed deliveries to full control — here’s how we help teams move smarter.

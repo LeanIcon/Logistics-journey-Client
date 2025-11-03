@@ -18,11 +18,11 @@
                 <input
                     type="email"
                     placeholder="Enter your email"
-                    class="px-4 py-2 rounded-md border border-gray-300 text-white w-full sm:w-auto sm:flex-1 focus:outline-none"
+                    class="px-4 py-2 rounded-md border border-gray-300 bg-[#0F2A6B] text-white w-full sm:w-auto sm:flex-1 focus:outline-none"
                 />
                 <button
                     type="submit"
-                    class="bg-white text-[#0F2A6B] px-6 py-2 rounded-md hover:bg-gray-200 transition" style="color: #0F2A6B;"
+                    class="bg-white text-[#0F2A6B] px-6 py-2 rounded-md hover:bg-gray-200 transition" style="color: #0F2A6B; text-align: center;"
                 >
                     Subscribe
                 </button>
@@ -30,7 +30,7 @@
 
                 <p class="text-[12px] mt-3 text-gray-300">
                 By subscribing you agree to with our
-                <span class="underline">Privacy Policy</span> and provide consent to
+                <NuxtLink to="/policy"><span class="underline">Privacy Policy</span></NuxtLink> and provide consent to
                 receive updates from our company.
                 </p>
             </div>
@@ -43,7 +43,7 @@
                     <li><a href="/features" class="hover:text-white">Features</a></li>
                     <li><a href="/contact" class="hover:text-white">Contact</a></li>
                     <li><a href="#" class="hover:text-white">Blog</a></li>
-                    <li><a href="#" class="hover:text-white">FAQs</a></li>
+                    <li><a href="/faqs" class="hover:text-white">FAQs</a></li>
                     </ul>
                 </div>
 
@@ -53,7 +53,7 @@
                     <ul class="space-y-2 text-sm text-gray-200">
                     <li><a href="/about-us" class="hover:text-white">About Us</a></li>
                     <li><a href="/policy" class="hover:text-white">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
                     </ul>
                 </div>
 
@@ -153,7 +153,7 @@
             <!-- Back to top -->
             <button
                 @click="scrollToTop"
-                class="mt-4 md:mt-0 justify-center mx-auto text-center text-white text-sm border-none cursor-pointer transition" style="text-align: center;"
+                class="mt-4 md:mt-0 justify-center md:justify-end text-center text-white text-sm border-none cursor-pointer transition" style="text-align: center;"
             >
                 <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"  class="mx-auto">
                 <g filter="url(#filter0_d_2495_2321)">

@@ -42,7 +42,7 @@
                         </div>
                         <div class="flex items-center space-x-4 mt-4" :class="activeIndex === index ? 'text-white' : ''">
                             <div>
-                            <img class="w-15 h-15 object-cover rounded-full border-2" :class="activeIndex === index ? 'border-white' : 'border-indigo-500'" :src="testimonial.image">
+                            <img class="w-16 h-16 object-cover rounded-full border-2" :class="activeIndex === index ? 'border-white' : 'border-indigo-500'" :src="testimonial.image">
                             </div>
                             <div>
                                 <h6 class="text-start text-lg font-semibold" :class="activeIndex !== index ? 'text-gray-800' : ''">{{ testimonial.name }}</h6>
@@ -62,7 +62,7 @@
                         @click="scrollToCard(i)"
                         :aria-selected="activeIndex === i"
                         role="tab"
-                        class="mx-3 focus:outline-none"
+                        class="mx-1 focus:outline-none"
                         :class="activeIndex === i ? 'indicator-active' : 'indicator'" style="border:none; padding:3px;">
                         <span class="block rounded-full transition-all duration-300"></span>
                     </button>

@@ -1,15 +1,15 @@
 <template>
   
-  <section class="highest-width flex flex-col mlg:flex-row items-center justify-center gap-8 mlg:gap-20 py-20 bg-white">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-center gap-16 mlg:gap-10 xl:gap-20 py-20 bg-white">
     <!-- Left: Image -->
-    <div class="w-full mlg:w-1/2 flex justify-center order-2 mlg:order-1 relative overflow-hidden rounded-3xl">
+    <div class="w-full mlg:w-1/2 max-w-md mlg:max-w-full flex justify-center order-2 mlg:order-1 relative overflow-hidden rounded-3xl">
       <img src="/public/images/Feature/map.jpg" alt="Feature image" class="w-full max-w-2xl rounded-3xl object-cover" />
       <!-- background effect  -->
       <div class="absolute inset-0 -z-10 bg-[#E9EEFF] rounded-3xl scale-105"></div>
     </div>
     <!-- Right: Text and features -->
     <div class="w-full mlg:w-1/2 order-1 mlg:order-2">
-      <h2 class="mb-6">A Dashboard That Powers Your <br> Entire Fleet</h2>
+      <h2 class="mb-6">A Dashboard That Powers Your Entire Fleet</h2>
       <p class="text-[#23272A] text-mlg mb-8">Get full visibility of your logistics operations in one place. Logistic Journey’s dashboard helps you track vehicles, drivers, and deliveries in real-time — so you can reduce costs, prevent delays, and deliver on time, every time.</p>
       <ul class="space-y-6 feature-list">
         <li class="flex items-start gap-3">
@@ -38,6 +38,9 @@
 </script>
 
 <style scoped>
+li{
+    line-height: 1.5rem;
+}
 .feature-list {
   color: #4B5563; /* gray for body text */
 }

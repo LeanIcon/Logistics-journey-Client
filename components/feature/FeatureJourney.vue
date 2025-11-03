@@ -1,5 +1,5 @@
 <template> 
-  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-10 lg:gap-20 py-20 bg-[#F8F8F2]">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-10 xl:gap-20 py-24 bg-[#F8F8F2]">
     <!-- Left: Text and features -->
     <div class="w-full mlg:w-1/2 order-1 mlg:order-1">
       <h2 class=" mb-6">Plan Every Journey With Ease</h2>
@@ -26,8 +26,8 @@
 
     
 
-    <div class="w-full mlg:w-1/2 flex flex-col order-2 mlg:order-2 mb-10 mlg:mb-20 md:w-2/3">
-      <!-- Desktop form image -->
+    <!-- <div class="w-full mlg:w-1/2 flex flex-col order-2 mlg:order-2 mb-10 mlg:mb-20 md:w-2/3">
+     
       <div class="items-center justify-end hidden md:flex">
         <img
           class="w-full rounded-3xl object-cover"
@@ -36,7 +36,7 @@
         />
       </div>
 
-      <!-- Mobile image  -->
+    
       <div class="flex justify-center md:hidden relative overflow-hidden rounded-3xl px-4">
         <img
           class="w-full rounded-3xl object-cover"
@@ -45,7 +45,7 @@
         />
       </div>
 
-      <!-- Desktop second image -->
+     
       <div class="hidden md:flex justify-start w-full mlg:-mt-46 -mt-43 pr-[70] mlg:-ml-10">
         <img
           class="w-[80%] h-[80%] object-cover rounded-md"
@@ -53,9 +53,20 @@
           alt="Feature image"
         />
       </div>
-    </div>
+    </div> -->
 
-   
+    <div class="w-full max-w-md mlg:max-w-full mlg:w-1/2 flex justify-center order-2 mlg:order-2 relative overflow-hidden">
+      <img
+        class="hidden mlg:flex w-full rounded-3xl object-cover"
+        src="/public/images/Feature/feature_journey.png"
+        alt="Feature image"
+      />
+      <img
+        class="flex mlg:hidden w-full rounded-3xl object-cover"
+        src="/public/images/Feature/feature_journey2.png"
+        alt="Feature image"
+      />
+    </div>
 
   </section>
 </template>

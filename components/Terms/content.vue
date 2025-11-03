@@ -96,7 +96,7 @@
         </address>
       </main>
 
-      <aside class="policy-toc lg:fixed lg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents">
+      <aside class="policy-toc" aria-label="Table of contents">
         <nav>
           <ul>
             <li><a href="#background">Background</a></li>
@@ -259,7 +259,7 @@ onBeforeUnmount(() => {
   font-style: normal;
 }
 .policy-toc {
-
+  position: relative;
 }
 .policy-toc nav {
   position: sticky;

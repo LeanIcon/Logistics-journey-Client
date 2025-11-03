@@ -1,6 +1,6 @@
 <template>
   
-  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-8 lg:gap-20 py-20 bg-white">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-8 xl:gap-20 py-24 bg-white">
     <!-- Left: Image -->
     <div class="w-full mlg:w-1/2 flex justify-center mlg:justify-end order-2 mlg:order-1 relative overflow-hidden rounded-3xl">
       <img 

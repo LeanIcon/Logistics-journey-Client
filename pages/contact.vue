@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section class="highest-width bg-white min-h-screen flex items-center justify-center p-0 md:p-24">
-      <div class="w-full px-4 xs:px-6 md:px-10 py-18 bg-[#E9EFFD] gap-10 md:flex md:rounded-2xl overflow-hidden">
+    <section class="bg-white min-h-screen flex items-center justify-center py-0 px-0 md:px-12 xl:px-24 md:py-24">
+      <div class="highest-width w-full px-4 sm:px-6 lg:px-12 xl:px-20 py-20 bg-[#E9EFFD] gap-10 md:gap-6 xl:gap-10 md:flex md:rounded-2xl overflow-hidden">
       
         <div class="rounded-2xl md:w-1/2 bg-white p-8 lg:p-12">
           <h2 class="text-2xl md:text-3xl font-medium mb-4">Contact Us</h2>

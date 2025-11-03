@@ -26,5 +26,9 @@ export const links = [
     {
         name: 'Privacy Policy',
         to: '/privacy-policy'
+    },
+    {
+        name: 'Terms of Service',
+        to: '/terms-of-service'
     }
 ];

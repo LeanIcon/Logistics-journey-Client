@@ -13,16 +13,18 @@
           operations.
         </p>
 
-        <button
-          class="inline-flex items-center justify-center bg-white rounded-lg text-base font-medium text-gray-900 hover:bg-gray-50 transition" style="border-color: #E2E8F0;"
-        >
-          See all
-          <span class="ml-2 text-xl">→</span>
-        </button>
+        <NuxtLink to="/faqs">
+          <button
+            class="inline-flex items-center justify-center bg-white rounded-lg text-base font-medium text-gray-900 hover:bg-gray-50 transition" style="border-color: #E2E8F0;"
+          >
+            See all
+            <span class="ml-2 text-xl">→</span>
+          </button>
+        </NuxtLink>
       </div>
 
       <!-- Questions and Answers -->
-      <div class="border-t border-gray-300 -mb-4 divide-y divide-gray-300">
+      <div class="border-t border-[#64748A] -mb-4 divide-y divide-[#64748A]">
         <div
           v-for="(faq, index) in faqs"
           :key="index"

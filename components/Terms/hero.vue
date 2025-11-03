@@ -10,7 +10,7 @@
     </div>
     <div class="highest-width relative text-start z-10 py-10 sm:py-14 w-full">
       <h2 class="">
-        Privacy Policy
+        Terms of Service
       </h2>
       <p class="mt-4">Latest update 24 September, 2025</p>
     </div>

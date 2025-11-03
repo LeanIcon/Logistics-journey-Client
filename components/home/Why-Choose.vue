@@ -1,5 +1,5 @@
 <template>
-  <div class="highest-width bg-[#E9EFFD] text-center space-y-6 py-20 mx-auto">
+  <div class="highest-width bg-[#E9EFFD] text-center space-y-6 py-24 mx-auto">
         <div class="text-center space-y-6 mx-auto">
             <h2>Why Choose Logistic Journey</h2>
             <p class="max-w-lg mx-auto">

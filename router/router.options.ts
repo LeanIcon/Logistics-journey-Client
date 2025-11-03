@@ -37,6 +37,15 @@ export default <RouterConfig>{
             name: 'privacy-policy', 
             path: '/privacy-policy', 
             component: '~/pages/policy.vue',
+        },
+        {
+            name: 'terms-of-service',
+            path: '/terms-of-service',
+            component: '~/pages/terms.vue',
+        },
+        {
+            name: 'faqs',   
+            
         }
     ],
 };

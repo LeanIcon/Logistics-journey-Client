@@ -1,7 +1,7 @@
 <template>
     <div class="highest-width relative flex flex-wrap items-center justify-between w-full bg-white group py-3 border-b border-gray-300 shrink-0" :class="{ open: isOpen }">
                 <div>
-                    <img class="" src="/public/Navbar/2/Logistics Journey Logo.png" alt="logo">
+                    <NuxtLink to="/"><img class="" src="/public/Navbar/2/Logistics Journey Logo.png" alt="logo"></NuxtLink>
                 </div>
                 <div class="mlg:hidden">
                     <button @click="toggleMenu" class="flex flex-col space-y-1 p-2 border-none">
@@ -11,11 +11,11 @@
                     </button>
                 </div>
                 <div class="items-center justify-between hidden gap-6 lg:gap-12 text-black mlg:flex">
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/" active-class="active">Home</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/features" active-class="active">Features</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/resources" active-class="active">Resources</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/about-us" active-class="active">About Us</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/contact" active-class="active">Contact Us</NuxtLink>
+                    <NuxtLink class="text-base font-normal hover:no-underline text-dark-grey-700 hover:text-[#3b82f6]" to="/" active-class="active">Home</NuxtLink>
+                    <NuxtLink class="text-base font-normal hover:no-underline text-dark-grey-700 hover:text-[#3b82f6]" to="/features" active-class="active">Features</NuxtLink>
+                    <NuxtLink class="text-base font-normal hover:no-underline text-dark-grey-700 hover:text-[#3b82f6]" to="/resources" active-class="active">Resources</NuxtLink>
+                    <NuxtLink class="text-base font-normal hover:no-underline text-dark-grey-700 hover:text-[#3b82f6]" to="/about-us" active-class="active">About Us</NuxtLink>
+                    <NuxtLink class="text-base font-normal hover:no-underline text-dark-grey-700 hover:text-[#3b82f6]" to="/contact" active-class="active">Contact Us</NuxtLink>
                 </div>
                 <div class="items-center hidden gap-4 mlg:flex">
                     <button class="">Log In</button>
@@ -23,12 +23,12 @@
                         Get Started Now
                     </button>
                 </div>
-                <div class="absolute flex mlg:hidden transition-all duration-300 ease-in-out flex-col items-start z-30 shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 rounded-2xl group-[.open]:max-h-80 top-full">
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/" active-class="active">Home</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/features" active-class="active">Features</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/resources" active-class="active">Resources</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/about-us" active-class="active">About Us</NuxtLink>
-                    <NuxtLink class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" to="/contact" active-class="active">Contact Us</NuxtLink>
+                <div class="absolute flex mlg:hidden transition-all duration-300 ease-in-out flex-col items-start z-50 shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 group-[.open]:max-h-[26cm] top-full">
+                    <NuxtLink class="text-base font-normal  hover:no-underline  text-dark-grey-700 hover:text-[#3b82f6]" to="/" active-class="active">Home</NuxtLink>
+                    <NuxtLink class="text-base font-normal  hover:no-underline  text-dark-grey-700 hover:text-[#3b82f6]" to="/features" active-class="active">Features</NuxtLink>
+                    <NuxtLink class="text-base font-normal  hover:no-underline  text-dark-grey-700 hover:text-[#3b82f6]" to="/resources" active-class="active">Resources</NuxtLink>
+                    <NuxtLink class="text-base font-normal  hover:no-underline  text-dark-grey-700 hover:text-[#3b82f6]" to="/about-us" active-class="active">About Us</NuxtLink>
+                    <NuxtLink class="text-base font-normal  hover:no-underline  text-dark-grey-700 hover:text-[#3b82f6]" to="/contact" active-class="active">Contact Us</NuxtLink>
                     <button class="">Log In</button>
                     <button class="solid-btn">Sign Up</button>
                 </div>
