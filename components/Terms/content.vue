@@ -2,111 +2,101 @@
   <div class="highest-width policy-wrap">
     <div class="policy-container">
       <main class="policy-main">
-        <h2 id="background">Background</h2>
+        <h2 id="overview">Logistic Journey</h2>
 
-        <p class="lead text-[#16181B]">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
+        <p class="lead text-[#16181B]">Logistic Journey (Pty) Ltd is a registered business entity in South Africa. Logistic Journey is a logistics management platform that enables businesses to manage, monitor, and optimize their fleet operations, deliveries, and supply chain processes. By using our website, web app, and mobile app, you agree to these Terms of Service.
+          <br><br>These Terms are intended to provide a clear, reliable, and safe framework for your use of Logistic Journey. Please read them carefully. If you have any questions, contact us before continuing.
+        </p>
 
-        <h2 id="information-we-collect">Information We Collect</h2>
+        <h2 id="General-Terms">General Terms</h2>
 
-        <p>We may collect the following types of information:</p>
-
-        <h3>a. Information You Provide Directly</h3>
         <ul>
-          <li>Name, email address, phone number, and company details when you create an account, request a demo, or contact us.</li>
-          <li>Billing and payment information when you purchase a subscription.</li>
-          <li>Any other information you provide voluntarily through forms, surveys, or communication.</li>
+          <li>Logistic Journey acts as a platform to streamline fleet and logistics operations.</li>
+          <li>We are not directly involved in the physical delivery of goods; responsibility lies with you and your drivers.</li>
+          <li>By using the platform, you confirm that the information you provide (orders, journey data, billing details) is accurate.</li>
+          <li>We reserve the right to update, improve, or change features at any time.</li>
         </ul>
 
-        <h3>b. Information Collected Automatically</h3>
+        <h2 id="Rights-to-suspend-or-terminate">Rights to Suspend or Terminate</h2>
+        <p>We may suspend or terminate your access if:</p>
+        <ol>
+          <li>You misuse the platform or violate these Terms.</li>
+          <li>Payments for subscriptions are overdue.</li>
+          <li>You provide false or misleading information.</li>
+          <li>You use the system for unlawful logistics operations.</li>
+          <li>Fraudulent or suspicious activity is detected.</li>
+        </ol> <br>
+        <p>If your account is terminated, you lose access to all services and stored data.</p>
+
+        <h2 id="Your-Conduct">Your Conduct</h2>
+        <p>You are responsible for all activity under your account. You must not use Logistic Journey to transport prohibited goods, conduct fraud, or violate South African law. You must not upload viruses, malicious code, or attempt to hack or disrupt the platform. Respect drivers, clients, and other users when communicating through the system.</p>
+
+        <h2 id="Membership-&-Accounts">Membership & Accounts</h2>
+        <p>Membership is limited to legally registered businesses and individuals in South Africa (and other permitted regions). You must provide accurate registration details. Logistic Journey may request verification before granting full access.</p>
+      
+        <h2 id="Sharing-Your-Content-and-Information">Sharing Your Content and Information</h2>
+        <p>By uploading journey data, driver information, or order details, you grant Logistic Journey the right to process this data only for operational purposes. You retain ownership of your data. Logistic Journey does not sell or share your data with third parties without your consent (see our Privacy Policy).</p>
+
+        <h2 id="Subscription-&-Payments">Subscription & Payments</h2>
         <ul>
-          <li>IP address, browser type, device type, and operating system.</li>
-          <li>Usage data such as pages visited, time spent on site, and navigation patterns.</li>
-          <li>Cookies and tracking technologies for analytics and personalization.</li>
+          <li>Logistic Journey operates on a subscription model.</li>
+          <li>Subscription fees are billed monthly or annually.</li>
+          <li>Payments are non-refundable unless required by law.</li>
+          <li>Failure to make payments may result in suspension of services.</li>
         </ul>
 
-        <h3>c. Information From Third Parties</h3>
+        <h2 id="Product-Use">Product Use</h2>
+        <p>Logistic Journey provides tools for journey planning, route optimization, and delivery tracking. We do not guarantee delivery outcomes; responsibility remains with you and your logistics team. Service uptime is targeted at 99%, but we cannot guarantee uninterrupted service.</p>
+        
+        <h2 id="Responsibilities-of-Logistic-Journey">Responsibilities of Logistic Journey</h2>
         <ul>
-          <li>Data from integrations (e.g., payment processors, CRM tools).</li>
-          <li>Publicly available information related to your business or logistics operations.</li>
+          <li>Provide access to the platform and maintain system availability.</li>
+          <li>Implement security measures to protect your data.</li>
+          <li>Offer customer support for technical and account issues.</li>
         </ul>
 
-        <h2 id="how-we-use-your-information">How We Use Your Information</h2>
-        <p>We use the information collected to:</p>
+        <h2 id="Responsibilities-of-the-User">Responsibilities of the User</h2>
         <ul>
-          <li>Provide, operate, and improve our services.</li>
-          <li>Process payments and manage subscriptions.</li>
-          <li>Respond to inquiries and provide customer support.</li>
-          <li>Send important updates, service notifications, and promotional offers (you can opt out anytime).</li>
-          <li>Analyze usage trends to enhance performance and user experience.</li>
-          <li>Ensure security, fraud prevention, and compliance with legal obligations.</li>
+          <li>Ensure your staff are trained to use Logistic Journey properly.</li>
+          <li>Keep account credentials secure.</li>
+          <li>Use the platform only for lawful logistics operations.</li>
         </ul>
 
-        <h2 id="sharing-of-information">Sharing of Information</h2>
-        <p>We do not sell your personal information.</p>
-        <p>We may share information only with:</p>
+        <h2 id="Technical-Requirements">Technical Requirements</h2>
         <ul>
-          <li><strong>Service Providers:</strong> Third parties that help us operate (hosting, analytics, payments).</li>
-          <li><strong>Business Partners:</strong> If you opt into integrations or third-party services.</li>
-          <li><strong>Legal Authorities:</strong> If required by law, regulation, or legal process.</li>
-          <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets.</li>
+          <li>Logistic Journey works best on the latest versions of Chrome, Edge, or Safari, and iOS/Android for mobile.</li>
+          <li>You are responsible for ensuring devices and internet connections meet requirements.</li>
+          <li>Jailbroken or rooted devices may cause the app to malfunction and are not supported.</li>
         </ul>
-
-        <h2 id="data-security">Data Security</h2>
-        <p>We use industry-standard measures to protect your data, including:</p>
-        <ul>
-          <li>Secure Sockets Layer (SSL) encryption.</li>
-          <li>Firewalls and access controls.</li>
-          <li>Regular security audits.</li>
-        </ul>
-        <p>However, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.</p>
-
-        <h2 id="data-retention">Data Retention</h2>
-        <p>We retain personal information only as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.</p>
-
-        <h2 id="your-rights">Data Security</h2>
-        <p>Depending on your location, you may have the following rights:</p>
-        <ul>
-          <li>Access, correct, or delete your personal information.</li>
-          <li>Opt-out of marketing communications.</li>
-          <li>Restrict or object to certain types of processing.</li>
-          <li>Request data portability.</li>
-          <li>Withdraw consent (where applicable).</li>
-        </ul>
-        <p>To exercise these rights, contact us at <a class="text-blue-500" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a>.</p>
-
-        <h2 id="cookies">Cookies &amp; Tracking Technologies</h2>
-        <p>We use cookies to:</p>
-        <ul>
-          <li>Enable essential functionality.</li>
-          <li>Understand usage patterns and improve services.</li>
-          <li>Deliver relevant content and promotions.</li>
-        </ul>
-        <p>You can manage cookie preferences through your browser settings.</p>
+       
+        <h2 id="Changes-to-These-Terms">Changes to These Terms</h2>
+        <p>We may update these Terms of Service from time to time. Updates will be posted on our website. Continued use of the service after changes means you accept the revised Terms.</p>
+        
+        <h2 id="Governing-Law">Governing Law</h2>
+        <p>We may update these Terms of Service from time to time. Updates will be posted on our website. Continued use of the service after changes means you accept the revised Terms.</p>
+        
 
         <h2 id="contact-us">Contact Us</h2>
-        <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
-        <address class="contact-info">
-          Logistic Journey<br>
-          The Workshop, Unit 7<br>
-          70 Seventh Avenue<br>
-          Parktown North, Johannesburg<br>
-          Gauteng, South Africa<br>
-          <span class="font-semibold text-[#16181B]">Email:</span> <a class="underline" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a><br>
-          <span class="font-semibold text-[#16181B]">Phone:</span> <span class="underline text-[#16181B]">+27 11 568 7109</span>
-        </address>
+        <p>Questions about these Terms? Reach us at: <a class="text-blue-500" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a></p>
+        
       </main>
 
-      <aside class="policy-toc" aria-label="Table of contents">
+      <aside class="policy-toc mlg:fixed mlg:z-50 right-[50px] xl:right-[160px]" aria-label="Table of contents">
         <nav>
           <ul>
-            <li><a href="#background">Background</a></li>
-            <li><a href="#information-we-collect">Information We Collect</a></li>
-            <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
-            <li><a href="#sharing-of-information">Sharing of Information</a></li>
-            <li><a href="#data-security">Data Security</a></li>
-            <li><a href="#data-retention">Data Retention</a></li>
-            <li><a href="#your-rights">Data Security</a></li>
-            <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
+            <li><a href="#overview">Logistic overview</a></li>
+            <li><a href="#General-Terms">Information We Collect</a></li>
+            <li><a href="#Rights-to-suspend-or-terminate">Rights to suspend or terminate</a></li>
+            <li><a href="#Your-Conduct">Your Conduct</a></li>
+            <li><a href="#Membership-&-Accounts">Membership & Accounts</a></li>
+            <li><a href="#Sharing-Your-Content-and-Information">Sharing Your Content and Information</a></li>
+            <li><a href="#Subscription-&-Payments">Subscription & Payments</a></li>
+            <li><a href="#Product-Use">Product Use</a></li>
+            <li><a href="#Responsibilities-of-Logistic-Journey">Responsibilities of Logistic Journey</a></li>
+            <li><a href="#Responsibilities-of-the-User">Responsibilities of the User</a></li>
+            <li><a href="#Technical-Requirements">Technical Requirements</a></li>
+            <li><a href="#Changes-to-These-Terms">Changes to These Terms</a></li>
+            <li><a href="#Governing-Law">Governing Law</a></li>
             <li><a href="#contact-us">Contact Us</a></li>
           </ul>
         </nav>
@@ -119,6 +109,7 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 
 let observer: IntersectionObserver | null = null
+let footerObserver: IntersectionObserver | null = null
 
 onMounted(() => {
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
@@ -179,6 +170,26 @@ onMounted(() => {
 
   headings.forEach(h => observer && observer.observe(h))
 
+  // Observe footer to stop TOC scrolling
+  const footer = document.querySelector('footer')
+  if (footer) {
+    footerObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      if (entry) {
+        const aside = document.querySelector('.policy-toc')
+        if (entry.isIntersecting) {
+          aside?.classList.add('toc-stopped')
+        } else {
+          aside?.classList.remove('toc-stopped')
+        }
+      }
+    }, {
+      root: null,
+      threshold: 0
+    })
+    footerObserver.observe(footer)
+  }
+
   // set initial active based on current scroll position
   // run a small check after a tick to let browser layout
   setTimeout(() => {
@@ -194,6 +205,10 @@ onBeforeUnmount(() => {
   if (observer) {
     observer.disconnect()
     observer = null
+  }
+  if (footerObserver) {
+    footerObserver.disconnect()
+    footerObserver = null
   }
   // remove click listeners by cloning nodes (simple cleanup)
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
@@ -225,7 +240,7 @@ onBeforeUnmount(() => {
   margin: 0 0 18px 0;
 }
 .policy-main h2 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   margin-top: 28px;
   margin-bottom: 12px;
@@ -242,7 +257,7 @@ onBeforeUnmount(() => {
   margin-bottom: 18px;
 }
 .policy-main p,
-.policy-main ul,
+.policy-main ul, ol,
 .policy-main address {
   font-size: 14px;
   line-height: 1.6;
@@ -250,16 +265,30 @@ onBeforeUnmount(() => {
 }
 .policy-main ul { 
   margin-left: 20px;
+  list-style-type: disc;
 }
 .policy-main ul li { 
   margin-bottom: 8px;
 }
+
+.policy-main ol { 
+  margin-left: 20px;
+  list-style-type: numeric;
+}
+
+.policy-main ol li { 
+  margin-bottom: 8px;
+}
+
 .contact-info {
   margin-top: 8px;
   font-style: normal;
 }
 .policy-toc {
-  position: relative;
+  transition: position 0.3s ease;
+}
+.policy-toc.toc-stopped {
+  position: absolute !important;
 }
 .policy-toc nav {
   position: sticky;

@@ -153,7 +153,7 @@
             <!-- Back to top -->
             <button
                 @click="scrollToTop"
-                class="mt-4 md:mt-0 justify-center md:justify-end text-center text-white text-sm border-none cursor-pointer transition" style="text-align: center;"
+                class="mt-4 md:mt-0 justify-center md:justify-end text-center text-white text-sm border-none cursor-pointer transition"
             >
                 <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"  class="mx-auto">
                 <g filter="url(#filter0_d_2495_2321)">

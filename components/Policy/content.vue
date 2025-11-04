@@ -96,7 +96,7 @@
         </address>
       </main>
 
-      <aside class="policy-toc lg:fixed lg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents">
+      <aside class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents">
         <nav>
           <ul>
             <li><a href="#background">Background</a></li>
@@ -119,6 +119,7 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 
 let observer: IntersectionObserver | null = null
+let footerObserver: IntersectionObserver | null = null
 
 onMounted(() => {
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
@@ -179,6 +180,26 @@ onMounted(() => {
 
   headings.forEach(h => observer && observer.observe(h))
 
+  // Observe footer to stop TOC scrolling
+  const footer = document.querySelector('footer')
+  if (footer) {
+    footerObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      if (entry) {
+        const aside = document.querySelector('.policy-toc')
+        if (entry.isIntersecting) {
+          aside?.classList.add('toc-stopped')
+        } else {
+          aside?.classList.remove('toc-stopped')
+        }
+      }
+    }, {
+      root: null,
+      threshold: 0
+    })
+    footerObserver.observe(footer)
+  }
+
   // set initial active based on current scroll position
   // run a small check after a tick to let browser layout
   setTimeout(() => {
@@ -194,6 +215,10 @@ onBeforeUnmount(() => {
   if (observer) {
     observer.disconnect()
     observer = null
+  }
+  if (footerObserver) {
+    footerObserver.disconnect()
+    footerObserver = null
   }
   // remove click listeners by cloning nodes (simple cleanup)
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
@@ -225,7 +250,7 @@ onBeforeUnmount(() => {
   margin: 0 0 18px 0;
 }
 .policy-main h2 {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   margin-top: 28px;
   margin-bottom: 12px;
@@ -259,7 +284,10 @@ onBeforeUnmount(() => {
   font-style: normal;
 }
 .policy-toc {
-
+  transition: position 0.3s ease;
+}
+.policy-toc.toc-stopped {
+  position: absolute !important;
 }
 .policy-toc nav {
   position: sticky;

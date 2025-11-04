@@ -1,6 +1,6 @@
 <template>
-  <section class="highest-width bg-white min-h-screen flex items-center justify-center p-0 md:p-24">
-    <div class="w-full px-4 xs:px-6 md:px-10 py-18 bg-[#E9EFFD] gap-10 md:flex md:rounded-2xl overflow-hidden">
+  <section class="highest-width bg-white min-h-screen flex items-center justify-center p-0 px-4 lg:px-24 md:py-24">
+    <div class="w-full px-4 xs:px-6 lg:px-10 py-16 bg-[#E9EFFD] gap-4 lg:gap-10 md:flex md:rounded-2xl overflow-hidden">
       <!-- Left Section -->
       <div class="hidden md:flex bg-[#225AD6] text-white md:w-2/5 px-6 py-10 lg:p-10 flex-col justify-between rounded-2xl relative">
         <div>
