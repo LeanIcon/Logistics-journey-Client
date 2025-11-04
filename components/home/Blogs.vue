@@ -45,11 +45,12 @@
             </div>
         </div>
         <div class="flex justify-center mx-auto mt-4 col-span-2">
-            <button
+            <!-- <button
                 class="solid-btn"
                 type="button">
                 See more blogs
-            </button>
+            </button> -->
+            <NuxtLink to="/More_blogs"><button class="solid-btn">See more blogs</button></NuxtLink>
         </div>
   </div>
 </template>

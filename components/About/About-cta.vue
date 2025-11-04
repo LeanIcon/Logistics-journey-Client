@@ -1,30 +1,34 @@
 <template>
-  <!-- CTA split section -->
-  <section class="highest-width py-20">
-    <div class="max-w-7xl mx-auto bg-white rounded-3xl overflow-hidden flex flex-col lg:flex-row items-stretch shadow-sm">
-      <!-- Left: blue panel -->
-      <div class="w-full lg:w-1/2 bg-[#225AD6] text-white p-10 lg:p-16 flex flex-col justify-center">
-        <h3 class="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight">Stop firefighting.
-          <br />
-          Start delivering with confidence.
-        </h3>
-        <div class="mt-8">
-          <button class="bg-white text-[#225AD6] font-medium hover:bg-[#d0dbf8] transition duration-300 rounded-lg px-6 py-3 shadow">Book a Demo Now</button>
+    <div class="highest-width sm:py-8 bg-white">
+        <div class="flex sm:hidden -mb-[4cm] justify-end z-40">
+            <img class="" src="/public/images/Rectangle 4991.png" alt="">
         </div>
-      </div>
+        <div class="rounded-2xl flex items-center bg-[#225AD6] mx-auto">
+            <div class="px-8 py-10 sm:py-0 space-y-6 text-center sm:text-start mx-auto sm:w-1/2">
+                <h2 class="text-white">
+                    Stop firefighting. <br> Start delivering with confidence.
+                </h2>
+                <NuxtLink to="/Request_demo">
+                    <button class="solid-btn2">
+                        Book a Demo Now
+                    </button>
+                </NuxtLink>
+            </div>
 
-      <!-- Right: image -->
-      <div class="hidden lg:block w-full lg:w-1/2">
-        <img src="/public/images/About/image.png" alt="About CTA" class="w-full h-full object-cover" />
-      </div>
+            <div class="hidden sm:flex w-1/2">
+                <img class="rounded-r-xl w-full h-full object-cover"src="/public/images/About/image.png" alt="About CTA">
+            </div>
+        </div>
+         <div class="flex sm:hidden -mt-[4cm] z-4">
+            <img class="rotate-180" src="/public/images/Rectangle 4991.png" alt="">
+        </div>
     </div>
-  </section>
 </template>
 
 <script lang="ts" setup>
 
 </script>
 
-<style scoped>
+<style>
 
 </style>
