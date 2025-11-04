@@ -50,7 +50,8 @@
   </div>
 
   <!-- Other Sections -->
-  <Start />
+  <!-- <Start /> -->
+  <FirefightingSection />
   <Testimonials />
   <Transform />
 </template>
@@ -60,7 +61,8 @@ import { ref, computed } from "vue";
 import { blogs, topReads, categories } from "~/data/blog";
 import Testimonials from "~/components/home/Testimonials.vue";
 import Transform from "~/components/home/Transform.vue";
-import Start from "~/components/home/Start.vue"; // ✅ Corrected import
+// import Start from "~/components/home/Start.vue"; // ✅ Corrected import
+import FirefightingSection from "~/components/features/FirefightingSection.vue";
 import CategoryFilter from "~/components/resources/blog/CategoryFilter.vue";
 
 const blogImages = [
