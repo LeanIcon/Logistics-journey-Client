@@ -7,10 +7,12 @@
                 <h2>Ready to Transform Your Deliveries?</h2>
                 <div class="justify-center sm:justify-start mx-auto">
                     <div class="flex gap-4 ">
-                        <button class="solid-btn">Book a Demo</button>
-                        <button class="text-[#225AD6]">
-                            Talk to Our Team
-                        </button>
+                        <NuxtLink to="/Request_demo"><button class="solid-btn">Book a Demo</button></NuxtLink>
+                        <NuxtLink to="/contact">
+                            <button class="text-[#225AD6]">
+                                Talk to Our Team
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>

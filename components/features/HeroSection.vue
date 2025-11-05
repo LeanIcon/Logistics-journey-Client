@@ -14,16 +14,20 @@
         time.
       </p>
       <div class="mt-6 space-x-4">
-        <button
-          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-        >
-          Book a Demo
-        </button>
-        <button
-          class="text-blue-600 border border-blue-600 px-6 py-2 rounded hover:bg-blue-100"
-        >
-          Talk to Our Team
-        </button>
+        <NuxtLink to="/Request_demo">
+          <button
+            class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+          >
+            Book a Demo
+          </button>
+        </NuxtLink>
+        <NuxtLink to="/contact">
+          <button
+            class="text-blue-600 border border-blue-600 px-6 py-2 rounded hover:bg-blue-100"
+          >
+            Talk to Our Team
+          </button>
+        </NuxtLink>
       </div>
       <!-- Image placeholder -->
     </div>

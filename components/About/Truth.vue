@@ -27,8 +27,8 @@
     </div>
   </div>
 
-  <div class="block sm:hidden bg-[#18346a] px-6 py-10 text-white">
-      <h2 class="text-3xl font-extrabold leading-tight mb-4">
+  <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
+      <h2 class="text-3xl font-bold leading-tight mb-4">
         Highlight company<br />impact by the numbers
       </h2>
       <p class="text-base leading-relaxed mb-8 text-white/80">
@@ -36,19 +36,19 @@
       </p>
       <div class="grid grid-cols-2 gap-y-8 gap-x-6 mb-8">
         <div>
-          <div class="text-3xl font-extrabold mb-1">$30m</div>
+          <div class="text-3xl font-bold mb-1">$30m</div>
           <div class="text-base text-white/80">Customer savings</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold mb-1">10m+</div>
+          <div class="text-3xl font-bold mb-1">10m+</div>
           <div class="text-base text-white/80">Hours saved</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold mb-1">200%</div>
+          <div class="text-3xl font-bold mb-1">200%</div>
           <div class="text-base text-white/80">Year on year growth</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold mb-1">5k+</div>
+          <div class="text-3xl font-bold mb-1">5k+</div>
           <div class="text-base text-white/80">Downloads</div>
         </div>
       </div>

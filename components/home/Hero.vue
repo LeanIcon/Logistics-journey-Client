@@ -14,9 +14,11 @@
                     </p>
                     <div class="flex gap-4 ">
                         <NuxtLink to="/Request_demo"><button class="solid-btn">Book a Demo</button></NuxtLink>
-                        <button class="text-[#225AD6]">
-                            Talk to Our Team
-                        </button>
+                        <NuxtLink to="/contact">
+                            <button class="text-[#225AD6]">
+                                Talk to Our Team
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
                 <div class="max-w-lg md:max-w-full md:w-2/5 lg:w-2/4 xl:w-2/3 px-4 sm:px-0">

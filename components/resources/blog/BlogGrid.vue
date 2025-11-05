@@ -1,10 +1,10 @@
 <template>
-  <div class="max-w-[1440px] mx-auto px-4 pt-8 pb-16">
+  <div class="highest-width mx-auto px-4 mt-24 pb-16">
     <!-- Header: Latest Blog & Top Reads -->
     <div class="flex flex-col lg:flex-row gap-8 mb-12">
       <!-- Latest Blog -->
       <div
-        class="bg-white rounded-xl shadow p-6 flex flex-col gap-4 w-full lg:w-[848px] min-h-[833px] max-h-[833px]"
+        class="bg-white p- flex flex-col gap-4 w-full lg:w-[848px] "
       >
         <h2 class="text-2xl font-semibold mb-4">Latest Blog</h2>
         <img
@@ -13,17 +13,17 @@
           class="w-[720px] h-[405px] object-cover rounded-lg mx-auto mb-4"
         />
       </div>
-
+      <div class="hidden lg:flex border-r border-[#eeebeb]"></div>
       <!-- Top Reads -->
       <div
-        class="bg-white rounded-xl shadow p-6 flex flex-col gap-4 w-full lg:w-[592px] min-h-[833px] max-h-[833px]"
+        class="bg-white flex flex-col gap-4 w-full lg:w-[592px] min-h-[833px] max-h-[833px]"
       >
-        <h3 class="text-2xl font-semibold mb-4">Top Reads</h3>
+        <h2 class="text-2xl font-semibold mb-4">Top Reads</h2>
         <div class="flex flex-col gap-4">
           <div
             v-for="(read, i) in topReads"
             :key="i"
-            class="flex gap-3 items-center bg-white rounded-lg shadow p-3"
+            class="flex gap-3 items-center bg-white"
           >
             <img
               :src="topReadImages[i]"
@@ -32,7 +32,7 @@
             />
             <div class="flex-1">
               <span
-                class="block text-xs font-medium mb-1"
+                class="w-[2cm] block text-xs font-medium mb-1"
                 :class="topReadCategoryClass(read.category)"
               >
                 {{ read.category }}
@@ -49,20 +49,14 @@
     <CategoryFilter />
   </div>
 
-  <!-- Other Sections -->
-  <!-- <Start /> -->
-  <FirefightingSection />
-  <Testimonials />
-  <Transform />
+  <FeatureCTA />
+  <HomeTestimonials />
+  <HomeTransform />
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { blogs, topReads, categories } from "~/data/blog";
-import Testimonials from "~/components/home/Testimonials.vue";
-import Transform from "~/components/home/Transform.vue";
-// import Start from "~/components/home/Start.vue"; // ✅ Corrected import
-import FirefightingSection from "~/components/features/FirefightingSection.vue";
 import CategoryFilter from "~/components/resources/blog/CategoryFilter.vue";
 
 const blogImages = [

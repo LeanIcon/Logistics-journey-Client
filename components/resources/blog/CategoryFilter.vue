@@ -43,7 +43,7 @@
         <div
           v-for="(post, index) in filteredPosts"
           :key="index"
-          class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+          class="bg-white hover:shadow-lg transition overflow-hidden"
         >
           <img
             :src="post.image"

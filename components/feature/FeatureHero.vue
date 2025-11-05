@@ -29,9 +29,11 @@
     <!-- Buttons -->
     <div class="flex justify-center items-center gap-4 mt-6">
         <NuxtLink to="/Request_demo"><button class="solid-btn">Book a Demo</button></NuxtLink>
-        <button class="text-[#225AD6]">
-            Talk to Our Team
-        </button>
+        <NuxtLink to="/contact">
+          <button class="text-[#225AD6]">
+              Talk to Our Team
+          </button>
+        </NuxtLink>
     </div>
   </section>
 </template>
