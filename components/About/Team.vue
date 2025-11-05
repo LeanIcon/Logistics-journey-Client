@@ -3,7 +3,7 @@
     <div class="highest-width  mx-auto">
       
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-[#23272A]">Introduce the Team</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">Introduce the Team</h2>
       </div>
 
       <!-- Team Members Grid -->
@@ -18,7 +18,7 @@
               class="w-48 h-48 rounded-full relative z-10 object-cover" 
             />
           </div>
-          <h3 class="text-2xl font-bold text-[#23272A] mt-6 mb-2">Dr. Martin Mensah,</h3>
+          <h3 class="text-xl font-semibold text-[#23272A] mt-6 mb-2">Dr. Martin Mensah,</h3>
           <p class="text-lg text-primary">CEO, Africa Region</p>
         </div>
 
@@ -32,7 +32,7 @@
               class="w-48 h-48 rounded-full relative z-10 object-cover" 
             />
           </div>
-          <h3 class="text-2xl font-bold text-[#23272A] mt-6 mb-2">Mr Osei Cole</h3>
+          <h3 class="text-xl font-semibold text-[#23272A] mt-6 mb-2">Mr Osei Cole</h3>
           <p class="text-lg text-primary">CEO, Africa Region</p>
         </div>
       </div>

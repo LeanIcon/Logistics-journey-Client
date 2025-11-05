@@ -1,6 +1,6 @@
 <template>
     
-  <div class="max-w-8xl hidden sm:flex mx-auto px-8 sm:px-6 lg:px-8 py-16">
+  <div class="highest-width hidden sm:flex py-16">
     <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
       <div class="lg:w-1/2">
         <img src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
@@ -65,7 +65,5 @@
 </script>
 
 <style scoped>
-.highest-width {
-  max-width: 1200px;
-}
+
 </style>

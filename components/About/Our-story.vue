@@ -1,8 +1,8 @@
 <template>
-  <section class="highest-width our-story-section">
+  <section class="highest-width our-story-section  mx-auto">
     <!-- 🌐 Desktop & Tablet version -->
     <div class="hidden sm:block">
-      <div class="max-w-8xl mx-auto px-8 sm:px-6 lg:px-8 py-16">
+      <div class="mx-auto py-16">
         <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
           <div class="lg:w-1/2">
             <img
