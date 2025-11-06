@@ -16,7 +16,7 @@
             </div>
 
             <div class="hidden sm:flex w-1/2">
-                <img class="rounded-r-xl w-full h-full object-cover"src="/public/images/About/image.png" alt="About CTA">
+                <img class="rounded-r-xl w-full h-full object-cover"src="/images/About/Image.png" alt="About CTA">
             </div>
         </div>
          <div class="flex sm:hidden -mt-[4cm] z-4">
