@@ -8,7 +8,7 @@
       >
         <h2 class="text-2xl font-semibold mb-4">Latest Blog</h2>
         <img
-          src="/images/blog/Ai.jpg"
+          src="/images/Blog/Ai.jpg"
           alt="Latest Blog"
           class="w-[720px] h-[405px] object-cover rounded-lg mx-auto mb-4"
         />
@@ -60,17 +60,17 @@ import { blogs, topReads, categories } from "~/data/blog";
 import CategoryFilter from "~/components/resources/blog/CategoryFilter.vue";
 
 const blogImages = [
-  "/images/blog/Ai.jpg",
-  "/images/blog/Aii.jpg",
-  "/images/blog/Automation.png",
-  "/images/blog/bt.jpg",
-  "/images/blog/Tech.png",
+  "/images/Blog/Ai.jpg",
+  "/images/Blog/Aii.jpg",
+  "/images/Blog/Automation.png",
+  "/images/Blog/bt.jpg",
+  "/images/Blog/Tech.png",
 ];
 
 const topReadImages = [
-  "/images/blog/Automation.png",
-  "/images/blog/Aii.jpg",
-  "/images/blog/bt.jpg",
+  "/images/Blog/Automation.png",
+  "/images/Blog/Aii.jpg",
+  "/images/Blog/bt.jpg",
 ];
 
 const selectedCategory = ref(categories[0] || "");
