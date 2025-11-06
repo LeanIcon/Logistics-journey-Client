@@ -3,7 +3,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - main
+      - main  # Trigger only when changes are pushed to the main branch
 
 jobs:
   build-and-deploy:
@@ -16,9 +16,10 @@ jobs:
       - name: Setup Node.js (LTS)
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Using LTS for stability
+          node-version: '20' # Using a stable Long-Term Support (LTS) version
 
       - name: Cache Node Modules
+        # Speeds up subsequent runs by caching the dependency install
         uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -27,17 +28,19 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies (ci)
+        # Use 'ci' for reliable, lockfile-based installs in CI environments
         run: npm ci
 
       - name: Build project
+        # This command generates your production-ready files
         run: npm run generate
 
-      - name: Deploy to cPanel via FTP
+      - name: Deploy built files to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /public_html/
-          ftp-args: --no-perms # Added for robustness on cPanel servers
+          local-dir: ./.output/public/ # Source: Updated for Nuxt 4 (Nitro) static output
+          server-dir: /public_html/         # Destination: Adjust to your specific cPanel path
+          ftp-args: --no-perms            # Prevents common permission errors on shared hosting
