@@ -17,4 +17,7 @@
 </script>
 
 <style scoped>
+   h1 {
+    @apply text-[34px] lg:text-[48px] xl:text-[50px] lg:leading-[60px] font-bold -mt-1;
+    }
 </style>

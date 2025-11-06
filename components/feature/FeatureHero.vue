@@ -43,6 +43,9 @@
 </script>
 
 <style scoped>
+   h1 {
+    @apply text-[34px] lg:text-[48px] xl:text-[50px] lg:leading-[60px] font-bold -mt-1;
+    }
 /* the highlighted span stands out on dark backgrounds */
 .bg-blue-200\/40 { background-color: rgba(173, 216, 255, 0.25); }
 
