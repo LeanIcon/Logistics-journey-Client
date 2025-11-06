@@ -35,12 +35,14 @@ jobs:
         # This command generates your production-ready files
         run: npm run generate
 
-      - name: Deploy built files to cPanel via FTP
+      - name: Deploy built files to cPanel via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: sftp # FIX 1: Explicitly use SFTP, as FTP/FTPS often times out on cPanel
+          port: 22      # Recommended port for SFTP
           local-dir: ./.output/public/ # Source: Updated for Nuxt 4 (Nitro) static output
-          server-dir: /public_html/         # Destination: Adjust to your specific cPanel path
-          ftp-args: --no-perms            # Prevents common permission errors on shared hosting
+          server-dir: /public_html/    # Destination: Adjust to your specific cPanel path
+          # Removed: ftp-args: --no-perms (FIX 2: This input is no longer supported by v4.3.4 and caused a warning)
