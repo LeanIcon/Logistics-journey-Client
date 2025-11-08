@@ -95,8 +95,8 @@
           </div>
       </section>
   </div>
-  <home-faqs />
-  <home-transform />
+  <!-- <home-faqs /> -->
+  <home-transform class="mt-12"/>
 </template>
 
 <script lang="ts" setup>

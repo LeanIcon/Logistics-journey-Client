@@ -39,7 +39,7 @@
 
     <!-- Right Buttons -->
     <div class="items-center hidden gap-4 mlg:flex">
-      <button>Log In</button>
+      <a href="https://app.logisticjourney.com" target="_blank"><button>Log In</button></a>
       <button class="solid-btn">Get Started Now</button>
     </div>
 
