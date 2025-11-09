@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      apiBase: 'https://logisticjourney.onrender.com/',
+    },
+  },
+
   app: {
     head: {
       title: 'Logistics Journey',
