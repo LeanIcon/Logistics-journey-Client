@@ -10,19 +10,27 @@
 import BlogContent from "~/components/BlogContent.vue";
 import OtherInsights from "~/components/OtherInsights.vue";
 import NewsletterSection from "~/components/NewsletterSection.vue";
+import { fetchPostBySlug, fetchAllPosts } from "~/api/posts";
 
 const route = useRoute();
 const slug = route.params.slug;
 
 // Fetch single case study post
-const { data: blog, error: blogError } = await useFetch(
-  `https://logisticjourney.onrender.com/api/v1/posts/${slug}`
-);
+const blog = ref(null);
+const blogError = ref(null);
+const allPosts = ref(null);
 
-// Fetch other posts (excluding current post)
-const { data: allPosts } = await useFetch(
-  `https://logisticjourney.onrender.com/api/v1/posts?limit=20`
-);
+try {
+  const [blogData, allPostsData] = await Promise.all([
+    fetchPostBySlug(slug),
+    fetchAllPosts(1),
+  ]);
+  blog.value = blogData;
+  allPosts.value = allPostsData;
+} catch (error) {
+  blogError.value = error;
+  console.error("Error fetching case study data:", error);
+}
 
 // Filter other posts by same categories, excluding current post, limit to 2
 const otherPosts = computed(() => {
