@@ -32,7 +32,7 @@
                 :key="tool.id"
                 :initial="{ y: 100, opacity: 0 }"
                 :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
-                :transition="{ duration: 0.8 + index * 0.2, delay: index * 0.1 }"
+                :transition="{ duration: 0.8 + index * 0.2, delay: index * 0.3 }"
                 class="bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg"
             >
                 <div>
@@ -44,37 +44,40 @@
                 <p class="grow text-start text-white">{{ tool.description }}</p>
             </motion.div>
 
-            <!-- Static "More Features" card -->
-            <div
+            <!-- More Features card -->
+            <motion.div
                 class="bg-cover border border-[#225AD6] py-16 relative rounded-lg bg-[url('/images/Tools/features.jpg')] overflow-hidden"
-            >
+                    :initial="{ y: 100, opacity: 0 }"
+                    :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+                    :transition="{ duration: 0.8 }"
+                >
                 <div
                 class="rounded-lg absolute left-0 right-0 top-0 bottom-0 bg-[#102a63de]"
                 ></div>
                 <div class="justify-center flex h-full items-center">
-                <div class="mx-auto relative z-10 text-center text-white">
-                    <NuxtLink to="/features">
-                    <button
-                        class="solid-btn3 hover:no-underline text-center flex space-x-2 mx-auto justify-center"
-                    >
-                        <span class="text-[#225AD6]">More Features</span>
-                        <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                    <div class="mx-auto relative z-10 text-center text-white">
+                        <NuxtLink to="/features">
+                        <button
+                            class="solid-btn3 hover:no-underline text-center flex space-x-2 mx-auto justify-center"
                         >
-                        <path
-                            d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z"
-                            fill="#225AD6"
-                        />
-                        </svg>
-                    </button>
-                    </NuxtLink>
+                            <span class="text-[#225AD6]">More Features</span>
+                            <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z"
+                                fill="#225AD6"
+                            />
+                            </svg>
+                        </button>
+                        </NuxtLink>
+                    </div>
                 </div>
-                </div>
-            </div>
+            </motion.div>
         </motion.div>       
     </div>
   </div>
@@ -86,7 +89,7 @@
     import { motion } from "motion-v";
     import { useInView } from '~/composables/useInView'
     
-    const { inView, sectionRef } = useInView(0.3)
+    const { inView, sectionRef } = useInView(0.2)
 
     const toolList = ref<{ id: number; icon: string; title: string; description: string }[]>([]);
     onMounted(() => {
