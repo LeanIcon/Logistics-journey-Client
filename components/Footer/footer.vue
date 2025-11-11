@@ -61,22 +61,26 @@
                 <div>
                     <h3 class="font-semibold text-lg mb-3">Download the App</h3>
                     <div class="space-y-3">
-                    <img
-                        src="/public/images/Mac App Store.png"
-                        alt="App Store"
-                        class="w-40 cursor-pointer"
-                    />
-                    <img
-                        src="/public/images/Google Play.png"
-                        alt="Google Play"
-                        class="w-40 cursor-pointer"
-                    />
+                    <a href="https://apps.apple.com/za/app/logistic-journey/id6745507589" target="_blank">  
+                        <img
+                            src="/public/images/Mac App Store.png"
+                            alt="App Store"
+                            class="w-40 cursor-pointer"
+                        />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=co.za.anylytical.logisticjourney&pcampaignid=web_share" target="_blank">
+                        <img
+                            src="/public/images/Google Play.png"
+                            alt="Google Play"
+                            class="w-40 cursor-pointer"
+                        />
+                        </a>
                     </div>
 
                     <h3 class="font-semibold text-lg mt-12 mb-3">Follow Us</h3>
                     <div class="flex space-x-3">
                     
-                        <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <a href="https://www.linkedin.com/company/logisticjourney/" target="_blank" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_2495_2302)">
                             <path d="M13.3334 6.66699C14.6595 6.66699 15.9313 7.19379 16.869 8.1315C17.8067 9.06921 18.3335 10.341 18.3335 11.6671V17.5006H15.0001V11.6671C15.0001 11.2251 14.8245 10.8012 14.5119 10.4886C14.1994 10.176 13.7754 10.0004 13.3334 10.0004C12.8913 10.0004 12.4674 10.176 12.1548 10.4886C11.8423 10.8012 11.6667 11.2251 11.6667 11.6671V17.5006H8.33325V11.6671C8.33325 10.341 8.86005 9.06921 9.79776 8.1315C10.7355 7.19379 12.0073 6.66699 13.3334 6.66699V6.66699Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M4.99993 7.5H1.6665V17.5003H4.99993V7.5Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
@@ -89,7 +93,7 @@
                             </defs>
                             </svg>
                         </a>
-                        <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_2495_2306)">
                             <path d="M18.7842 5.34973C18.6852 4.95423 18.4836 4.59185 18.1997 4.29921C17.9159 4.00656 17.5598 3.79401 17.1675 3.68302C15.7341 3.33301 10.0006 3.33301 10.0006 3.33301C10.0006 3.33301 4.26715 3.33301 2.83378 3.71635C2.44148 3.82734 2.08541 4.03989 1.80154 4.33254C1.51768 4.62519 1.31607 4.98756 1.21707 5.38306C0.954744 6.83773 0.826425 8.3134 0.833728 9.79151C0.824377 11.2808 0.952705 12.7677 1.21707 14.2333C1.32621 14.6165 1.53234 14.9651 1.81554 15.2454C2.09875 15.5257 2.44946 15.7282 2.83378 15.8333C4.26715 16.2167 10.0006 16.2167 10.0006 16.2167C10.0006 16.2167 15.7341 16.2167 17.1675 15.8333C17.5598 15.7224 17.9159 15.5098 18.1997 15.2172C18.4836 14.9245 18.6852 14.5621 18.7842 14.1666C19.0445 12.7229 19.1728 11.2585 19.1676 9.79151C19.1769 8.30227 19.0486 6.81535 18.7842 5.34973V5.34973Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M8.12549 12.5166L12.9173 9.79148L8.12549 7.06641V12.5166Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
@@ -100,8 +104,8 @@
                             </clipPath>
                             </defs>
                             </svg>
-                        </a>
-                        <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        </a> -->
+                        <a href="https://www.facebook.com/share/1GsUEaXNMt/?mibextid=wwXIfr" target="_blank" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_2495_2309)">
                             <path d="M15.0004 1.66699H12.5003C11.3952 1.66699 10.3354 2.10599 9.55398 2.88741C8.77256 3.66884 8.33356 4.72867 8.33356 5.83377V8.33384H5.8335V11.6673H8.33356V18.3341H11.667V11.6673H14.1671L15.0004 8.33384H11.667V5.83377C11.667 5.61275 11.7548 5.40078 11.9111 5.2445C12.0674 5.08821 12.2793 5.00042 12.5003 5.00042H15.0004V1.66699Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
                             </g>
@@ -112,7 +116,7 @@
                             </defs>
                             </svg>
                         </a>
-                        <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_2495_2311)">
                             <path d="M19.1668 2.49959C18.3688 3.0625 17.4852 3.49304 16.5501 3.77463C16.0482 3.19754 15.3812 2.78851 14.6392 2.60287C13.8973 2.41722 13.1163 2.46392 12.4017 2.73664C11.6872 3.00936 11.0737 3.49495 10.6441 4.12773C10.2145 4.76051 9.98967 5.50995 9.99992 6.27469V7.10805C8.53541 7.14602 7.08424 6.82122 5.77565 6.16256C4.46706 5.5039 3.34167 4.53184 2.49972 3.33295C2.49972 3.33295 -0.833704 10.8331 6.6665 14.1666C4.95022 15.3316 2.90569 15.9157 0.833008 15.8333C8.33321 20.0001 17.5001 15.8333 17.5001 6.24969C17.4994 6.01756 17.477 5.78601 17.4335 5.55801C18.284 4.71923 18.8842 3.66022 19.1668 2.49959V2.49959Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
                             </g>
@@ -122,8 +126,8 @@
                             </clipPath>
                             </defs>
                             </svg>
-                        </a>
-                        <a href="#" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        </a> -->
+                        <a href="https://www.instagram.com/logisticjourney?igsh=cmtjaGpla21tbWkx" target="_blank" class="hover:text-gray-300"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_2495_2313)">
                             <path d="M14.1671 1.66699H5.83353C3.53228 1.66699 1.66675 3.53252 1.66675 5.83377V14.1673C1.66675 16.4686 3.53228 18.3341 5.83353 18.3341H14.1671C16.4683 18.3341 18.3339 16.4686 18.3339 14.1673V5.83377C18.3339 3.53252 16.4683 1.66699 14.1671 1.66699Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M13.3339 9.47533C13.4368 10.1689 13.3183 10.8772 12.9954 11.4996C12.6725 12.1219 12.1615 12.6266 11.5352 12.9418C10.9089 13.257 10.1992 13.3668 9.50697 13.2554C8.81473 13.144 8.17525 12.8172 7.67947 12.3214C7.18368 11.8256 6.85685 11.1861 6.74546 10.4939C6.63407 9.80163 6.7438 9.0919 7.05902 8.46561C7.37425 7.83933 7.87893 7.32839 8.50128 7.00546C9.12362 6.68254 9.83195 6.56407 10.5255 6.66692C11.233 6.77183 11.8879 7.10148 12.3936 7.6072C12.8994 8.11292 13.229 8.76787 13.3339 9.47533Z" stroke="white" stroke-width="1.66671" stroke-linecap="round" stroke-linejoin="round"/>
