@@ -18,11 +18,11 @@
         </div> 
 
         <div class="px-4 sm:px-0">
-            <div ref="carousel" class="flex gap-6 items-stretch overflow-hidden scroll-smooth" v-if="testimonialList.length > 0" role="list">
+            <div ref="carousel" class="flex gap-2 sm:gap-6 items-stretch overflow-hidden scroll-smooth" v-if="testimonialList.length > 0" role="list">
                 <div v-for="(testimonial, index) in testimonialList" :key="testimonial.id" role="listitem" class="testimonial-card-container">
                     <div
                         class="shrink-0 flex flex-col h-full w-full py-4 border border-white px-6 rounded-xl transition-all duration-300"
-                        :class="activeIndex === index ? 'min-w-[470px] bg-[#1E62D8] text-white rounded-3xl shadow-xl scale-100' : 'min-w-[360px] bg-white/50'">
+                        :class="activeIndex === index ? 'min-w-[360px] sm:min-w-[470px] bg-[#1E62D8] text-white rounded-3xl shadow-xl scale-100' : 'min-w-[360px] bg-white/50'">
                         <div :class="activeIndex === index ? 'text-white' : ''">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 22.5H9.165C9.44378 20.6435 10.1067 18.8656 11.1114 17.2797C12.1161 15.6939 13.4405 14.3351 15 13.29L17.685 11.49L16.035 9L13.35 10.8C11.0899 12.3061 9.23656 14.3468 7.9544 16.7411C6.67223 19.1353 6.00091 21.8091 6 24.525V34.5C6 35.2957 6.31607 36.0587 6.87868 36.6213C7.44129 37.1839 8.20435 37.5 9 37.5H18C18.7956 37.5 19.5587 37.1839 20.1213 36.6213C20.6839 36.0587 21 35.2957 21 34.5V25.5C21 24.7044 20.6839 23.9413 20.1213 23.3787C19.5587 22.8161 18.7956 22.5 18 22.5Z" fill="currentColor" :style="activeIndex === index ? 'opacity: 0.9' : 'fill: url(#paint0_linear_2095_3882)'"/>

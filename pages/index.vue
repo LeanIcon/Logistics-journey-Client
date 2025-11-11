@@ -12,7 +12,7 @@
     <home-testimonials />
     <home-case-study />
     <home-mobile_app />
-    <home-faqs />
+    <!-- <home-faqs /> -->
     <home-transform />
   </div>
 </template>

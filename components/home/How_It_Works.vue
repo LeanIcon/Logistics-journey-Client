@@ -156,22 +156,22 @@ const steps = [
   {
     title: "Access",
     description: "Get login credentials to access your account.",
-    image: "/images/Steps/step2.png",
+    image: "/images/Steps/access.png",
   },
   {
     title: "Setup",
     description: "We’ll help you configure everything properly.",
-    image: "/images/Steps/step3.png",
+    image: "/images/Steps/setup.png",
   },
   {
     title: "Orders",
     description: "Easily place and manage your orders online.",
-    image: "/images/Steps/step4.png",
+    image: "/images/Steps/order.png",
   },
   {
     title: "Delivery",
     description: "We’ll handle delivery right to your doorstep.",
-    image: "/images/Steps/step5.png",
+    image: "/images/Steps/delivery.png",
   },
 ];
 
