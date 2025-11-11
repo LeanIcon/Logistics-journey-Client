@@ -1,5 +1,5 @@
 <template> 
-  <div class="hidden sm:flex relative w-full min-h-[220px] sm:min-h-[260px]  items-center justify-center overflow-hidden">
+  <div class="hidden sm:flex relative w-full min-h-[220px] sm:min-h-[260px] items-center justify-center overflow-hidden">
     <img src="/images/About/download.jpg" alt="About Hero" class="absolute inset-0 w-full h-full object-cover object-center z-0" />
     <div class="absolute inset-0 bg-black/50 z-0"></div>
 
@@ -14,6 +14,11 @@
 </template>
 
 <script lang="ts" setup>
+  import { tools } from '~/data/tools';
+    import { motion } from "motion-v";
+    import { useInView } from '~/composables/useInView'
+    
+    const { inView, sectionRef } = useInView(0.2)
 </script>
 
 <style scoped>

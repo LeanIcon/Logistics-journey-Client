@@ -1,8 +1,12 @@
 <template>
   
-  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-8 xl:gap-20 py-24 bg-white">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-8 xl:gap-20 py-24 bg-white overflow-hidden" ref="sectionRef">
     <!-- Left: Image -->
-    <div class="w-full mlg:w-1/2 flex justify-center mlg:justify-end order-2 mlg:order-1 relative overflow-hidden rounded-3xl">
+    <motion.div class="w-full mlg:w-1/2 flex justify-center mlg:justify-end order-2 mlg:order-1 relative overflow-hidden rounded-3xl"
+          :initial="{ y: 100, opacity: 0 }"
+          :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+          :transition="{ duration: 0.8 }"
+    >
       <img 
         class="w-full max-w-2xl rounded-3xl object-cover "
         src="/public/images/Feature/Feature2/phone-map.jpg"
@@ -10,10 +14,14 @@
       />
       <!-- background effect  -->
       <div class="absolute inset-0 -z-10 bg-[#E9EEFF] rounded-3xl scale-105"></div>
-    </div>
+    </motion.div>
 
     <!-- Right: Text and features -->
-    <div class="w-full mlg:w-1/2 order-1 mlg:order-2">
+    <motion.div class="w-full mlg:w-1/2 order-1 mlg:order-2"
+        :initial="{ x: 100, opacity: 0 }"
+        :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+    >
       <h2 class="mb-6">
         Empower Drivers On the Go
       </h2>
@@ -66,12 +74,15 @@
           </span>
         </li>
       </ul>
-    </div>
+    </motion.div>
   </section>
 </template>
 
 <script lang="ts" setup>
-
+  import { motion } from "motion-v";
+  import { useInView } from '~/composables/useInView'
+  
+  const { inView, sectionRef } = useInView(0.2)
 </script>
 
 

@@ -1,33 +1,41 @@
 <template>
-    
-  <div class="highest-width hidden sm:flex py-16">
-    <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
-      <div class="lg:w-1/2">
-        <img src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
-      </div>
-      <div class="lg:w-1/2 space-y-6 mb-25">
-        <h3 class="text-xl font-semibold mb-2 text-gray-800">But here is the truth:</h3>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
-          Technology alone doesn’t<br />change an industry. People do!
-        </h2>
-        <p class="mb-2 text-gray-700">
-          That’s why, at Logistic Journey, we don’t show up as <span class="font-semibold">“software providers.”</span><br />
-          We show up as collaborators, guides, and thought partners for teams who want to deliver better — not just once, but every time.
-        </p>
-        <p class="mb-2 text-gray-700">
-          We believe logistics shouldn’t feel like firefighting. It should feel like flow.<br />
-          And we believe the people who get there first aren’t the ones with the biggest budgets...<br />
-          They’re the ones who <span class="font-semibold">decide to lead.</span>
-        </p>
-        <p class="mt-4 text-gray-700 flex items-start">
-          <span class="mr-2 text-xl">👉</span>
-          That’s what we do, every day — alongside businesses who are ready to lead.
-        </p>
+  <div class="overflow-hidden" ref="sectionRef">
+    <div class="highest-width hidden sm:flex py-16">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
+        <motion.div class="lg:w-1/2"
+          :initial="{ x: 100, opacity: 0 }"
+          :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+          :transition="{ duration: 0.8 }"
+        >
+          <img src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
+        </motion.div>
+        <motion.div class="lg:w-1/2 space-y-6 mb-25"
+            :initial="{ x: -100, opacity: 0 }"
+            :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+        >
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">But here is the truth:</h3>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
+            Technology alone doesn’t<br />change an industry. People do!
+          </h2>
+          <p class="mb-2 text-gray-700">
+            That’s why, at Logistic Journey, we don’t show up as <span class="font-semibold">“software providers.”</span><br />
+            We show up as collaborators, guides, and thought partners for teams who want to deliver better — not just once, but every time.
+          </p>
+          <p class="mb-2 text-gray-700">
+            We believe logistics shouldn’t feel like firefighting. It should feel like flow.<br />
+            And we believe the people who get there first aren’t the ones with the biggest budgets...<br />
+            They’re the ones who <span class="font-semibold">decide to lead.</span>
+          </p>
+          <p class="mt-4 text-gray-700 flex items-start">
+            <span class="mr-2 text-xl">👉</span>
+            That’s what we do, every day — alongside businesses who are ready to lead.
+          </p>
+        </motion.div>
       </div>
     </div>
-  </div>
 
-  <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
+    <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
       <h2 class="text-3xl font-bold leading-tight mb-4">
         Highlight company<br />impact by the numbers
       </h2>
@@ -58,10 +66,14 @@
         class="w-full rounded-2xl"
       />
     </div>
+  </div>  
 </template>
 
 <script lang="ts" setup>
-
+  import { motion } from "motion-v";
+  import { useInView } from '~/composables/useInView'
+  
+  const { inView, sectionRef } = useInView(0.2)
 </script>
 
 <style scoped>

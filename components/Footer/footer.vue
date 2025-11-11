@@ -14,19 +14,55 @@
                 Join our newsletter to stay up to date on features and releases.
                 </p>
 
-                <form class="flex flex-col sm:flex-row gap-3">
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    class="px-4 py-2 rounded-md border border-gray-300 bg-[#0F2A6B] text-white w-full sm:w-auto sm:flex-1 focus:outline-none"
-                />
-                <button
+                <form v-if="!isLoading" class="flex flex-col sm:flex-row gap-3" @submit.prevent="handleSubmit">
+                  <div v-if="formErrors.general" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded w-full">
+                    <ul>
+                      <li v-for="error in formErrors.general" :key="error">{{ error }}</li>
+                    </ul>
+                  </div>
+
+                  <div v-for="field in formFields" :key="field.name" class="w-full sm:w-auto sm:flex-1">
+                    <input
+                      v-if="field.type === 'email'"
+                      :id="field.name"
+                      :type="field.type"
+                      :placeholder="field.placeholder"
+                      :required="field.required"
+                      v-model="formData[field.name]"
+                      :class="[
+                        'px-4 py-2 rounded-md border border-gray-300 bg-[#0F2A6B] text-white w-full focus:outline-none',
+                        formErrors[field.name] ? 'border-red-500' : ''
+                      ]"
+                    />
+                    <div v-if="formErrors[field.name]" class="text-red-600 text-sm mt-1">
+                      <ul>
+                        <li v-for="error in formErrors[field.name]" :key="error">{{ error }}</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <button
                     type="submit"
-                    class="bg-white text-[#0F2A6B] px-6 py-2 rounded-md hover:bg-gray-200 transition" style="color: #0F2A6B; text-align: center;"
-                >
-                    Subscribe
-                </button>
+                    :disabled="isSubmitting"
+                    class="bg-white text-[#0F2A6B] px-6 py-2 rounded-md hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed" style="color: #0F2A6B; text-align: center;"
+                  >
+                    {{ isSubmitting ? 'Subscribing...' : 'Subscribe' }}
+                  </button>
                 </form>
+                <div v-else class="text-center">
+                  Loading form...
+                </div>
+
+                <!-- Success Popup -->
+                <div v-if="showSuccessPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600" style="color: black;">Success!</h3>
+                    <p class="text-gray-700 mb-6" style="color: black;">{{ successMessage }}</p>
+                    <button @click="showSuccessPopup = false" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                      Close
+                    </button>
+                  </div>
+                </div>
 
                 <p class="text-[12px] mt-3 text-gray-300">
                 By subscribing you agree to with our
@@ -185,6 +221,87 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import { useApi } from '~/composables/useApi'
+
+const { getFormBySlug, submitForm } = useApi()
+
+const formFields = ref([])
+const formData = ref({})
+const isLoading = ref(true)
+const formErrors = ref({})
+const isSubmitting = ref(false)
+const showSuccessPopup = ref(false)
+const successMessage = ref('')
+
+// Fallback fields if API fails
+const fallbackFields = [
+  {
+    name: 'email',
+    type: 'email',
+    label: 'Email',
+    placeholder: 'Enter your email',
+    validation: ['required', 'email']
+  }
+]
+
+onMounted(async () => {
+  try {
+    const response = await getFormBySlug('newsletter-signup')
+    if (response && response.data && response.data.fields && response.data.fields.length > 0) {
+      formFields.value = response.data.fields
+    } else {
+      formFields.value = fallbackFields
+    }
+  } catch (error) {
+    console.error('Failed to fetch form:', error)
+    formFields.value = fallbackFields
+  } finally {
+    // Initialize formData with empty values for each field to ensure proper v-model binding
+    formData.value = formFields.value.reduce((acc, field) => {
+      acc[field.name] = ''
+      return acc
+    }, {})
+    isLoading.value = false
+  }
+})
+
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  formErrors.value = {}
+
+  try {
+    const response = await submitForm('newsletter-signup', formData.value)
+    // console.log('Form submitted successfully:', response)
+    // Handle success (e.g., show success message, reset form)
+    successMessage.value = response.message || 'Successfully subscribed! Please check your email to confirm your subscription.'
+    showSuccessPopup.value = true
+    // Reset formData to empty strings for each field
+    formData.value = formFields.value.reduce((acc, field) => {
+      acc[field.name] = ''
+      return acc
+    }, {})
+  } catch (error) {
+    console.error('Form submission failed:', error)
+    if (error.response && error.response._data && error.response._data.errors) {
+      // Map the errors to match the field names
+      const mappedErrors = {}
+      for (const [key, value] of Object.entries(error.response._data.errors)) {
+        if (key === 'message') {
+          // The 'message' key contains a summary, but we can ignore it or use it for general errors
+          continue
+        }
+        mappedErrors[key] = value
+      }
+      formErrors.value = mappedErrors
+    } else {
+      formErrors.value = { general: ['An error occurred while submitting the form.'] }
+    }
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };

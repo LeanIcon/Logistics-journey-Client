@@ -1,7 +1,11 @@
 <template> 
-  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-10 xl:gap-20 py-24 bg-[#F8F8F2]">
+  <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-10 xl:gap-20 py-24 bg-[#F8F8F2] overflow-hidden" ref="sectionRef">
     <!-- Left: Text and features -->
-    <div class="w-full mlg:w-1/2 order-1 mlg:order-1">
+    <motion.div class="w-full mlg:w-1/2 order-1 mlg:order-1"
+      :initial="{ x: -100, opacity: 0 }"
+      :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+      :transition="{ duration: 0.8 }"
+    >
       <h2 class=" mb-6">Plan Every Journey With Ease</h2>
       <p class="text-[#23272A] text-mlg mb-8">Simple complex logistics planing. With Logistic Journey, you can create, assign, and track delivery routes in minutes - reducing dispatcher stress and keeping drivers on scehdule.</p>
       <ul class="space-y-6 feature-list">
@@ -22,7 +26,7 @@
           <span><span class="font-extrabold feature-title">Driver & Vehicle Assignment</span> – Ensure the right driver and vehicle are matcherd for each job.</span>
         </li>
       </ul>
-    </div>
+    </motion.div>
 
     
 
@@ -55,7 +59,11 @@
       </div>
     </div> -->
 
-    <div class="w-full max-w-md mlg:max-w-full mlg:w-1/2 flex justify-center order-2 mlg:order-2 relative overflow-hidden">
+    <motion.div class="w-full max-w-md mlg:max-w-full mlg:w-1/2 flex justify-center order-2 mlg:order-2 relative overflow-hidden"
+        :initial="{ y: 100, opacity: 0 }"
+        :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+    >
       <img
         class="hidden mlg:flex w-full rounded-3xl object-cover"
         src="/public/images/Feature/feature_journey.png"
@@ -66,13 +74,16 @@
         src="/public/images/Feature/feature_journey2.png"
         alt="Feature image"
       />
-    </div>
+    </motion.div>
 
   </section>
 </template>
 
 <script lang="ts" setup>
-
+  import { motion } from "motion-v";
+  import { useInView } from '~/composables/useInView'
+  
+  const { inView, sectionRef } = useInView(0.2)
 </script>
 
 <style scoped>
