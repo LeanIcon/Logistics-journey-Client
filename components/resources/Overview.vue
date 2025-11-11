@@ -67,23 +67,21 @@
         <div class="bg-white p-8 rounded-lg shadow-lg">
           <h3 class="text-2xl font-bold mb-4">Latest Resources</h3>
           <div class="space-y-4">
-            <div class="border-l-4 border-purple-600 pl-4">
-              <h4 class="font-semibold">
-                How Technology is Transforming Logistics
-              </h4>
-              <p class="text-sm text-gray-600">April 5, 2025 • Automation</p>
-            </div>
-            <div class="border-l-4 border-purple-600 pl-4">
-              <h4 class="font-semibold">
-                Streamlining Logistics for E-commerce Giant
-              </h4>
-              <p class="text-sm text-gray-600">Case Study • E-commerce</p>
-            </div>
-            <div class="border-l-4 border-purple-600 pl-4">
-              <h4 class="font-semibold">
-                Enhancing Decision Making in Supply Chain
-              </h4>
-              <p class="text-sm text-gray-600">April 6, 2025 • AI</p>
+            <div
+              v-for="post in latestPosts"
+              :key="post.id"
+              class="border-l-4 border-purple-600 pl-4"
+            >
+              <h4 class="font-semibold">{{ post.title }}</h4>
+              <p class="text-sm text-gray-600">
+                {{
+                  post.published_at
+                    ? new Date(post.published_at).toLocaleDateString()
+                    : "Date not available"
+                }}
+                •
+                {{ post.type }}
+              </p>
             </div>
           </div>
         </div>
@@ -92,6 +90,22 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { fetchTopReads, type Post } from "~/api/posts";
+
+const latestPosts = ref<Post[]>([]);
+
+onMounted(async () => {
+  try {
+    const posts = await fetchTopReads();
+    latestPosts.value = posts.slice(0, 3); // Show only first 3 posts
+  } catch (error) {
+    console.error("Error fetching latest posts:", error);
+    // Fallback to empty array
+    latestPosts.value = [];
+  }
+});
+</script>
 
 <style scoped></style>
