@@ -23,30 +23,35 @@
                     <path d="M11.74 6.10667L10.7533 6.63333L4.41333 3.06667L5.46 2.5L11.58 5.95333C11.6467 5.99333 11.7 6.04667 11.74 6.10667Z" fill="#DF900A"/>
                     <path d="M11.8333 7.31348V8.82681C11.8333 9.10014 11.6066 9.32681 11.3333 9.32681C11.0599 9.32681 10.8333 9.10014 10.8333 8.82681V7.81348L11.8333 7.31348Z" fill="#DF900A"/>
                 </svg>
-                Our Story
+                {{ data?.eyebrow || 'Our Story' }}
               </span>
             </div>
 
-            <h2 class="text-4xl font-bold text-gray-900">Logistic Journey</h2>
-            <p class="text-gray-600 leading-relaxed">
-              Somewhere between the depot and the doorstep, that promise often breaks.
-              Routes twist. Communication scatters. The paper trail goes missing.
-              Customers wait. Teams scramble. The story ends... not the way anyone hoped.
-            </p>
-            <p class="text-gray-600 leading-relaxed">
-              We saw this happening again and again. Not because people didn't care –
-              but because the systems they were given weren't built for a world that
-              changes by the hour.
-            </p>
-            <p class="text-gray-600 leading-relaxed">
-              So we built <span class="font-semibold">Logistic Journey</span>.
-            </p>
-            <p class="text-gray-600 leading-relaxed">
-              Not just a tool, but a
-              <span class="font-semibold">new way of seeing logistics</span>. A way that
-              gives teams the clarity, control, and connection they need to keep their
-              promises.
-            </p>
+            <h2 class="text-4xl font-bold text-gray-900">{{ data?.section?.headline || 'Logistic Journey' }}</h2>
+            <div v-if="data?.paragraphs && data.paragraphs.length > 0" v-for="paragraph in data.paragraphs" :key="paragraph" class="text-gray-600 leading-relaxed">
+              <p>{{ paragraph }}</p>
+            </div>
+            <div v-else>
+              <p class="text-gray-600 leading-relaxed">
+                Somewhere between the depot and the doorstep, that promise often breaks.
+                Routes twist. Communication scatters. The paper trail goes missing.
+                Customers wait. Teams scramble. The story ends... not the way anyone hoped.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                We saw this happening again and again. Not because people didn't care –
+                but because the systems they were given weren't built for a world that
+                changes by the hour.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                So we built <span class="font-semibold">Logistic Journey</span>.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Not just a tool, but a
+                <span class="font-semibold">new way of seeing logistics</span>. A way that
+                gives teams the clarity, control, and connection they need to keep their
+                promises.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -118,7 +123,17 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  data?: {
+    eyebrow: string
+    section: {
+      headline: string
+    }
+    paragraphs: string[]
+  }
+}>()
+</script>
 
 <style scoped>
 .our-story-section {

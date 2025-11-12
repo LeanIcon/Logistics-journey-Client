@@ -69,6 +69,11 @@ export const useApi = () => {
     return await api(`/case-studies/${id}`, { method: 'GET' })
   }
 
+  // Pages API methods
+  const getPage = async (slug: string) => {
+    return await api(`/pages/${slug}`, { method: 'GET' })
+  }
+
   // User authentication (if needed)
   const login = async (credentials: { email: string; password: string }) => {
     return await api('/auth/login', { method: 'POST', body: credentials })
@@ -77,6 +82,7 @@ export const useApi = () => {
   const register = async (userData: any) => {
     return await api('/auth/register', { method: 'POST', body: userData })
   }
+
 
   // Generic API method for custom endpoints
   const customRequest = async (endpoint: string, options: any = {}) => {
@@ -99,6 +105,8 @@ export const useApi = () => {
     // Case studies methods
     getCaseStudies,
     getCaseStudyById,
+    // Pages methods
+    getPage,
     // Auth methods
     login,
     register,

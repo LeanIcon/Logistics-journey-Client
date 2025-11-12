@@ -8,7 +8,7 @@
     <about-cta/>
     <about-insight/>
     <about-ready/>
-  
+
   </div>
 </template>
 

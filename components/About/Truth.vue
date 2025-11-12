@@ -1,27 +1,25 @@
 <template>
-    
   <div class="highest-width hidden sm:flex py-16">
     <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
       <div class="lg:w-1/2">
-        <img src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
+        <img v-if="data?.image?.path" :src="data.image.path" :alt="data.image.alt || 'Logistics Journey team'" class="rounded-xl w-full" />
+        <img v-else src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
       </div>
       <div class="lg:w-1/2 space-y-6 mb-25">
-        <h3 class="text-xl font-semibold mb-2 text-gray-800">But here is the truth:</h3>
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">{{ data?.intro || 'But here is the truth:' }}</h3>
         <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
-          Technology alone doesn’t<br />change an industry. People do!
+          {{ data?.headline || 'Technology alone doesn’t change an industry. People do!' }}
         </h2>
-        <p class="mb-2 text-gray-700">
-          That’s why, at Logistic Journey, we don’t show up as <span class="font-semibold">“software providers.”</span><br />
-          We show up as collaborators, guides, and thought partners for teams who want to deliver better — not just once, but every time.
-        </p>
-        <p class="mb-2 text-gray-700">
-          We believe logistics shouldn’t feel like firefighting. It should feel like flow.<br />
-          And we believe the people who get there first aren’t the ones with the biggest budgets...<br />
-          They’re the ones who <span class="font-semibold">decide to lead.</span>
-        </p>
-        <p class="mt-4 text-gray-700 flex items-start">
-          <span class="mr-2 text-xl">👉</span>
-          That’s what we do, every day — alongside businesses who are ready to lead.
+        <div v-if="data?.paragraphs && data.paragraphs.length > 0" v-for="paragraph in data.paragraphs" :key="paragraph" class="mb-2 text-gray-700">
+          <p>{{ paragraph }}</p>
+        </div>
+        <div v-else class="mb-2 text-gray-700">
+          <p>Logistics is fundamentally about people. It's about the drivers who navigate our roads, the warehouse staff who manage inventory, the dispatchers who coordinate deliveries, and the customers who rely on timely service.</p>
+          <p>Technology can enhance these processes, but it cannot replace the human element that makes logistics work. Our platform is designed to empower people, not replace them.</p>
+        </div>
+        <p v-if="data?.quote?.text" class="mt-4 text-gray-700 flex items-start">
+          <span class="mr-2 text-xl">{{ data.quote.emoji || '👉' }}</span>
+          {{ data.quote.text }}
         </p>
       </div>
     </div>
@@ -61,7 +59,22 @@
 </template>
 
 <script lang="ts" setup>
-
+defineProps<{
+  data?: {
+    intro: string
+    headline: string
+    paragraphs: string[]
+    quote?: {
+      emoji: string
+      text: string
+    }
+    image?: {
+      path: string
+      url: string
+      alt: string
+    }
+  }
+}>()
 </script>
 
 <style scoped>
