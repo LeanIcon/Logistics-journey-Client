@@ -1,16 +1,32 @@
 <template>
-  <div class="highest-width hidden sm:flex py-16">
-    <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
-      <div class="lg:w-1/2">
-        <img v-if="data?.image?.path" :src="data.image.path" :alt="data.image.alt || 'Logistics Journey team'" class="rounded-xl w-full" />
+  <div class="overflow-hidden" ref="sectionRef">
+    <div class="highest-width hidden sm:flex py-16">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
+        <motion.div 
+          class="lg:w-1/2"
+          :initial="{ x: 100, opacity: 0 }"
+          :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+          :transition="{ duration: 0.8 }"
+        >
+          <img v-if="data?.image?.path" :src="data.image.path" :alt="data.image.alt || 'Logistics Journey team'" class="rounded-xl w-full" />
         <img v-else src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
-      </div>
-      <div class="lg:w-1/2 space-y-6 mb-25">
-        <h3 class="text-xl font-semibold mb-2 text-gray-800">{{ data?.intro || 'But here is the truth:' }}</h3>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
-          {{ data?.headline || 'Technology alone doesn’t change an industry. People do!' }}
-        </h2>
-        <div v-if="data?.paragraphs && data.paragraphs.length > 0" v-for="paragraph in data.paragraphs" :key="paragraph" class="mb-2 text-gray-700">
+        </motion.div>
+        
+        <motion.div 
+          class="lg:w-1/2 space-y-6 mb-25"
+          :initial="{ x: -100, opacity: 0 }"
+          :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+          :transition="{ duration: 0.8 }"
+        >
+          <h3 v-if="data?.intro" class="text-xl font-semibold mb-2 text-gray-800">
+            {{ data.intro }}
+          </h3>
+          
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
+            {{ data?.headline || 'Technology alone doesn\'t change an industry. People do!' }}
+          </h2>
+          
+          <div v-if="data?.paragraphs && data.paragraphs.length > 0" v-for="paragraph in data.paragraphs" :key="paragraph" class="mb-2 text-gray-700">
           <p>{{ paragraph }}</p>
         </div>
         <div v-else class="mb-2 text-gray-700">
@@ -21,11 +37,12 @@
           <span class="mr-2 text-xl">{{ data.quote.emoji || '👉' }}</span>
           {{ data.quote.text }}
         </p>
+        </motion.div>
       </div>
     </div>
-  </div>
-
-  <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
+    
+    <!-- Mobile version -->
+   <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
       <h2 class="text-3xl font-bold leading-tight mb-4">
         Highlight company<br />impact by the numbers
       </h2>
@@ -56,9 +73,13 @@
         class="w-full rounded-2xl"
       />
     </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { motion } from "motion-v";
+import { useInView } from '~/composables/useInView'
+
 defineProps<{
   data?: {
     intro: string
@@ -75,8 +96,8 @@ defineProps<{
     }
   }
 }>()
+
+const { inView, sectionRef } = useInView(0.2)
 </script>
 
-<style scoped>
 
-</style>

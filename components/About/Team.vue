@@ -8,7 +8,7 @@
 
       <!-- Team Members Grid -->
       <div v-if="data?.members && data.members.length > 0" class="flex flex-col md:flex-row justify-center items-center gap-8 max-w-3xl mx-auto">
-        <div v-for="member in data.members" :key="member.name" class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div v-for="(member, index) in data.members" :key="member.name" class="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
           <div class="relative">
             <div class="absolute inset-0 bg-[#E9EEFF] rounded-full scale-105 -z-10"></div>
             <img
@@ -19,7 +19,7 @@
             />
             <img
               v-else
-              src="/images/Team/Ellipse 84.png"
+              :src="['/images/Team/Ellipse 84.png', '/images/Team/Ellipse.png'][index % 2]"
               :alt="member.name"
               class="w-48 h-48 rounded-full relative z-10 object-cover"
             />
@@ -86,3 +86,4 @@ defineProps<{
 </style>
 
   
+
