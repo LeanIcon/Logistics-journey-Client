@@ -145,7 +145,7 @@
           </div>
       </section>
   </div>
-  <!-- <home-faqs /> -->
+  <home-faqs />
   <home-transform class="mt-12"/>
 </template>
 

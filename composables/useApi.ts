@@ -79,6 +79,17 @@ export const useApi = () => {
     return await api('/auth/register', { method: 'POST', body: userData })
   }
 
+  // Pages
+    const getPages = async (params?: { include_pages?: boolean; active?: boolean }) => {
+    const result = await api('/api/v1/pages', { method: 'GET', query: params })
+    console.log('Fetched all pages:', result)
+    return result
+  }
+
+   const getPagesBySlug = async (slug: string) => {
+    return await api(`/api/v1/pages/${slug}`, { method: 'GET' })
+  }
+
   // Forms API methods
   const getForms = async (params?: { include_submissions?: boolean; active?: boolean }) => {
     const result = await api('/api/v1/forms', { method: 'GET', query: params })
@@ -96,6 +107,15 @@ export const useApi = () => {
     const result = await api(`/api/v1/pages/${identifier}/submit`, { method: 'POST', body: data })
     // console.log(`Submitted form for ${identifier}:`, result)
     return result
+  }
+
+  // Policies API methods
+  const getPolicies = async (params?: any) => {
+    return await api('/api/v1/policies', { method: 'GET', query: params })
+  }
+
+  const getPolicyBySlug = async (slug: string) => {
+    return await api(`/api/v1/policies/${slug}`, { method: 'GET' })
   }
 
   // Generic API method for custom endpoints
@@ -119,10 +139,18 @@ export const useApi = () => {
     // Case studies methods
     getCaseStudies,
     getCaseStudyById,
+
+    // Pages
+    getPages,
+    getPagesBySlug,
+
     // Forms methods
     getForms,
     getFormBySlug,
     submitForm,
+    // Policies methods
+    getPolicies,
+    getPolicyBySlug,
     // Auth methods
     login,
     register,

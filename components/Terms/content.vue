@@ -1,7 +1,10 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-      <main class="policy-main">
+       <main class="policy-main" v-if="termsContent">
+        <div v-html="renderedContent"></div>
+      </main>
+      <main class="policy-main" v-else>
         <h2 id="overview">Logistic Journey</h2>
 
         <p class="lead text-[#16181B]">Logistic Journey (Pty) Ltd is a registered business entity in South Africa. Logistic Journey is a logistics management platform that enables businesses to manage, monitor, and optimize their fleet operations, deliveries, and supply chain processes. By using our website, web app, and mobile app, you agree to these Terms of Service.
@@ -81,7 +84,7 @@
         
       </main>
 
-      <aside class="policy-toc mlg:fixed mlg:z-50 right-[50px] xl:right-[160px]" aria-label="Table of contents">
+      <!-- <aside class="policy-toc mlg:fixed mlg:z-50 right-[50px] xl:right-[160px]" aria-label="Table of contents">
         <nav>
           <ul>
             <li><a href="#overview">Logistic overview</a></li>
@@ -100,14 +103,91 @@
             <li><a href="#contact-us">Contact Us</a></li>
           </ul>
         </nav>
-      </aside>
+      </aside> -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue'
+import { useApi } from '~/composables/useApi'
 
+const { getPolicyBySlug } = useApi()
+
+interface PolicyData {
+  id: number
+  title: string
+  slug: string
+  status: string
+  content: string
+  meta_title: string
+  meta_description: string
+  created_at: string
+  updated_at: string
+}
+
+interface TocItem {
+  id: string
+  text: string
+}
+
+const loading = ref(true)
+
+const termsContent = ref<PolicyData | null>(null)
+const tocItems = ref<TocItem[]>([])
+
+const renderedContent = computed(() => {
+  if (!termsContent.value) return ''
+  // Simple markdown to HTML conversion (basic implementation)
+  let html = termsContent.value.content
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+    .replace(/\*(.*)\*/gim, '<em>$1</em>')
+    .replace(/!\[([^\]]*)\]\(([^)]*)\)/gim, '<img alt="$1" src="$2" />')
+    .replace(/\[([^\]]*)\]\(([^)]*)\)/gim, '<a href="$2">$1</a>')
+    .replace(/\n\n/gim, '</p><p>')
+    .replace(/\n/gim, '<br>')
+  return '<p>' + html + '</p>'
+})
+
+const generateToc = (html: string) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, 'text/html')
+  const headings = doc.querySelectorAll('h2, h3')
+  const items: TocItem[] = []
+  headings.forEach(h => {
+    if (h.id) {
+      items.push({
+        id: h.id,
+        text: h.textContent || ''
+      })
+    }
+  })
+  tocItems.value = items
+}
+
+onMounted(async () => {
+  try {
+    const response = await getPolicyBySlug('terms-and-conditions')
+    if (response && response.data) {
+      termsContent.value = response.data
+      const html = renderedContent.value
+      generateToc(html)
+    }
+  } catch (error) {
+    console.error('Failed to fetch policy:', error)
+    // Fallback to static content
+  }
+
+  // Setup TOC functionality if we have content
+  if (termsContent.value || tocItems.value.length > 0) {
+    setupToc()
+  }
+})
+
+const setupToc = () => {
 let observer: IntersectionObserver | null = null
 let footerObserver: IntersectionObserver | null = null
 
@@ -217,6 +297,7 @@ onBeforeUnmount(() => {
     link.parentNode && link.parentNode.replaceChild(clone, link)
   })
 })
+}
 </script>
 
 <style scoped>
