@@ -44,7 +44,10 @@ export const fetchPostsByCategory = async (
   const config = useRuntimeConfig();
   try {
     const response: PostsResponse = await $fetch(
-      `${config.public.apiBase}/api/v1/categories/${categorySlug}/posts?page=${page}`
+      `${config.public.apiBase}/api/v1/categories/${categorySlug}/posts?page=${page}`,
+      {
+        timeout: 10000, // 10 seconds timeout
+      }
     );
     return response;
   } catch (error) {
@@ -59,7 +62,10 @@ export const fetchAllPosts = async (
   const config = useRuntimeConfig();
   try {
     const response: PostsResponse = await $fetch(
-      `${config.public.apiBase}/api/v1/posts?page=${page}`
+      `${config.public.apiBase}/api/v1/posts?page=${page}`,
+      {
+        timeout: 10000, // 10 seconds timeout
+      }
     );
     return response;
   } catch (error) {
@@ -83,7 +89,10 @@ export const fetchPostBySlug = async (slug: string): Promise<Post> => {
   const config = useRuntimeConfig();
   try {
     const response: Post = await $fetch(
-      `${config.public.apiBase}/api/v1/posts/${slug}`
+      `${config.public.apiBase}/api/v1/posts/${slug}`,
+      {
+        timeout: 10000, // 10 seconds timeout
+      }
     );
     return response;
   } catch (error) {

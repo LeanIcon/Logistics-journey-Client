@@ -9,14 +9,15 @@ export const useApi = () => {
     baseURL,
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
     onRequest({ request, options }) {
       // Add any global request interceptors here
-      console.log('API Request:', request)
+      // console.log('API Request:', request)
     },
     onResponse({ response }) {
       // Add any global response interceptors here
-      console.log('API Response:', response.status)
+      // console.log('API Response:', response.status)
     },
     onResponseError({ response }) {
       // Handle global errors
@@ -78,6 +79,25 @@ export const useApi = () => {
     return await api('/auth/register', { method: 'POST', body: userData })
   }
 
+  // Forms API methods
+  const getForms = async (params?: { include_submissions?: boolean; active?: boolean }) => {
+    const result = await api('/api/v1/forms', { method: 'GET', query: params })
+    // console.log('Fetched all forms:', result)
+    return result
+  }
+
+  const getFormBySlug = async (identifier: string) => {
+    const result = await api(`/api/v1/forms/${identifier}`, { method: 'GET' })
+    // console.log(`Fetched form by identifier ${identifier}:`, result)
+    return result
+  }
+
+  const submitForm = async (identifier: string, data: any) => {
+    const result = await api(`/api/v1/pages/${identifier}/submit`, { method: 'POST', body: data })
+    // console.log(`Submitted form for ${identifier}:`, result)
+    return result
+  }
+
   // Generic API method for custom endpoints
   const customRequest = async (endpoint: string, options: any = {}) => {
     return await api(endpoint, options)
@@ -99,6 +119,10 @@ export const useApi = () => {
     // Case studies methods
     getCaseStudies,
     getCaseStudyById,
+    // Forms methods
+    getForms,
+    getFormBySlug,
+    submitForm,
     // Auth methods
     login,
     register,

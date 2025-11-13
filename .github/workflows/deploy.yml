@@ -44,5 +44,5 @@ jobs:
           protocol: ftp # FIX 1: using FTP/FTPS since SFTP did not work
           port: 21      # Recommended port for SFTP
           local-dir: ./.output/public/ # Source: Updated for Nuxt 4 (Nitro) static output
-          server-dir: /public_html/    # Destination: Adjust to your specific cPanel path
+          server-dir: /new/    # Destination: Adjust to your specific cPanel path
           # Removed: ftp-args: --no-perms (FIX 2: This input is no longer supported by v4.3.4 and caused a warning)

@@ -93,7 +93,9 @@
 
     <!-- Right Buttons -->
     <div class="items-center hidden gap-4 mlg:flex">
-      <a href="https://app.logisticjourney.com" target="_blank"><button>Log In</button></a>
+      <a href="https://app.logisticjourney.com" target="_blank"
+        ><button>Log In</button></a
+      >
       <button class="solid-btn">Get Started Now</button>
     </div>
 
@@ -160,7 +162,8 @@ const route = useRoute();
 const showResourcesDropdown = ref(false);
 
 const isResourcesActive = computed(() => {
-  return route.path.startsWith("/resources");
+  // Active for /resources, /resources/blog, /resources/case-study, and /blog/[slug] (blog details)
+  return route.path.startsWith("/resources") || route.path.startsWith("/blog/");
 });
 
 const toggleMenu = () => {

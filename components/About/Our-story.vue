@@ -1,17 +1,25 @@
 <template>
-  <section class="highest-width our-story-section  mx-auto">
-    <!-- 🌐 Desktop & Tablet version -->
+  <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef">
+    <!-- Desktop & Tablet version -->
     <div class="hidden sm:block">
       <div class="mx-auto py-16">
         <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
-          <div class="lg:w-1/2">
+          <motion.div class="lg:w-1/2"
+            :initial="{ x: 100, opacity: 0 }"
+            :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+          >
             <img
               src="/images/About/logistic/meeting.jpg"
               alt="Logistics Journey Team Meeting"
               class="rounded-xl w-full"
             />
-          </div>
-          <div class="lg:w-1/2 space-y-6 mb-25">
+          </motion.div>
+          <motion.div class="lg:w-1/2 space-y-6 mb-25"
+            :initial="{ x: -100, opacity: 0 }"
+            :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+          >
             <div class="flex items-center gap-2">
               <span
                 class="text-primary inline-flex items-center gap-2 bg-[#f8e0c3] rounded-full px-4 py-2 text-sm font-medium shadow-sm"
@@ -47,12 +55,12 @@
               gives teams the clarity, control, and connection they need to keep their
               promises.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
 
-    <!-- 📱 Mobile version -->
+    <!-- Mobile version -->
     <div class="block sm:hidden px-6 py-12 space-y-8 text-center">
       
       <div
@@ -68,22 +76,27 @@
         About Us
       </div>
 
-     
-      <h2 class="text-3xl font-bold text-gray-900 leading-snug">
-        Your Support is Really <br />
-        Powerful.
-      </h2>
+        <h2 class="text-3xl font-bold text-gray-900 leading-snug">
+          Your Support is Really <br />
+          Powerful.
+        </h2>
 
-      <p class="text-gray-600 leading-relaxed text-base">
-        The secret to happiness lies in helping others. Never underestimate the
-        difference you can make in the lives of the poor, the abused and the helpless.
-      </p>
+      <motion.div
+        :initial="{ y: -100, opacity: 0 }"
+        :animate="inView ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+     >
+        <p class="text-gray-600 leading-relaxed text-base">
+          The secret to happiness lies in helping others. Never underestimate the
+          difference you can make in the lives of the poor, the abused and the helpless.
+        </p>
 
-      <p class="text-gray-600 leading-relaxed text-base">
-        Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus. Elementum
-        ullamcorper nec, habitasse vulputate. Eget dictum quis est sed egestas tellus,
-        a lectus. Quam ullamcorper in fringilla arcu aliquet fames arcu.
-      </p>
+        <p class="text-gray-600 leading-relaxed text-base">
+          Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus. Elementum
+          ullamcorper nec, habitasse vulputate. Eget dictum quis est sed egestas tellus,
+          a lectus. Quam ullamcorper in fringilla arcu aliquet fames arcu.
+        </p>
+      </motion.div>
 
       <img
         src="/images/About/logistic/meeting.jpg"
@@ -91,7 +104,11 @@
         class="w-full rounded-xl mt-6"
       />
 
-      <div class="text-left space-y-6 mt-10">
+      <motion.div class="text-left space-y-6 mt-10"
+        :initial="{ y: 100, opacity: 0 }"
+        :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+      >
         <div>
           <h3 class="text-xl font-bold text-gray-900 mb-2">Mission</h3>
           <p class="text-gray-600 leading-relaxed text-base">
@@ -113,13 +130,19 @@
             Natoque mauris cras molestie velit.
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { motion } from "motion-v";
+  import { useInView } from '~/composables/useInView'
+  
+  const { inView, sectionRef } = useInView(0.2)
 
+</script>
+  
 <style scoped>
 .our-story-section {
   background-color: #ffffff;

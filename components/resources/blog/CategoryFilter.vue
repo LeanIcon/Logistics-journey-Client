@@ -66,7 +66,7 @@
           <div class="p-5">
             <div class="flex items-center justify-between mb-2">
               <span
-                class="text-xs font-semibold px-2 py-1 rounded bg-gray-100 text-gray-700"
+                class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700"
                 :class="categoryColor(post.categories?.[0]?.name || post.type)"
               >
                 {{ post.categories?.[0]?.name || post.type }}
@@ -90,17 +90,38 @@
         </NuxtLink>
       </div>
 
-      <!-- Pagination (Static Example) -->
+      <!-- Pagination (Dynamic) -->
       <div
+        v-if="totalPages > 1"
         class="flex items-center justify-center gap-2 mt-10 text-sm text-gray-600"
       >
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">Prev</button>
-        <button class="px-3 py-1 border rounded bg-blue-600 text-white">
-          1
+        <button
+          class="px-3 py-1 border rounded hover:bg-gray-100"
+          :disabled="currentPage === 1"
+          @click="goToPage(currentPage - 1)"
+        >
+          Prev
         </button>
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">2</button>
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">3</button>
-        <button class="px-3 py-1 border rounded hover:bg-gray-100">Next</button>
+        <button
+          v-for="page in visiblePages"
+          :key="page"
+          class="px-3 py-1 border rounded"
+          :class="
+            page === currentPage
+              ? 'bg-blue-600 text-white'
+              : 'hover:bg-gray-100'
+          "
+          @click="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+        <button
+          class="px-3 py-1 border rounded hover:bg-gray-100"
+          :disabled="currentPage === totalPages"
+          @click="goToPage(currentPage + 1)"
+        >
+          Next
+        </button>
       </div>
     </div>
   </section>
@@ -157,15 +178,18 @@ const filteredCategories = computed(() =>
 );
 
 // ✅ Filter posts by category and search
-const filteredPosts = computed(() => {
-  let filtered = posts.value;
 
+// Pagination state
+const currentPage = ref(1);
+const postsPerPage = 6;
+
+const filteredPostsRaw = computed(() => {
+  let filtered = posts.value;
   if (selectedCategory.value !== "all") {
     filtered = filtered.filter((post) =>
       post.categories?.some((cat) => cat.slug === selectedCategory.value)
     );
   }
-
   if (searchTerm.value) {
     filtered = filtered.filter(
       (p) =>
@@ -173,8 +197,45 @@ const filteredPosts = computed(() => {
         p.excerpt.toLowerCase().includes(searchTerm.value.toLowerCase())
     );
   }
-
   return filtered;
+});
+
+const totalPages = computed(() =>
+  Math.ceil(filteredPostsRaw.value.length / postsPerPage)
+);
+
+const filteredPosts = computed(() => {
+  const start = (currentPage.value - 1) * postsPerPage;
+  return filteredPostsRaw.value.slice(start, start + postsPerPage);
+});
+
+function goToPage(page: number) {
+  if (page < 1 || page > totalPages.value) return;
+  currentPage.value = page;
+}
+
+// Show up to 5 page numbers, with ellipsis if needed
+const visiblePages = computed(() => {
+  const pages = [];
+  const total = totalPages.value;
+  const cur = currentPage.value;
+  if (total <= 5) {
+    for (let i = 1; i <= total; i++) pages.push(i);
+  } else {
+    if (cur <= 3) {
+      pages.push(1, 2, 3, 4, "...", total);
+    } else if (cur >= total - 2) {
+      pages.push(1, "...", total - 3, total - 2, total - 1, total);
+    } else {
+      pages.push(1, "...", cur - 1, cur, cur + 1, "...", total);
+    }
+  }
+  return pages.filter((p) => typeof p === "number");
+});
+
+// Reset to first page on filter/search change
+watch([selectedCategory, searchTerm], () => {
+  currentPage.value = 1;
 });
 
 // ✅ Handle category button click

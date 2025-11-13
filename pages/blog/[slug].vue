@@ -1,58 +1,66 @@
 <template>
   <div class="max-w-[1440px] mx-auto px-4 pt-10 pb-20">
-    <BlogContent :blog="blog" v-if="blog" />
-    <OtherInsights :posts="otherPosts?.data || []" />
-    <NewsletterSection />
+    <div v-if="!blog && !blogError" class="text-center py-10 text-gray-400">
+      Loading blog...
+    </div>
+    <div v-else-if="blogError" class="text-center py-10 text-red-500">
+      Failed to load blog post.
+    </div>
+    <BlogContent v-else :blog="blog" />
+    <OtherInsights :posts="otherPosts" />
   </div>
 </template>
 
 <script setup>
 import BlogContent from "~/components/BlogContent.vue";
 import OtherInsights from "~/components/OtherInsights.vue";
-import NewsletterSection from "~/components/NewsletterSection.vue";
 import { fetchPostBySlug, fetchAllPosts } from "~/api/posts";
 
 const route = useRoute();
 const slug = route.params.slug;
 
-// Fetch single blog post
 const blog = ref(null);
 const blogError = ref(null);
-const allPosts = ref(null);
+const allPosts = ref([]);
+const otherPosts = ref([]);
 
-try {
-  const [blogData, allPostsData] = await Promise.all([
-    fetchPostBySlug(slug),
-    fetchAllPosts(1),
-  ]);
-  blog.value = blogData;
-  allPosts.value = allPostsData;
-} catch (error) {
-  blogError.value = error;
-  console.error("Error fetching blog data:", error);
-}
+onMounted(async () => {
+  try {
+    const [blogData, allPostsData] = await Promise.all([
+      fetchPostBySlug(slug),
+      fetchAllPosts(1),
+    ]);
+    // Map 'content' to 'body' for compatibility with BlogContent.vue
+    if (blogData?.data) {
+      blog.value = {
+        ...blogData.data,
+        body: blogData.data.body || blogData.data.content || "",
+      };
+    } else {
+      blog.value = null;
+    }
+    allPosts.value = allPostsData.data || [];
 
-// Filter other posts by same categories, excluding current post, limit to 2
-const otherPosts = computed(() => {
-  if (!allPosts.value?.data || !blog.value) return { data: [] };
-
-  const currentCategories = blog.value.categories?.map((cat) => cat.slug) || [];
-
-  const filtered = allPosts.value.data
-    .filter((post) => post.slug !== slug)
-    .filter((post) =>
-      post.categories?.some((cat) => currentCategories.includes(cat.slug))
-    )
-    .slice(0, 2);
-
-  return { data: filtered };
+    // Exclude current post, pick 2 random others
+    const others = allPosts.value.filter((post) => post.slug !== slug);
+    // Shuffle and pick 2
+    for (let i = others.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [others[i], others[j]] = [others[j], others[i]];
+    }
+    otherPosts.value = others.slice(0, 2);
+  } catch (error) {
+    blogError.value = error;
+    console.error("Error fetching blog data:", error);
+  }
 });
 
-// Handle 404 if post not found
-if (blogError.value || !blog.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Post not found",
-  });
-}
+watch(blogError, (val) => {
+  if (val || !blog.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Post not found",
+    });
+  }
+});
 </script>

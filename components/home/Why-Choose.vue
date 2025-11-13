@@ -1,18 +1,30 @@
 <template>
-  <div class="highest-width bg-[#E9EFFD] text-center space-y-6 py-24 mx-auto">
-        <div class="text-center space-y-6 mx-auto">
+  <div class="highest-width bg-[#E9EFFD] text-center space-y-6 py-24 mx-auto overflow-x-hidden" ref="sectionRef">
+        <motion.div class="text-center space-y-6 mx-auto"
+             :initial="{ y: 100, opacity: 0 }"
+             :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+             :transition="{ duration: 0.8 }"
+        >
             <h2>Why Choose Logistic Journey</h2>
             <p class="max-w-lg mx-auto">
                 Discover how Logistic Journey can help optimize your fleet management 
                 and improve business operations.
             </p> 
-        </div> 
+        </motion.div> 
         
-        <div class="flex justify-center mx-auto">
+        <motion.div class="flex justify-center mx-auto"
+            :initial="{ x: -100, opacity: 0 }"
+            :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+        >
             <img src="/public/images/map.png" alt="">
-        </div>
+        </motion.div>
             
-        <div class="grid md:grid-cols-2 gap-6 items-center mx-auto justify-center max-w-xl">
+        <motion.div class="grid md:grid-cols-2 gap-6 items-center mx-auto justify-center max-w-xl"
+            :initial="{ y: 100, opacity: 0 }"
+            :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+        >
             <div class="flex space-x-1 bg-white p-2 rounded-full items-center">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                    <path d="M11.5512 1.44385C9.55213 1.44385 7.59798 2.03663 5.93584 3.14724C4.2737 4.25784 2.97822 5.83639 2.21323 7.68326C1.44823 9.53013 1.24807 11.5624 1.63806 13.523C2.02805 15.4836 2.99068 17.2846 4.40422 18.6981C5.81775 20.1117 7.6187 21.0743 9.57933 21.4643C11.54 21.8543 13.5722 21.6541 15.4191 20.8891C17.2659 20.1241 18.8445 18.8286 19.9551 17.1665C21.0657 15.5043 21.6585 13.5502 21.6585 11.5512C21.6585 8.87054 20.5936 6.2997 18.6981 4.40421C16.8026 2.50872 14.2318 1.44385 11.5512 1.44385ZM10.1073 15.5875L6.49751 11.9777L7.64585 10.8292L10.1073 13.2905L15.4569 7.94141L16.6089 9.08635L10.1073 15.5875Z" fill="#225AD6"/>
@@ -45,12 +57,35 @@
                     Reduce wasted trips and costs
                 </p>
             </div>
-        </div>
+        </motion.div>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { motion } from "motion-v";
 
+const inView = ref(false);
+const sectionRef = ref<HTMLElement | null>(null);
+
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        inView.value = entry.isIntersecting;
+      });
+    },
+    { threshold: 0.2 } // 20% visible triggers animation
+  );
+
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
+
+onBeforeUnmount(() => {
+  if (observer && sectionRef.value) observer.unobserve(sectionRef.value);
+});
 </script>
 
 <style>

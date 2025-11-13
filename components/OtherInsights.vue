@@ -6,14 +6,26 @@
       <div
         v-for="post in posts"
         :key="post.id"
-        class="border rounded-2xl p-4 hover:shadow-lg transition"
+        class="border rounded-2xl p-4 hover:shadow-lg transition bg-white"
       >
         <img
-          :src="post.image"
-          alt="post image"
+          v-if="post.featured_image?.url"
+          :src="post.featured_image.url"
+          :alt="post.featured_image.alt || post.title"
           class="w-full h-56 object-cover rounded-xl mb-4"
         />
-        <h3 class="text-xl font-semibold mb-2">{{ post.title }}</h3>
+        <div class="flex items-center justify-between mb-2">
+          <span
+            v-if="post.categories && post.categories.length"
+            class="text-xs font-semibold px-2 py-1 rounded bg-gray-100 text-gray-700"
+          >
+            {{ post.categories[0].name }}
+          </span>
+          <span class="text-xs text-gray-500">{{
+            new Date(post.published_at).toLocaleDateString()
+          }}</span>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">{{ post.title }}</h3>
         <p class="text-gray-600 mb-4 line-clamp-3">{{ post.excerpt }}</p>
         <NuxtLink
           :to="`/blog/${post.slug}`"
@@ -26,7 +38,7 @@
 
     <div class="text-center mt-10">
       <NuxtLink
-        to="/blog"
+        to="/resources/blog"
         class="bg-blue-600 text-white py-3 px-6 rounded-xl hover:bg-blue-700 transition"
       >
         See more blogs
