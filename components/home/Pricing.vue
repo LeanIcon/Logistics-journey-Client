@@ -13,7 +13,7 @@
                     <path d="M11.74 6.10667L10.7533 6.63333L4.41333 3.06667L5.46 2.5L11.58 5.95333C11.6467 5.99333 11.7 6.04667 11.74 6.10667Z" fill="#DF900A"/>
                     <path d="M11.8333 7.31348V8.82681C11.8333 9.10014 11.6066 9.32681 11.3333 9.32681C11.0599 9.32681 10.8333 9.10014 10.8333 8.82681V7.81348L11.8333 7.31348Z" fill="#DF900A"/>
                 </svg>
-                <span class="text-[15px]" style="color: #DF900A;">Pricing</span>
+                <span class="text-[15px] font-light" style="color: #DF900A;">Pricing</span>
             </div>
             <h2>Pricing Plan</h2>
             <p class="max-w-lg mx-auto">
@@ -62,16 +62,14 @@
                 <div
                     class="relative pb-4 m-0 flex items-center justify-between space-x-8 mb-8 overflow-hidden text-center border-b rounded-none shadow-none bg-clip-border">
                     <div class="text-start">
-                         <span class="font-bold text-black leading-normal">
+                         <p class="pb-2 font-bold text-black">
                           Basic plan
-                         </span> <br>
-                        <span class="font-thin text-[15px]">Perfect for logistics teams </span>
+                         </p>
+                        <span class="font-light text-[15px]">Perfect for logistics teams </span>
                     </div>
                    
-                    <div class="flex gap-[0.5px] antialiased font-normal tracking-normal items-end ">
-                        <h1 class="text-4xl">R129</h1>
-                        <span class="font-light text-black">/</span>
-                        <span class="text-lg text-black font-semibold">mo</span>
+                    <div class="antialiased">
+                        <h1 class="text-5xl">R129 <span class="-ml-2 text-[35px] text-[#000000b7] font-semibold">/</span> <span class="-ml-3 text-2xl text-black font-semibold">mo</span></h1>
                     </div>
                 </div>
 

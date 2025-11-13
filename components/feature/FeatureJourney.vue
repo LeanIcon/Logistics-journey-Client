@@ -11,19 +11,19 @@
       <ul class="space-y-6 feature-list">
         <li class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="text-gray-800"><span class="font-medium  feature-title">Customizable Journey Setup</span> – Define routes, assign drivers, and set delivery dates with just a few clicks.</span>
+          <span class="font-light text-black leading-7"><span class="font-medium  feature-title">Customizable Journey Setup</span> – Define routes, assign drivers, and set delivery dates with just a few clicks.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><span class="font-medium feature-title">Order Integration</span> – Import and manage orders directly within each journey.</span>
+          <span class="font-light text-black leading-7"><span class="font-medium feature-title">Order Integration</span> – Import and manage orders directly within each journey.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><span class="font-medium feature-title">Cost Tracking</span> – Automatically calculate delivery, fuel, and extra costs for better budget control.</span>
+          <span class="font-light text-black leading-7"><span class="font-medium feature-title">Cost Tracking</span> – Automatically calculate delivery, fuel, and extra costs for better budget control.</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><span class="font-extrabold feature-title">Driver & Vehicle Assignment</span> – Ensure the right driver and vehicle are matcherd for each job.</span>
+          <span class="font-light text-black leading-7"><span class="font-extrabold feature-title">Driver & Vehicle Assignment</span> – Ensure the right driver and vehicle are matcherd for each job.</span>
         </li>
       </ul>
     </motion.div>
@@ -88,12 +88,12 @@
 
 <style scoped>
 .feature-list {
-  color: #4B5563; /* gray for body text */
+  color: #000000; /* gray for body text */
 }
 
 .feature-title {
-  color: #23272A; /* dark title same as heading */
-  font-weight: 400;
+  color: #000000; /* dark title same as heading */
+  font-weight: 500;
 }
 
 </style>

@@ -32,7 +32,7 @@
             fill="#DF900A"
           />
         </svg>
-        <span class="text-[15px]" style="color: #df900a">How it works</span>
+        <span class="text-[15px] font-light" style="color: #df900a">How it works</span>
       </div>
       <h2>How To Get Started With Logistics Journey</h2>
       <p class="max-w-lg mx-auto">

@@ -14,7 +14,7 @@
                         <path d="M11.74 6.10667L10.7533 6.63333L4.41333 3.06667L5.46 2.5L11.58 5.95333C11.6467 5.99333 11.7 6.04667 11.74 6.10667Z" fill="#DF900A"/>
                         <path d="M11.8333 7.31348V8.82681C11.8333 9.10014 11.6066 9.32681 11.3333 9.32681C11.0599 9.32681 10.8333 9.10014 10.8333 8.82681V7.81348L11.8333 7.31348Z" fill="#DF900A"/>
                     </svg>
-                    <span class="text-[15px]" style="color: #DF900A;">Resources</span>
+                    <span class="text-[15px] font-light" style="color: #DF900A;">Resources</span>
                 </div>
                 <h2>Case Study</h2>
             </motion.div>
@@ -42,11 +42,11 @@
                         </div>
                         <div>
                             <h6 class="text-start text-lg font-semibold">Devon Miles</h6>
-                            <span class="text-start text-xs opacity-80">Operations Manager, Park Avenue Stationers</span>
+                            <span class="text-start text-sm font-light">Operations Manager, Park Avenue Stationers</span>
                         </div>
                     </div>
                     <div class="text-start">
-                        <a class="border-b border-[#225AD6] cursor-pointer pb-1" href="">Read full case study</a>
+                        <a class="border-b border-[#225AD6] cursor-pointer pb-1 font-light" href="">Read full case study</a>
                     </div>
                 </motion.div>
             </div>

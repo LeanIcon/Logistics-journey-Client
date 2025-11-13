@@ -36,7 +36,7 @@
               <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span>
+          <span class="font-light text-black leading-7">
             <span class="font-medium feature-title">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
           </span>
         </li>
@@ -47,7 +47,7 @@
               <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span>
+          <span class="font-light text-black leading-7">
             <span class="font-medium feature-title">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
           </span>
         </li>
@@ -58,7 +58,7 @@
               <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span>
+          <span class="font-light text-black leading-7">
             <span class="font-medium feature-title">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
           </span>
         </li>
@@ -69,7 +69,7 @@
               <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span>
+          <span class="font-light text-black leading-7">
             <span class="font-medium feature-title">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
           </span>
         </li>
@@ -88,11 +88,11 @@
 
 <style scoped>
 .feature-list {
-  color: #4B5563; /* gray for body text */
+  color: #000000; /* gray for body text */
 }
 
 .feature-title {
-  color: #23272A; /* dark title same as heading */
-  font-weight: 400;
+  color: #000000; /* dark title same as heading */
+  font-weight: 500;
 }
 </style>

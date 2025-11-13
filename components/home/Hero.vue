@@ -20,7 +20,7 @@
           </h1>
 
           <!-- Dynamic subheadline and fallback -->
-          <p class="mb-6 text-base font-normal leading-7 lg:w-3/4 text-grey-900">
+          <p class="mb-6 text-base font-normal leading-7">
             {{
               heroData?.subheadline ||
               'Logistic Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.'
@@ -110,6 +110,6 @@ onMounted(async () => {
 
 <style scoped>
 h1 {
-  @apply text-[34px] lg:text-[48px] xl:text-[50px] lg:leading-[60px] font-bold -mt-1;
+  @apply text-[34px] lg:text-[45px] xl:text-[47px] lg:leading-[60px] font-bold -mt-1;
 }
 </style>

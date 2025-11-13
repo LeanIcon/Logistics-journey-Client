@@ -14,7 +14,7 @@
                     <path d="M11.74 6.10667L10.7533 6.63333L4.41333 3.06667L5.46 2.5L11.58 5.95333C11.6467 5.99333 11.7 6.04667 11.74 6.10667Z" fill="#DF900A"/>
                     <path d="M11.8333 7.31348V8.82681C11.8333 9.10014 11.6066 9.32681 11.3333 9.32681C11.0599 9.32681 10.8333 9.10014 10.8333 8.82681V7.81348L11.8333 7.31348Z" fill="#DF900A"/>
                 </svg>
-                <span class="text-[15px] " style="color: #DF900A;">Features</span>
+                <span class="text-[15px] font-light" style="color: #DF900A;">Features</span>
             </div>
             <h2>All the Tools You Need, in One Platform.</h2>
             <p class="max-w-lg mx-auto">
@@ -60,7 +60,7 @@
                         <button
                             class="solid-btn3 hover:no-underline text-center flex space-x-2 mx-auto justify-center"
                         >
-                            <span class="text-[#225AD6]">More Features</span>
+                            <span class="text-[#225AD6] font-light">More Features</span>
                             <svg
                             width="16"
                             height="16"
