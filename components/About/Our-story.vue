@@ -1,4 +1,6 @@
 <template>
+  <!-- <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef"> -->
+    <!-- Desktop & Tablet version -->
   <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef">
     <!-- Desktop & Tablet version -->
     <div class="hidden sm:block">
@@ -67,6 +69,7 @@
     </div>
 
     <!-- Mobile version -->
+    <!-- Mobile version -->
     <div class="block sm:hidden px-6 py-12 space-y-8 text-center">
       
       <div
@@ -87,6 +90,20 @@
           Powerful.
         </h2>
 
+        <h2 class="text-3xl font-bold text-gray-900 leading-snug">
+          Your Support is Really <br />
+          Powerful.
+        </h2>
+
+      <motion.div
+        :initial="{ y: -100, opacity: 0 }"
+        :animate="inView ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+     >
+        <p class="text-gray-600 leading-relaxed text-base">
+          The secret to happiness lies in helping others. Never underestimate the
+          difference you can make in the lives of the poor, the abused and the helpless.
+        </p>
       <motion.div
         :initial="{ y: -100, opacity: 0 }"
         :animate="inView ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }"
@@ -103,6 +120,12 @@
           a lectus. Quam ullamcorper in fringilla arcu aliquet fames arcu.
         </p>
       </motion.div>
+        <p class="text-gray-600 leading-relaxed text-base">
+          Amet pellentesque sit pulvinar lorem mi a, euismod risus rhoncus. Elementum
+          ullamcorper nec, habitasse vulputate. Eget dictum quis est sed egestas tellus,
+          a lectus. Quam ullamcorper in fringilla arcu aliquet fames arcu.
+        </p>
+      </motion.div>
 
       <img
         src="/images/About/logistic/meeting.jpg"
@@ -110,6 +133,11 @@
         class="w-full rounded-xl mt-6"
       />
 
+      <motion.div class="text-left space-y-6 mt-10"
+        :initial="{ y: 100, opacity: 0 }"
+        :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+        :transition="{ duration: 0.8 }"
+      >
       <motion.div class="text-left space-y-6 mt-10"
         :initial="{ y: 100, opacity: 0 }"
         :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
@@ -136,6 +164,7 @@
             Natoque mauris cras molestie velit.
           </p>
         </div>
+      </motion.div>
       </motion.div>
     </div>
   </section>

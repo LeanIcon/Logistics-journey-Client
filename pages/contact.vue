@@ -9,35 +9,85 @@
             Have questions? Interested in signing up? Get in touch with us today.
           </p>
 
-          <form class="custom-spacing">
-            <div class="grid md:grid-cols-1 gap-2">
-              <label for="">Full name</label>
-              <input type="email" placeholder="Enter your fullname" class="w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none" />
+          <form v-if="!isLoading" class="custom-spacing" @submit.prevent="handleSubmit">
+            <div v-if="formErrors.general" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+              <ul>
+                <li v-for="error in formErrors.general" :key="error">{{ error }}</li>
+              </ul>
             </div>
 
-            <div class="grid md:grid-cols-1 gap-2">
-              <label for="">Phone number</label>
-              <input type="text" placeholder="Enter phone number" class="w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none" />
-            </div>
-          
-            <div class="grid md:grid-cols-1 gap-2">
-              <label for="">Email</label>
-              <input type="text" placeholder="Enter your email" class="w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none" />
-            </div>
-            
-            <div class="grid md:grid-cols-1 gap-2">
-              <label for="">Message</label>
-              <textarea type="text" placeholder="Type your message..." class="w-full border rounded-md h-42 p-3 focus:ring-2 focus:ring-blue-500 outline-none" ></textarea>
+            <div v-for="field in formFields" :key="field.name" class="grid md:grid-cols-1 gap-2">
+              <label :for="field.name">{{ field.label }}</label>
+              <textarea
+                v-if="field.type === 'textarea'"
+                :id="field.name"
+                :placeholder="field.placeholder"
+                :required="field.required"
+                :minlength="field.name === 'message' ? 10 : undefined"
+                v-model="formData[field.name]"
+                :class="[
+                  'w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none',
+                  formErrors[field.name] ? 'border-red-500' : ''
+                ]"
+                :rows="field.rows || 4"
+              ></textarea>
+              <select
+                v-else-if="field.type === 'select'"
+                :id="field.name"
+                :placeholder="field.placeholder"
+                :required="field.required"
+                v-model="formData[field.name]"
+                :class="[
+                  'w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none',
+                  formErrors[field.name] ? 'border-red-500' : ''
+                ]"
+              >
+                <option value="" disabled>{{ field.placeholder }}</option>
+                <option v-for="(label, value) in field.options" :key="value" :value="value">
+                  {{ label }}
+                </option>
+              </select>
+              <input
+                v-else
+                :id="field.name"
+                :type="field.type"
+                :placeholder="field.placeholder"
+                :required="field.required"
+                v-model="formData[field.name]"
+                :class="[
+                  'w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500 outline-none',
+                  formErrors[field.name] ? 'border-red-500' : ''
+                ]"
+              />
+              <div v-if="formErrors[field.name]" class="text-red-600 text-sm">
+                <ul>
+                  <li v-for="error in formErrors[field.name]" :key="error">{{ error }}</li>
+                </ul>
+              </div>
             </div>
 
             <p class="text-xs text-gray-500 leading-snug">
               By submitting your information, you agree to Logistic Journey’s Terms of Service and Privacy Policy. You can opt out anytime.
             </p>
 
-            <button type="submit" class="solid-btn w-full md:w-auto">
-              Submit
+            <button type="submit" :disabled="isSubmitting" class="solid-btn w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed">
+              {{ isSubmitting ? 'Submitting...' : 'Submit' }}
             </button>
           </form>
+          <div v-else class="text-center">
+            Loading form...
+          </div>
+
+          <!-- Success Popup -->
+          <div v-if="showSuccessPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-4">
+              <h3 class="text-xl font-semibold mb-4 text-green-600">Success!</h3>
+              <p class="text-gray-700 mb-6">{{ successMessage }}</p>
+              <button @click="showSuccessPopup = false" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Close
+              </button>
+            </div>
+          </div>
         </div>
         
         <div class="md:w-1/2 mt-8 md:mt-0">
@@ -99,8 +149,121 @@
   <home-transform class="mt-12"/>
 </template>
 
-<script lang="ts" setup>
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useApi } from '~/composables/useApi'
 
+const { getFormBySlug, submitForm } = useApi()
+
+const formFields = ref([])
+const formData = ref({})
+const isLoading = ref(true)
+const formErrors = ref({})
+const isSubmitting = ref(false)
+const showSuccessPopup = ref(false)
+const successMessage = ref('')
+
+// Fallback fields if API fails
+const fallbackFields = [
+  {
+    name: 'full_name',
+    type: 'text',
+    label: 'Full name',
+    placeholder: 'Enter your fullname',
+    validation: ['required']
+  },
+  {
+    name: 'phone',
+    type: 'text',
+    label: 'Phone number',
+    placeholder: 'Enter phone number',
+    validation: ['required']
+  },
+  {
+    name: 'email',
+    type: 'email',
+    label: 'Email',
+    placeholder: 'Enter your email',
+    validation: ['required', 'email']
+  },
+  {
+    name: 'subject',
+    type: 'select',
+    label: 'Subject',
+    placeholder: 'Select subject',
+    options: [
+      { value: 'general', label: 'General Inquiry' },
+      { value: 'support', label: 'Support' },
+      { value: 'sales', label: 'Sales' },
+      { value: 'partnership', label: 'Partnership' }
+    ],
+    validation: ['required']
+  },
+  {
+    name: 'message',
+    type: 'textarea',
+    label: 'Message',
+    placeholder: 'Type your message...',
+    validation: ['required']
+  }
+]
+
+onMounted(async () => {
+  try {
+    const response = await getFormBySlug('contact-form')
+    if (response && response.data && response.data.fields && response.data.fields.length > 0) {
+      formFields.value = response.data.fields
+    } else {
+      formFields.value = fallbackFields
+    }
+  } catch (error) {
+    console.error('Failed to fetch form:', error)
+    formFields.value = fallbackFields
+  } finally {
+    // Initialize formData with empty values for each field to ensure proper v-model binding
+    formData.value = formFields.value.reduce((acc, field) => {
+      acc[field.name] = ''
+      return acc
+    }, {})
+    isLoading.value = false
+  }
+})
+
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  formErrors.value = {}
+
+  try {
+    const response = await submitForm('contact-form', formData.value)
+    // console.log('Form submitted successfully:', response)
+    // Handle success (e.g., show success message, reset form)
+    successMessage.value = response.message || 'Thank you for your message! We will get back to you soon.'
+    showSuccessPopup.value = true
+    // Reset formData to empty strings for each field
+    formData.value = formFields.value.reduce((acc, field) => {
+      acc[field.name] = ''
+      return acc
+    }, {})
+  } catch (error) {
+    console.error('Form submission failed:', error)
+    if (error.response && error.response._data && error.response._data.errors) {
+      // Map the errors to match the field names
+      const mappedErrors = {}
+      for (const [key, value] of Object.entries(error.response._data.errors)) {
+        if (key === 'message') {
+          // The 'message' key contains a summary, but we can ignore it or use it for general errors
+          continue
+        }
+        mappedErrors[key] = value
+      }
+      formErrors.value = mappedErrors
+    } else {
+      formErrors.value = { general: ['An error occurred while submitting the form.'] }
+    }
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <style>

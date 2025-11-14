@@ -1,7 +1,11 @@
 <template>
   <div class="">
-    <div class="highest-width text-center space-y-6 py-24 mx-auto">
-        <div class="text-center space-y-6 pb-8 mx-auto">
+    <div class="highest-width text-center space-y-6 py-24 mx-auto overflow-hidden" ref="sectionRef">
+        <motion.div class="text-center space-y-6 pb-8 mx-auto"
+            :initial="{ y: 100, opacity: 0 }"
+            :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+        >
             <div class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center items-center justify-center max-w-28 mx-auto">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.4001 4.62683C13.4001 4.98683 13.2068 5.3135 12.9001 5.48016L11.7401 6.10683L10.7534 6.6335L8.70676 7.74016C8.48676 7.86016 8.24676 7.92016 8.0001 7.92016C7.75343 7.92016 7.51343 7.86016 7.29343 7.74016L3.1001 5.48016C2.79343 5.3135 2.6001 4.98683 2.6001 4.62683C2.6001 4.26683 2.79343 3.94016 3.1001 3.7735L4.41343 3.06683L5.4601 2.50016L7.29343 1.5135C7.73343 1.2735 8.26676 1.2735 8.70676 1.5135L12.9001 3.7735C13.2068 3.94016 13.4001 4.26683 13.4001 4.62683Z" fill="#DF900A"/>
@@ -16,36 +20,65 @@
             <p class="max-w-lg mx-auto">
                 Logistic Journey is designed to streamline logistics operations, enhance efficiency, and provide real-time visibility into fleet movements.
             </p> 
-        </div>  
-        <div class="order-1 md:order-2 sm:p-6 sm:rounded-xl sm:bg-[#102A63] grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            <div v-for="tool in toolList" :key="tool.id" class="">
-                <div class="bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg">
-                    <div class="">
-                         <img :src="tool.icon" alt="Delivery Icon" class="w-12 h-12 mb-4" />
-                    </div>
-                    <h6 class="text-white text-xl text-start font-semibold mb-4">{{ tool.title }}</h6>
-                    <p class="grow text-start" style="color: white;">{{ tool.description }}</p>                 
+        </motion.div>  
+        <motion.div
+            class="order-1 md:order-2 sm:p-6 sm:rounded-xl sm:bg-[#102A63] grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch overflow-x-hidden"
+            :initial="{ opacity: 0 }"
+            :animate="inView ? { opacity: 1 } : { opacity: 0 }"
+            >
+            <!-- Animated Cards -->
+            <motion.div
+                v-for="(tool, index) in toolList"
+                :key="tool.id"
+                :initial="{ y: 100, opacity: 0 }"
+                :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+                :transition="{ duration: 0.8 + index * 0.2, delay: index * 0.3 }"
+                class="bg-[#1A46A7] px-4 py-6 flex flex-col h-full w-full rounded-lg"
+            >
+                <div>
+                <img :src="tool.icon" alt="Tool Icon" class="w-10 h-10 mb-4" />
                 </div>
+                <h6 class="text-white text-xl text-start font-semibold mb-4">
+                {{ tool.title }}
+                </h6>
+                <p class="grow text-start text-white">{{ tool.description }}</p>
+            </motion.div>
 
-            </div>
-            <div class="bg-cover border border-[#225AD6] py-16 relative rounded-lg bg-[url('/images/Tools/features.jpg')]">
-                <div class="rounded-lg absolute left-0 right-0 top-0 bottom-0 bg-[#102a63de]">
-                </div>
+            <!-- More Features card -->
+            <motion.div
+                class="bg-cover border border-[#225AD6] py-16 relative rounded-lg bg-[url('/images/Tools/features.jpg')] overflow-hidden"
+                    :initial="{ y: 100, opacity: 0 }"
+                    :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+                    :transition="{ duration: 0.8 }"
+                >
+                <div
+                class="rounded-lg absolute left-0 right-0 top-0 bottom-0 bg-[#102a63de]"
+                ></div>
                 <div class="justify-center flex h-full items-center">
                     <div class="mx-auto relative z-10 text-center text-white">
                         <NuxtLink to="/features">
-                            <button class="solid-btn3 hover:no-underline text-center flex space-x-2 mx-auto justify-center">
-                                <span class="text-[#225AD6]">More Features</span>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z" fill="#225AD6"/>
-                                </svg>
-                            </button>
+                        <button
+                            class="solid-btn3 hover:no-underline text-center flex space-x-2 mx-auto justify-center"
+                        >
+                            <span class="text-[#225AD6]">More Features</span>
+                            <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                d="M5 3V4H11.295L3 12.295L3.705 13L12 4.705V11H13V3H5Z"
+                                fill="#225AD6"
+                            />
+                            </svg>
+                        </button>
                         </NuxtLink>
                     </div>
                 </div>
-            </div>
-        </div> 
-        
+            </motion.div>
+        </motion.div>       
     </div>
   </div>
 </template>
@@ -53,6 +86,10 @@
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
     import { tools } from '~/data/tools';
+    import { motion } from "motion-v";
+    import { useInView } from '~/composables/useInView'
+    
+    const { inView, sectionRef } = useInView(0.2)
 
     const toolList = ref<{ id: number; icon: string; title: string; description: string }[]>([]);
     onMounted(() => {

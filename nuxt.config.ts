@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2025-10-31',
   css: ['~/assets/css/main.css', '~/assets/css/fonts.css'],
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@vueuse/motion/nuxt', 'motion-v/nuxt'],
   postcss: {
     plugins: {
       tailwindcss: {},

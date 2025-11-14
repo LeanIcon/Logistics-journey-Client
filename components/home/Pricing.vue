@@ -1,6 +1,10 @@
 <template>
- <div class="highest-width text-center space-y-6 py-20 mx-auto">
-        <div class="text-center space-y-6 pb-8 mx-auto">
+ <div class="highest-width text-center space-y-6 py-20 mx-auto overflow-x-hidden" ref="sectionRef">
+        <motion.div class="text-center space-y-6 pb-8 mx-auto overflow-y-hidden"
+            :initial="{ y: 100, opacity: 0 }"
+            :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+        >
             <div class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center justify-center max-w-24 mx-auto">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.4001 4.62683C13.4001 4.98683 13.2068 5.3135 12.9001 5.48016L11.7401 6.10683L10.7534 6.6335L8.70676 7.74016C8.48676 7.86016 8.24676 7.92016 8.0001 7.92016C7.75343 7.92016 7.51343 7.86016 7.29343 7.74016L3.1001 5.48016C2.79343 5.3135 2.6001 4.98683 2.6001 4.62683C2.6001 4.26683 2.79343 3.94016 3.1001 3.7735L4.41343 3.06683L5.4601 2.50016L7.29343 1.5135C7.73343 1.2735 8.26676 1.2735 8.70676 1.5135L12.9001 3.7735C13.2068 3.94016 13.4001 4.26683 13.4001 4.62683Z" fill="#DF900A"/>
@@ -15,11 +19,15 @@
             <p class="max-w-lg mx-auto">
                 Simple, transparent pricing for your fleet management needs.
             </p>    
-        </div> 
+        </motion.div> 
 
         <!-- Pricing Cards -->
          <section class="grid sm:grid-cols-2 gap-16 sm:gap-8 justify-between items-center">
-            <div class="space-y-6">
+            <motion.div class="space-y-6"
+                :initial="{ x: -100, opacity: 0 }"
+                :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
+                :transition="{ duration: 0.8 }"
+            >
                 <div
                     v-for="(step,) in steps"
                     class=""
@@ -42,11 +50,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             <!-- component -->
-            <div
-                class="relative border bg-clip-border rounded-xl p-8">
+            <motion.div
+                class="relative border bg-clip-border rounded-xl p-8"
+                    :initial="{ x: 100, opacity: 0 }"
+                    :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+                    :transition="{ duration: 0.8 }"
+                >
                 <div
                     class="relative pb-4 m-0 flex items-center justify-between space-x-8 mb-8 overflow-hidden text-center border-b rounded-none shadow-none bg-clip-border">
                     <div class="text-start">
@@ -164,13 +176,16 @@
                         Get Started
                     </button>
                 </div>
-            </div>
+            </motion.div>
          </section>
   </div>
 </template>
 
 <script setup>
     import { ref } from "vue";
+    import { motion } from "motion-v";
+    import { useInView } from '~/composables/useInView'
+    const { inView, sectionRef } = useInView(0.2)
 
     const currentStep = ref(0);
 

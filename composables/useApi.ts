@@ -10,13 +10,16 @@ export const useApi = () => {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      // 'Accept': 'application/json',
     },
     onRequest({ request, options }) {
       // Add any global request interceptors here
       // console.log('API Request:', request)
+      // console.log('API Request:', request)
     },
     onResponse({ response }) {
       // Add any global response interceptors here
+      // console.log('API Response:', response.status)
       // console.log('API Response:', response.status)
     },
     onResponseError({ response }) {
@@ -110,6 +113,10 @@ export const useApi = () => {
     return await api('/api/v1/pages/about-us', { method: 'GET' })
   }
 
+  // const getFeaturesPage = async () => {
+  //   return await api('/api/v1/pages/features', { method: 'GET' })
+  // }
+
   // Generic API method for custom endpoints
   const customRequest = async (endpoint: string, options: any = {}) => {
     return await api(endpoint, options)
@@ -139,6 +146,7 @@ export const useApi = () => {
     getPages,
     getPageBySlug,
     getAboutUsPage,
+    // getFeaturesPage,
 
     // Auth methods
     login,
