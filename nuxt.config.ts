@@ -29,7 +29,7 @@ export default defineNuxtConfig({
         },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/Navbar/2/Logistics Journey Logo.png' },
+        { rel: 'icon', type: 'image/png', sizes:'16x16', href: '/Navbar/2/Logistics Journey Logo.png' },
         // Preload critical fonts
         { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Regular.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
         { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Medium.ttf', type: 'font/ttf', crossorigin: 'anonymous' },

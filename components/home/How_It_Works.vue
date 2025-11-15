@@ -34,10 +34,9 @@
         </svg>
         <span class="text-[15px] font-light" style="color: #df900a">How it works</span>
       </div>
-      <h2>How To Get Started With Logistics Journey</h2>
+      <h2>{{ howItWorksData?.title || 'How To Get Started With Logistics Journey' }}</h2>
       <p class="max-w-lg mx-auto">
-        From setup to delivery, we make logistics simple, smart, and efficient.
-        Get started in minutes and manage your entire operation with ease.
+        {{ howItWorksData?.description || 'From setup to delivery, we make logistics simple, smart, and efficient. Get started in minutes and manage your entire operation with ease.' }}
       </p>
     </div>
 
@@ -83,7 +82,7 @@
               class="text-start"
               :class="
                 currentStep === index
-                  ? 'text-black font-semibold'
+                  ? 'text-black font-semibold mb-2'
                   : 'font-medium text-[#6B7280]'
               "
             >
@@ -104,7 +103,7 @@
         class="w-full md:w-1/2 flex items-center justify-center bg-gray-50 rounded-xl overflow-hidden"
       >
         <img
-          :src="steps[currentStep].image"
+          :src="steps.length > 0 ? (steps[currentStep]?.image || '/images/Steps/Contact.png') : '/images/Steps/Contact.png'"
           alt="Step image"
           class="w-full h-full object-cover transition-all duration-500"
         />
@@ -113,11 +112,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useApi } from "~/composables/useApi";
+import { steps as how_it_works_static } from "~/data/how_it_works";
+
+const { getPagesBySlug } = useApi();
 
 const currentStep = ref(0);
-let intervalId = null;
+let intervalId: ReturnType<typeof setInterval> | null = null;
+
+const howItWorksData = ref<any>(null);
+const steps = ref(how_it_works_static);
 
 // Function to handle auto-switching
 const startAutoSwitch = () => {
@@ -126,19 +132,38 @@ const startAutoSwitch = () => {
 
   // Set new interval
   intervalId = setInterval(() => {
-    currentStep.value = (currentStep.value + 1) % steps.length;
+    currentStep.value = (currentStep.value + 1) % steps.value.length;
   }, 2000);
 };
 
 // Handle manual click
-const handleStepClick = (index) => {
+const handleStepClick = (index: number) => {
   currentStep.value = index;
   // Reset the timer when user clicks
   startAutoSwitch();
 };
 
 // Start auto-switching when component mounts
-onMounted(() => {
+onMounted(async () => {
+  try {
+    const response = await getPagesBySlug("home");
+    const blocks = response?.data?.blocks || [];
+    const getStartedBlock = blocks.find((b: any) => b.type === "GetStarted");
+
+    if (getStartedBlock && getStartedBlock.data) {
+      const data = getStartedBlock.data;
+
+      howItWorksData.value = {
+        title: data.title,
+        description: data.description,
+      };
+
+      // use API-provided steps if available, otherwise fallback
+      steps.value = data.steps?.length ? data.steps : how_it_works_static;
+    }
+  } catch (error) {
+    console.error("Failed to load 'How It Works' section:", error);
+  }
   startAutoSwitch();
 });
 
@@ -147,44 +172,16 @@ onUnmounted(() => {
   if (intervalId) clearInterval(intervalId);
 });
 
-const steps = [
-  {
-    title: "Contact",
-    description: "Send us an email to show your interest.",
-    image: "/images/Steps/Contact.png",
-  },
-  {
-    title: "Access",
-    description: "Get login credentials to access your account.",
-    image: "/images/Steps/access.png",
-  },
-  {
-    title: "Setup",
-    description: "We’ll help you configure everything properly.",
-    image: "/images/Steps/setup.png",
-  },
-  {
-    title: "Orders",
-    description: "Easily place and manage your orders online.",
-    image: "/images/Steps/order.png",
-  },
-  {
-    title: "Delivery",
-    description: "We’ll handle delivery right to your doorstep.",
-    image: "/images/Steps/delivery.png",
-  },
-];
-
 // compute top and height (percentages) so we highlight only one segment at a time
 const progressTop = computed(() => {
-  if (steps.length <= 1) return "0%";
-  const ratio = currentStep.value / (steps.length - 1);
+  if (steps.value.length <= 1) return "0%";
+  const ratio = currentStep.value / (steps.value.length - 1);
   return `${ratio * 100}%`;
 });
 
 const segmentHeight = computed(() => {
-  if (steps.length <= 1) return "0%";
-  const frac = 1 / (steps.length - 1);
+  if (steps.value.length <= 1) return "0%";
+  const frac = 1 / (steps.value.length - 1);
   return `${frac * 100}%`;
 });
 </script>

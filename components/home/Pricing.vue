@@ -22,7 +22,7 @@
         </motion.div> 
 
         <!-- Pricing Cards -->
-         <section class="grid sm:grid-cols-2 gap-16 sm:gap-8 justify-between items-center">
+         <section class="grid md:grid-cols-2 gap-16 sm:gap-8 justify-between items-center">
             <motion.div class="space-y-6"
                 :initial="{ x: -100, opacity: 0 }"
                 :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
@@ -54,32 +54,32 @@
 
             <!-- component -->
             <motion.div
-                class="relative border bg-clip-border rounded-xl p-8"
+                class="relative border border-black bg-clip-border rounded-xl p-8"
                     :initial="{ x: 100, opacity: 0 }"
                     :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
                     :transition="{ duration: 0.8 }"
                 >
                 <div
-                    class="relative pb-4 m-0 flex items-center justify-between space-x-8 mb-8 overflow-hidden text-center border-b rounded-none shadow-none bg-clip-border">
+                    class="relative pb-4 m-0 flex items-center justify-between space-x-8 mb-8 border-black overflow-hidden text-center border-b rounded-none shadow-none bg-clip-border">
                     <div class="text-start">
                          <p class="pb-2 font-bold text-black">
                           Basic plan
                          </p>
-                        <span class="font-light text-[15px]">Perfect for logistics teams </span>
+                        <span class="font-light text-[15px] text-black">Perfect for logistics teams </span>
                     </div>
                    
-                    <div class="antialiased">
-                        <h1 class="text-5xl">R129 <span class="-ml-2 text-[35px] text-[#000000b7] font-semibold">/</span> <span class="-ml-3 text-2xl text-black font-semibold">mo</span></h1>
+                    <div class="flex antialiased items-end">
+                        <h1 class="text-5xl">R129</h1> <p class="text-5xl text-[#000000b7] font-semibold">/</p> <p class="-ml-1 text-2xl text-black font-semibold">mo</p>
                     </div>
                 </div>
 
-                <p class="text-start pb-6">Includes:</p>
+                <p class="text-black text-start pb-6">Includes:</p>
 
-                <div class="border-b pb-8 text-start">
+                <div class="border-b border-black pb-8 text-start">
                     <ul class="grid md:grid-cols-2 gap-4">
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -90,7 +90,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -101,7 +101,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -112,7 +112,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -123,7 +123,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -134,7 +134,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -145,7 +145,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>
@@ -156,7 +156,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="p-1 border rounded-full border-white/20 bg-white/20">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4"
                                     stroke="currentColor" class="w-3 h-3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
                                 </svg>

@@ -20,7 +20,7 @@
         </motion.div>
             
        <motion.div
-        class="grid md:grid-cols-2 gap-6 items-center mx-auto justify-center max-w-xl"
+        class="grid md:grid-cols-2 gap-6 items-center mx-auto justify-center max-w-[16cm]"
         :initial="{ y: 100, opacity: 0 }"
         :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
         :transition="{ duration: 0.8 }"
@@ -29,8 +29,8 @@
             v-for="(point, index) in why_chooseData?.points || fallbackPoints"
             :key="index"
             :class="[
-            'flex items-center space-x-2 bg-white p-2 rounded-full w-fit mx-auto shadow-sm',
-            (index >= (why_chooseData?.points?.length || fallbackPoints.length) - 2) ? 'md:ml-12' : ''
+            'flex items-center bg-white p-2 rounded-full w-fit shadow-sm',
+            (index >= (why_chooseData?.points?.length || fallbackPoints.length) - 2) ? 'lg:ml-12' : ''
             ]"
         >
             <svg
