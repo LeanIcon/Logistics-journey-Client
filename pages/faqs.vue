@@ -9,7 +9,7 @@
                 <div
                 v-for="(faq, index) in faqsList"
                 :key="index"
-                class="p-6 cursor-pointer"
+                class="px-1 py-6 cursor-pointer"
                 @click="toggle(index)"
                 >
                 <div class="flex justify-between items-center">
@@ -23,7 +23,7 @@
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-5 text-gray-700 transition-transform duration-300"
+                    class="w-5 h-5 text-[#64748A] transition-transform duration-300 shrink-0"
                     >
                     <path
                         stroke-linecap="round"

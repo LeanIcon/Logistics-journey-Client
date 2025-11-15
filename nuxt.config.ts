@@ -23,11 +23,29 @@ export default defineNuxtConfig({
       title: 'Logistics Journey',
       meta: [
         {
-          name: 'Logistics Journey Management',
+          name: 'description',
           content:
             'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.',
         },
+        {
+          name: 'keywords',
+          content: 'logistics, delivery, real-time tracking, shipping solutions',
+        },
+
+        // Open Graph 
+        { property: 'og:title', content: 'Logistics Journey' },
+        { property: 'og:description', content: 'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.' },
+        { property: 'og:image', content: '/Navbar/2/Logistics Journey Logo.png' }, // ideally 1200x630 px with logo + background
+        { property: 'og:url', content: 'https://new.logisticjourney.com' },
+        { property: 'og:type', content: 'website' },
+
+        // Twitter (optional)
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Logistics Journey' },
+        { name: 'twitter:description', content: 'Logistics Journey gives you full control, real-time visibility, and reliable deliveries.' },
+        { name: 'twitter:image', content: '/Navbar/2/Logistics Journey Logo.png' },
       ],
+      
       link: [
         { rel: 'icon', type: 'image/png', sizes:'16x16', href: '/Navbar/2/Logistics Journey Logo.png' },
         // Preload critical fonts
