@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#F8FAFC] hidden sm:flex w-full py-20">
+  <section class="bg-[#F8FAFC] sm:flex w-full py-20">
     <div class="highest-width  mx-auto">
 
       <div class="text-center mb-16">

@@ -1,5 +1,5 @@
 <template>
-  
+
   <section class="highest-width flex flex-col mlg:flex-row items-center justify-between gap-16 mlg:gap-8 xl:gap-20 py-24 bg-white overflow-hidden" ref="sectionRef">
     <!-- Left: Image -->
     <motion.div class="w-full mlg:w-1/2 flex justify-center mlg:justify-end order-2 mlg:order-1 relative overflow-hidden rounded-3xl"
@@ -7,7 +7,7 @@
           :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
           :transition="{ duration: 0.8 }"
     >
-      <img 
+      <img
         class="w-full max-w-2xl rounded-3xl object-cover "
         src="/public/images/Feature/Feature2/phone-map.jpg"
         alt="Feature image"
@@ -23,13 +23,18 @@
         :transition="{ duration: 0.8 }"
     >
       <h2 class="mb-6">
-        Empower Drivers On the Go
+        {{ driverData?.headline || 'Empower Drivers On the Go' }}
       </h2>
       <p class="text-[#23272A] text-mlg mb-8">
-        With the Logistic mobile app, drivers stay connected, informed, and efficient — every step of the way.
+        {{ driverData?.description || 'With the Logistic mobile app, drivers stay connected, informed, and efficient — every step of the way.' }}
       </p>
       <ul class="space-y-6 feature-list">
-        <li class="flex items-start gap-3">
+        <li v-for="feature in driverData?.features || [
+          { title: 'Smart Scheduling', description: 'Drivers see upcoming and in-progress journeys right from their dashboard.' },
+          { title: 'Route Guidance', description: 'Clear start and destination details with integrated maps for easy navigation.' },
+          { title: 'Real-time Updates', description: 'Orders and delivery stops displayed directly on an interactive map.' },
+          { title: 'Seamless Coordination', description: 'Journey details, payloads, and progress all accessible in one place.' }
+        ]" :key="feature.title" class="flex items-start gap-3">
           <span class="mt-1">
             <svg width="20" height="20" fill="none">
               <circle cx="10" cy="10" r="10" fill="#225AD6" />
@@ -37,40 +42,7 @@
             </svg>
           </span>
           <span>
-            <span class="font-medium feature-title">Smart Scheduling</span> – Drivers see upcoming and in-progress journeys right from their dashboard.
-          </span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1">
-            <svg width="20" height="20" fill="none">
-              <circle cx="10" cy="10" r="10" fill="#225AD6" />
-              <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span>
-            <span class="font-medium feature-title">Route Guidance</span> – Clear start and destination details with integrated maps for easy navigation.
-          </span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1">
-            <svg width="20" height="20" fill="none">
-              <circle cx="10" cy="10" r="10" fill="#225AD6" />
-              <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span>
-            <span class="font-medium feature-title">Real-time Updates</span> – Orders and delivery stops displayed directly on an interactive map.
-          </span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1">
-            <svg width="20" height="20" fill="none">
-              <circle cx="10" cy="10" r="10" fill="#225AD6" />
-              <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span>
-            <span class="font-medium feature-title">Seamless Coordination</span> – Journey details, payloads, and progress all accessible in one place.
+            <span class="font-medium feature-title">{{ feature.title }}</span> – {{ feature.description }}
           </span>
         </li>
       </ul>
@@ -79,10 +51,39 @@
 </template>
 
 <script lang="ts" setup>
+  import { onMounted, ref, computed } from 'vue'
   import { motion } from "motion-v";
   import { useInView } from '~/composables/useInView'
-  
+  import { useApi } from '~/composables/useApi'
+
+  interface PageBlock {
+    type: string
+    data: any
+  }
+
+  interface PageData {
+    blocks?: PageBlock[]
+    [key: string]: any
+  }
+
+  const { getPageBySlug } = useApi()
+  const pageData = ref<PageData | null>(null)
   const { inView, sectionRef } = useInView(0.2)
+
+  const driverData = computed(() => {
+    if (pageData.value?.blocks) {
+      return pageData.value.blocks.find(block => block.type === 'DriverApp')?.data
+    }
+    return null
+  })
+
+  onMounted(async () => {
+    try {
+      pageData.value = await getPageBySlug('features')
+    } catch (error) {
+      console.error('Failed to fetch features page data:', error)
+    }
+  })
 </script>
 
 

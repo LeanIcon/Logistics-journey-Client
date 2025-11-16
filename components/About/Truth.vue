@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden" ref="sectionRef">
-    <div class="highest-width hidden sm:flex py-16">
+    <div class="highest-width sm:flex py-16">
       <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
         <motion.div 
           class="lg:w-1/2"
@@ -42,7 +42,7 @@
     </div>
     
     <!-- Mobile version -->
-   <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
+   <!-- <div class="block sm:hidden bg-[#18346a] px-6 py-14 text-white">
       <h2 class="text-3xl font-bold leading-tight mb-4">
         Highlight company<br />impact by the numbers
       </h2>
@@ -72,7 +72,7 @@
         alt="Company impact illustration"
         class="w-full rounded-2xl"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 

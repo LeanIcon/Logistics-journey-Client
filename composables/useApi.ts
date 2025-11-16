@@ -113,9 +113,9 @@ export const useApi = () => {
     return await api('/api/v1/pages/about-us', { method: 'GET' })
   }
 
-  // const getFeaturesPage = async () => {
-  //   return await api('/api/v1/pages/features', { method: 'GET' })
-  // }
+  const getFeaturesPage = async () => {
+    return await api('/api/v1/pages/features', { method: 'GET' })
+  }
 
   // Generic API method for custom endpoints
   const customRequest = async (endpoint: string, options: any = {}) => {
@@ -146,7 +146,7 @@ export const useApi = () => {
     getPages,
     getPageBySlug,
     getAboutUsPage,
-    // getFeaturesPage,
+    getFeaturesPage,
 
     // Auth methods
     login,

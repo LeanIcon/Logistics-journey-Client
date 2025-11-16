@@ -1,8 +1,3 @@
-- [ ] Update pages/features.vue to fetch data from API and dynamically render components based on block types
-- [ ] Modify components/feature/FeatureHero.vue to accept data prop
-- [ ] Modify components/feature/FeatureDashboard.vue to accept data prop
-- [ ] Modify components/feature/FeatureJourney.vue to accept data prop
-- [ ] Modify components/feature/FeatureCTA.vue to accept data prop
-- [ ] Modify components/feature/FeatureDrivers.vue to accept data prop
-- [ ] Modify components/home/Transform.vue to accept data prop
-- [ ] Test the features page to ensure data renders correctly
+- [x] Modify `components/feature/FeatureCTA.vue` to fetch its own data from the API, similar to `FeatureHero.vue`, extracting the 'Delivery' block to ensure consistent and independent data fetching.
+- [x] Update `pages/features.vue` to use `<FeatureCTA />` without props since it now fetches its own data.
+- [ ] Test the component display after changes.

@@ -1,9 +1,7 @@
 <template>
-  <!-- <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef"> -->
-    <!-- Desktop & Tablet version -->
   <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef">
     <!-- Desktop & Tablet version -->
-    <div class="hidden sm:block">
+    <div sm:flex>
       <div class="mx-auto py-16">
         <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
           <motion.div 
@@ -70,7 +68,7 @@
 
     <!-- Mobile version -->
     <!-- Mobile version -->
-    <div class="block sm:hidden px-6 py-12 space-y-8 text-center">
+    <!-- <div class="block sm:hidden px-6 py-12 space-y-8 text-center">
       
       <div
         class="inline-flex items-center gap-2 bg-[#f8e0c3] text-[#DF900A] px-4 py-2 rounded-full text-sm font-medium"
@@ -88,14 +86,14 @@
         <h2 class="text-3xl font-bold text-gray-900 leading-snug">
           Your Support is Really <br />
           Powerful.
-        </h2>
+        </h2> -->
 
-        <h2 class="text-3xl font-bold text-gray-900 leading-snug">
+        <!-- <h2 class="text-3xl font-bold text-gray-900 leading-snug">
           Your Support is Really <br />
           Powerful.
-        </h2>
+        </h2> -->
 
-      <motion.div
+      <!-- <motion.div
         :initial="{ y: -100, opacity: 0 }"
         :animate="inView ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }"
         :transition="{ duration: 0.8 }"
@@ -166,7 +164,7 @@
         </div>
       </motion.div>
       </motion.div>
-    </div>
+    </div> -->
   </section>
 </template>
 

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="bg-cover py-[2cm] block sm:hidden xs:py-[3cm] lg:py-[3cm] xl:py-[5cm] relative bg-[url('/images/ready.png')]">
     <div class="rounded-lg absolute left-0 right-0 top-0 bottom-0">
     </div>
@@ -50,4 +50,4 @@ defineProps<{
 </script>
 
 <style></style>
-
+ -->

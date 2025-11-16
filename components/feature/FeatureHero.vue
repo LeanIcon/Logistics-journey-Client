@@ -14,32 +14,67 @@
       </span>
     </div>
 
-
     <!-- Heading -->
     <h1 class="mb-8">
-      Smarter Routes. <br> Happier Clients. 
-      <span class="border-l-2 rounded-md xs:rounded-none p-3 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">Lower Costs! </span>
+      <span v-html="heroData?.headline || 'Smarter Routes. <br> Happier Clients.'" class="text-black"></span>
+      <span class="border-l-2 rounded-md xs:rounded-none p-3 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">{{ heroData?.highlight_text || 'Lower Costs!' }}</span>
     </h1>
 
     <!-- Description -->
     <p class="mt-6 mb-8 text-lg text-gray-900 max-w-2xl mx-auto">
-      Logistic Journey gives you real-time tracking, smart route planning, and advanced reporting — so you save money and deliver on time, every time.
+      {{ heroData?.subheadline || 'Logistic Journey gives you real-time tracking, smart route planning, and advanced reporting — so you save money and deliver on time, every time.' }}
     </p>
 
     <!-- Buttons -->
     <div class="flex justify-center items-center gap-4 mt-6">
-        <NuxtLink to="/Request_demo"><button class="solid-btn">Book a Demo</button></NuxtLink>
-        <NuxtLink to="/contact">
-          <button class="text-[#225AD6]">
-              Talk to Our Team
+        <NuxtLink v-for="button in heroData?.buttons || [{ text: 'Book a Demo', link: '/Request_demo' }, { text: 'Talk to Our Team', link: '/contact' }]" :key="button.text" :to="button.link || (button.text === 'Book a Demo' ? '/Request_demo' : '/contact')">
+          <button :class="button.text === 'Book a Demo' ? 'solid-btn' : 'text-[#225AD6]'">
+              {{ button.text }}
           </button>
         </NuxtLink>
+    </div>
+
+    <!-- Stats -->
+    <div v-if="heroData?.stats && heroData.stats.length > 0" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+      <div v-for="stat in heroData.stats" :key="stat.label" class="text-center">
+        <div class="text-3xl font-bold text-[#225AD6] mb-2">{{ stat.value }}</div>
+        <div class="text-gray-600">{{ stat.label }}</div>
+      </div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import { onMounted, ref, computed } from 'vue'
+import { useApi } from '~/composables/useApi'
 
+interface PageBlock {
+  type: string
+  data: any
+}
+
+interface PageData {
+  blocks?: PageBlock[]
+  [key: string]: any
+}
+
+const { getPageBySlug } = useApi()
+const pageData = ref<PageData | null>(null)
+
+const heroData = computed(() => {
+  if (pageData.value?.blocks) {
+    return pageData.value.blocks.find(block => block.type === 'Hero')?.data
+  }
+  return null
+})
+
+onMounted(async () => {
+  try {
+    pageData.value = await getPageBySlug('features')
+  } catch (error) {
+    console.error('Failed to fetch features page data:', error)
+  }
+})
 </script>
 
 <style scoped>
