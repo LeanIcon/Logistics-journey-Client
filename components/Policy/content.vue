@@ -178,20 +178,9 @@ const policyContent = ref<PolicyData | null>(null)
 const tocItems = ref<TocItem[]>([])
 
 const renderedContent = computed(() => {
-  if (!policyContent.value) return ''
-  // Simple markdown to HTML conversion (basic implementation)
-  let html = policyContent.value.content
-    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
-    .replace(/\*(.*)\*/gim, '<em>$1</em>')
-    .replace(/!\[([^\]]*)\]\(([^)]*)\)/gim, '<img alt="$1" src="$2" />')
-    .replace(/\[([^\]]*)\]\(([^)]*)\)/gim, '<a href="$2">$1</a>')
-    .replace(/\n\n/gim, '</p><p>')
-    .replace(/\n/gim, '<br>')
-  return '<p>' + html + '</p>'
-})
+  return policyContent.value ? policyContent.value.content : '';
+});
+
 
 const generateToc = (html: string) => {
   const parser = new DOMParser()
@@ -338,7 +327,7 @@ const setupToc = () => {
 }
 </script>
 
-<style scoped>
+<style>
 .policy-wrap {
   padding: 48px 20px;
 }
@@ -365,7 +354,8 @@ const setupToc = () => {
   margin-bottom: 12px;
 }
 .policy-main h3 {
-  font-size: 14px;
+  font-size: 22px;
+  font-weight: 500;
   margin-top: 18px;
   margin-bottom: 8px;
 }
@@ -386,6 +376,7 @@ const setupToc = () => {
   margin-left: 20px;
 }
 .policy-main ul li { 
+  list-style: disc;
   margin-bottom: 8px;
 }
 .contact-info {

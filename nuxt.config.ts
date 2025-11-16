@@ -36,6 +36,9 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Logistics Journey' },
         { property: 'og:description', content: 'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.' },
         { property: 'og:image', content: '/Navbar/2/Logistics Journey Logo.png' }, // ideally 1200x630 px with logo + background
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '512' },
+        { property: 'og:image:height', content: '512' },
         { property: 'og:url', content: 'https://new.logisticjourney.com' },
         { property: 'og:type', content: 'website' },
 

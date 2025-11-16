@@ -32,7 +32,7 @@ export const tools = [
    {
     id: 6,
     icon: '/images/Tools/routes.png',
-    title: 'Optimised Route Pla...',
+    title: 'Optimised Route',
     description: 'Plan the most efficient routes to reduce travel time and costs.'
   },
    {
