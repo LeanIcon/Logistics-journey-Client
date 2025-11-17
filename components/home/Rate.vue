@@ -43,7 +43,7 @@
 </template>
 
 
-<<script setup lang="ts">
+<script setup lang="ts">
 import { useApi } from '~/composables/useApi'
 import { ref, onMounted, computed } from 'vue'
 

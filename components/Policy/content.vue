@@ -340,7 +340,12 @@ const setupToc = () => {
   align-items: start;
 }
 .policy-main {
-  font-family: monospace, monospace;
+  /* font-family: monospace, monospace; */
+  color: #16181B;
+}
+
+.policy-main a {
+  font-weight: 300;
   color: #16181B;
 }
 .policy-main h1 {

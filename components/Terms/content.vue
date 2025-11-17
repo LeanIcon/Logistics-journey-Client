@@ -301,12 +301,16 @@ onBeforeUnmount(() => {
   align-items: start;
 }
 .policy-main {
-  font-family: monospace, monospace;
+  /* font-family: monospace, monospace; */
   color: #16181B;
 }
 .policy-main h1 {
   font-size: 22px;
   margin: 0 0 18px 0;
+}
+.policy-main a {
+  font-weight: 300;
+  color: #16181B;
 }
 .policy-main h2 {
   font-size: 24px;
