@@ -26,36 +26,17 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed } from 'vue'
-import { useApi } from '~/composables/useApi'
+import { computed } from 'vue'
 
-interface PageBlock {
-  type: string
+interface Props {
   data: any
 }
 
-interface PageData {
-  blocks?: PageBlock[]
-  [key: string]: any
-}
-
-const { getPageBySlug } = useApi()
-const pageData = ref<PageData | null>(null)
-
-const ctaData = computed(() => {
-  if (pageData.value?.blocks) {
-    return pageData.value.blocks.find(block => block.type === 'Delivery')?.data
-  }
-  return null
+const props = withDefaults(defineProps<Props>(), {
+  data: null
 })
 
-onMounted(async () => {
-  try {
-    pageData.value = await getPageBySlug('features')
-  } catch (error) {
-    console.error('Failed to fetch features page data:', error)
-  }
-})
+const ctaData = computed(() => props.data)
 </script>
 
 <style>

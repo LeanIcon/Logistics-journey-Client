@@ -16,8 +16,8 @@
 
     <!-- Heading -->
     <h1 class="mb-8">
-      <span v-html="heroData?.headline || 'Smarter Routes. <br> Happier Clients.'" class="text-black"></span>
-      <span class="border-l-2 rounded-md xs:rounded-none p-3 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">{{ heroData?.highlight_text || 'Lower Costs!' }}</span>
+      <span v-html="headlineParts.before" class="text-black"></span>
+      <span class="border-l-2 rounded-md xs:rounded-none p-3 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">{{ headlineParts.highlight }}</span>
     </h1>
 
     <!-- Description -->
@@ -35,45 +35,37 @@
     </div>
 
     <!-- Stats -->
-    <div v-if="heroData?.stats && heroData.stats.length > 0" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+    <!-- <div v-if="heroData?.stats && heroData.stats.length > 0" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
       <div v-for="stat in heroData.stats" :key="stat.label" class="text-center">
         <div class="text-3xl font-bold text-[#225AD6] mb-2">{{ stat.value }}</div>
         <div class="text-gray-600">{{ stat.label }}</div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed } from 'vue'
-import { useApi } from '~/composables/useApi'
+import { computed } from 'vue'
 
-interface PageBlock {
-  type: string
+interface Props {
   data: any
 }
 
-interface PageData {
-  blocks?: PageBlock[]
-  [key: string]: any
-}
-
-const { getPageBySlug } = useApi()
-const pageData = ref<PageData | null>(null)
-
-const heroData = computed(() => {
-  if (pageData.value?.blocks) {
-    return pageData.value.blocks.find(block => block.type === 'Hero')?.data
-  }
-  return null
+const props = withDefaults(defineProps<Props>(), {
+  data: null
 })
 
-onMounted(async () => {
-  try {
-    pageData.value = await getPageBySlug('features')
-  } catch (error) {
-    console.error('Failed to fetch features page data:', error)
+const heroData = computed(() => props.data)
+
+const headlineParts = computed(() => {
+  const headline = heroData.value?.headline || 'Smarter Routes. Happier Clients. Lower Costs!'
+  const index = headline.indexOf('Lower Costs!')
+  if (index !== -1) {
+    const before = headline.substring(0, index)
+    const highlight = 'Lower Costs!'
+    return { before: before.replace('Smarter Routes. ', 'Smarter Routes. <br> '), highlight }
   }
+  return { before: headline, highlight: '' }
 })
 </script>
 

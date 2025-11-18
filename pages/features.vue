@@ -4,7 +4,7 @@
     <feature-hero :data="getBlockData('Hero')" />
     <feature-dashboard :data="getBlockData('Dashboard')" />
     <feature-journey :data="getBlockData('Journey')" />
-    <FeatureCTA />
+    <FeatureCTA :data="getBlockData('Delivery')" />
     <feature-drivers :data="getBlockData('DriverApp')" />
     <home-faqs />
     <home-transform />
@@ -12,14 +12,7 @@
 </template>
 
 <script setup lang="ts">
-// import { ref, onMounted } from 'vue'
-// import { useApi } from '@/composables/useApi'
-// import FeatureHero from '~/components/feature/FeatureHero.vue'
-// import FeatureDashboard from '~/components/feature/FeatureDashboard.vue'
-// import FeatureJourney from '~/components/feature/FeatureJourney.vue'
-// import FeatureCTA from '~/components/feature/FeatureCTA.vue'
-// import FeatureDrivers from '~/components/feature/FeatureDrivers.vue'
-// import HomeTransform from '~/components/home/Transform.vue'
+
 
 const { getFeaturesPage } = useApi()
 

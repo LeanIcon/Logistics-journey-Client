@@ -1,3 +1,0 @@
-- [x] Modify `components/feature/FeatureCTA.vue` to fetch its own data from the API, similar to `FeatureHero.vue`, extracting the 'Delivery' block to ensure consistent and independent data fetching.
-- [x] Update `pages/features.vue` to use `<FeatureCTA />` without props since it now fetches its own data.
-- [ ] Test the component display after changes.
