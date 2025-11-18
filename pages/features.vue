@@ -48,12 +48,12 @@ onMounted(async () => {
 })
 
 // SEO meta tags
-useHead(() => ({
-  title: pageData.value?.meta?.title || 'Features',
-  meta: [
-    { name: 'description', content: pageData.value?.meta?.description || '' }
-  ]
-}))
+// useHead(() => ({
+//   title: pageData.value?.meta?.title || 'Features',
+//   meta: [
+//     { name: 'description', content: pageData.value?.meta?.description || '' }
+//   ]
+// }))
 </script>
 
 <style scoped>
