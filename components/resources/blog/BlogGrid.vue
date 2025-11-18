@@ -15,9 +15,8 @@ p
         <div v-else-if="latestPost">
           <NuxtLink :to="`/blog/${latestPost.slug}`">
             <img
-              v-if="latestPost.featured_image?.url"
-              :src="latestPost.featured_image.url"
-              :alt="latestPost.featured_image.alt || latestPost.title"
+              :src="latestPost.featured_image?.url || '/images/About/Image.png'"
+              :alt="latestPost.featured_image?.alt || latestPost.title"
               class="w-[720px] h-[405px] object-cover rounded-lg mx-auto mb-4 hover:opacity-90 transition-opacity"
             />
           </NuxtLink>
@@ -50,9 +49,8 @@ p
             class="flex gap-3 items-center bg-white hover:bg-gray-50 transition-colors p-2 rounded-lg"
           >
             <img
-              v-if="read.featured_image?.url"
-              :src="read.featured_image.url"
-              :alt="read.featured_image.alt || read.title"
+              :src="read.featured_image?.url || '/images/About/Image.png'"
+              :alt="read.featured_image?.alt || read.title"
               class="w-[260px] h-[146px] object-cover rounded-md"
             />
             <div class="flex-1">

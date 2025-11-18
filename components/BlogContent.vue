@@ -51,11 +51,11 @@
       </div>
     </div>
 
-    <!-- Featured Image -->
-    <div v-if="blog.featured_image?.url" class="mb-10">
+    <!-- Featured Image (use fallback when backend image missing) -->
+    <div class="mb-10">
       <img
-        :src="blog.featured_image.url"
-        :alt="blog.featured_image.alt || blog.title"
+        :src="blog.featured_image?.url || '/images/About/Image.png'"
+        :alt="blog.featured_image?.alt || blog.title"
         class="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-sm"
       />
     </div>

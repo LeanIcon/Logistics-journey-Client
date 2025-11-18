@@ -9,9 +9,8 @@
         class="border rounded-2xl p-4 hover:shadow-lg transition bg-white"
       >
         <img
-          v-if="post.featured_image?.url"
-          :src="post.featured_image.url"
-          :alt="post.featured_image.alt || post.title"
+          :src="post.featured_image?.url || '/images/About/Image.png'"
+          :alt="post.featured_image?.alt || post.title"
           class="w-full h-56 object-cover rounded-xl mb-4"
         />
         <div class="flex items-center justify-between mb-2">

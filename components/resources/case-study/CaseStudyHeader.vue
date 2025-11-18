@@ -5,11 +5,18 @@
       <span class="mx-1">/</span>
       <NuxtLink to="/resources/case-study">Case Studies</NuxtLink>
       <span class="mx-1">/</span>
-      <span>Park Avenue Stationers</span>
+      <span>{{ client || "Case Studies" }}</span>
     </nav>
     <h1 class="text-2xl font-bold">
-      How Logistic Journey Helped Turn Paper Chaos into Digital Clarity
+      {{ title || breadcrumbTitle || "Case Study" }}
     </h1>
   </div>
 </template>
-<script setup lang="ts"></script>
+
+<script setup lang="ts">
+defineProps<{
+  title?: string;
+  client?: string;
+  breadcrumbTitle?: string;
+}>();
+</script>

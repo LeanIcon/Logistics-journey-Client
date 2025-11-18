@@ -1,16 +1,15 @@
-// API handler for GET /api/v1/case-study
-import { fetchCaseStudy } from "~/api/posts";
+// API handler for GET /api/v1/case-study (kept for compatibility)
+// This proxy uses the new case-studies endpoint internally.
+import { fetchCaseStudiesList } from "~/api/caseStudies";
 
 export default defineEventHandler(async () => {
   try {
-    // Fetch case study data dynamically from external API using the same pattern as posts
-    return await fetchCaseStudy();
+    return await fetchCaseStudiesList();
   } catch (error) {
-    console.error("Error fetching case study:", error);
-    // Return a fallback response or throw an error
+    console.error("Error fetching case studies:", error);
     throw createError({
       statusCode: 500,
-      statusMessage: "Failed to fetch case study from external API",
+      statusMessage: "Failed to fetch case studies from external API",
     });
   }
 });
