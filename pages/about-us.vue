@@ -7,7 +7,7 @@
     <about-truth :data="getBlockData('Mission')" />
     <about-team :data="getBlockData('Team')" />
     <about-cta :data="getBlockData('Cta')" />
-    <about-insight v-if="getBlockData('Insight')" :data="getBlockData('Insight')" />
+    <about-insight />
     <!-- <about-ready :data="getBlockData('DualCta')" /> -->
   </div>
 </template>
