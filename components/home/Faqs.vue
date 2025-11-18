@@ -1,5 +1,5 @@
 <template>
-  <section class="highest-width bg-white py-20">
+  <section class="highest-width bg-white pt-24 pb-32">
     <div class="grid md:grid-cols-2 gap-10">
       <!-- Left Section -->
       <div>
