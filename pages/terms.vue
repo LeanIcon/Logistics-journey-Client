@@ -1,6 +1,6 @@
 <template>
   <div>
-    <terms-hero />
+    <!-- <terms-hero /> -->
     <terms-content />
   </div>
 </template>

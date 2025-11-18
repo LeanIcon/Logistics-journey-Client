@@ -5,7 +5,7 @@
         <div v-html="renderedContent"></div>
       </main>
       <main class="policy-main" v-else>
-        <h2 id="overview">Logistic Journey</h2>
+        <h2 id="overview">Terms of Service - Logistic Journey</h2>
 
         <p class="lead text-[#16181B]">Logistic Journey (Pty) Ltd is a registered business entity in South Africa. Logistic Journey is a logistics management platform that enables businesses to manage, monitor, and optimize their fleet operations, deliveries, and supply chain processes. By using our website, web app, and mobile app, you agree to these Terms of Service.
           <br><br>These Terms are intended to provide a clear, reliable, and safe framework for your use of Logistic Journey. Please read them carefully. If you have any questions, contact us before continuing.

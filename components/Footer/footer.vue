@@ -90,6 +90,9 @@
                     <li><a href="/about-us" class="hover:text-white">About Us</a></li>
                     <li><a href="/policy" class="hover:text-white">Privacy Policy</a></li>
                     <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
+                    <li><a href="/delivery_policy" class="hover:text-white">Delivery Policy</a></li>
+                    <li><a href="/refund_policy" class="hover:text-white">Refund Policy</a></li>
+                    <li><a href="/cancellation_policy" class="hover:text-white">Cancellation Policy</a></li>
                     </ul>
                 </div>
 
