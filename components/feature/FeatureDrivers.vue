@@ -41,8 +41,9 @@
               <path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
+
           <span>
-            <span class="font-medium feature-title">{{ feature.title }}</span> – {{ feature.description }}
+            <span class="font-medium text-black">{{ feature.title }}</span> – <span class="font-light text-black">{{ feature.description }}</span>
           </span>
         </li>
       </ul>
@@ -70,12 +71,5 @@
 
 
 <style scoped>
-.feature-list {
-  color: #4B5563; /* gray for body text */
-}
 
-.feature-title {
-  color: #23272A; /* dark title same as heading */
-  font-weight: 400;
-}
 </style>

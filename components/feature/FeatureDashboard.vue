@@ -27,7 +27,7 @@
           { title: 'Driver & Fleet Analytics', description: 'Measure driver productivity, vehicle health, and operational costs.' }
         ]" :key="feature.title" class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span><span class="font-medium feature-title">{{ feature.title }}</span> – {{ feature.description }}</span>
+          <span><span class="font-medium feature-title">{{ feature.title }}</span> – <span class="font-light text-black">{{ feature.description }}</span></span>
         </li>
       </ul>
     </motion.div>
@@ -57,12 +57,12 @@ li{
     line-height: 1.5rem;
 }
 .feature-list {
-  color: #4B5563; /* gray for body text */
+  color: #000000; /* gray for body text */
 }
 
 .feature-title {
   color: #23272A; /* dark title same as heading */
-  font-weight: 400;
+  font-weight: 500;
 }
 
 </style>

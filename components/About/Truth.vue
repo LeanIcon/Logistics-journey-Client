@@ -1,9 +1,9 @@
 <template>
   <div class="overflow-hidden" ref="sectionRef">
-    <div class="highest-width sm:flex py-16">
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
+    <div class="highest-width sm:flex py-24">
+      <div class="flex flex-col md:flex-row-reverse items-center gap-6 lg:gap-10">
         <motion.div 
-          class="lg:w-1/2"
+          class="md:w-1/2"
           :initial="{ x: 100, opacity: 0 }"
           :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
           :transition="{ duration: 0.8 }"
@@ -13,7 +13,7 @@
         </motion.div>
         
         <motion.div 
-          class="lg:w-1/2 space-y-6 mb-25"
+          class="md:w-1/2 space-y-6 mb-25"
           :initial="{ x: -100, opacity: 0 }"
           :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
           :transition="{ duration: 0.8 }"
@@ -67,5 +67,3 @@ defineProps<{
 
 const { inView, sectionRef } = useInView(0.2)
 </script>
-
-

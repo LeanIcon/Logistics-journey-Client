@@ -9,10 +9,10 @@
     <home-how-it-works />
     <home-pricing />
     <home-blogs />
-    <home-testimonials />
+    <!-- <home-testimonials /> -->
     <home-case-study />
     <home-mobile_app />
-    <!-- <home-faqs /> -->
+    <home-faqs />
     <home-transform />
   </div>
 </template>

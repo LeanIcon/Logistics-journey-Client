@@ -66,7 +66,7 @@
 
                 <p class="text-[12px] mt-3 text-gray-300">
                 By subscribing you agree to with our
-                <NuxtLink to="/policy"><span class="underline">Privacy Policy</span></NuxtLink> and provide consent to
+                <NuxtLink to="/policy"><span class="underline text-[12px]">Privacy Policy</span></NuxtLink> and provide consent to
                 receive updates from our company.
                 </p>
             </div>
@@ -96,12 +96,12 @@
                 <!-- App and Social -->
                 <div>
                     <h3 class="font-semibold text-lg mb-3">Download the App</h3>
-                    <div class="space-y-3">
+                    <div class="">
                     <a href="https://apps.apple.com/za/app/logistic-journey/id6745507589" target="_blank">  
                         <img
                             src="/public/images/Mac App Store.png"
                             alt="App Store"
-                            class="w-40 cursor-pointer"
+                            class="w-40 cursor-pointer mb-3"
                         />
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=co.za.anylytical.logisticjourney&pcampaignid=web_share" target="_blank">

@@ -102,7 +102,7 @@
             <p>Need help? Our support team is available to assist you.</p>
         </div>
 
-        <div class="sm:flex text-center gap-8 mt-12 justify-center items-center">    
+        <div class="grid sm:grid-cols-3 text-center gap-8 mt-12 justify-center items-center">    
             <div class="mb-12 sm:mb-0">
               <div class="flex justify-center items-center mb-6">
                 <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,8 +112,7 @@
                 </svg>
               </div>
               <h3 class="mb-4">Phone Support</h3>
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-              <span class="underline">+27 11 568 7109</span>     
+              <a href="tel:+27 11 568 7109"><p class="underline">+27 11 568 7109</p> </a>    
             </div>
 
             <div class="mb-12 sm:mb-0">
@@ -124,8 +123,7 @@
                   </svg>
                 </div>
                 <h3 class="mb-4">Email Support</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                <span class="underline">support@logisticjourney.com</span>     
+                <a href="mailto:support@logisticjourney.com"><p class="underline">support@logisticjourney.com</p> </a>    
             </div>
 
             <div>
@@ -145,7 +143,7 @@
           </div>
       </section>
   </div>
-  <!-- <home-faqs /> -->
+  <home-faqs />
   <home-transform class="mt-12"/>
 </template>
 

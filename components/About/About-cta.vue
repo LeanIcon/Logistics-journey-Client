@@ -1,5 +1,5 @@
 <template>
-    <div class="highest-width sm:py-8 bg-white">
+    <div class="highest-width sm:py-8 bg-white mb-24">
         <div class="flex sm:hidden -mb-[4cm] justify-end z-40">
             <img class="" src="/public/images/Rectangle 4991.png" alt="">
         </div>
@@ -49,5 +49,3 @@ defineProps<{
 <style>
 
 </style>
-
-

@@ -1,4 +1,4 @@
-﻿﻿<template>
+﻿﻿﻿﻿<template>
   <div>
     <!-- Pass data to each component as props -->
     <feature-hero :data="getBlockData('Hero')" />
@@ -58,5 +58,3 @@ useHead(() => ({
 
 <style scoped>
 </style>
-
-

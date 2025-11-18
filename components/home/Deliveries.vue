@@ -1,53 +1,57 @@
 <template>
   <div class="highest-width bg-[#FAFAFA] py-24" ref="sectionRef">
+    <!-- Section Title -->
     <motion.div 
       class="text-center space-y-6 pb-20 mx-auto"
       :initial="{ y: 100, opacity: 0 }"
       :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
       :transition="{ duration: 0.8 }"
-      >
-      <h2>The Problem with Deliveries Today</h2>
+    >
+      <h2>{{ problemData?.title || 'The Problem with Deliveries Today' }}</h2>
       <p class="max-w-lg mx-auto">
-        Without real-time visibility, your fleet becomes a silent money drain.
-        Here’s what it’s costing you today
+        {{
+          problemData?.description ||
+          "Without real-time visibility, your fleet becomes a silent money drain. Here's what it's costing you today."
+        }}
       </p>
     </motion.div>
 
-    <div
-      class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center justify-center overflow-x-hidden"
-    >
-      <!-- Image Section -->
-      <motion.div class="order-2 md:order-1 mx-auto max-w-md"
+    <!-- Content Section -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center justify-center overflow-x-hidden">
+      <!-- Side Image -->
+      <motion.div
+        class="order-2 md:order-1 mx-auto max-w-md"
         :initial="{ x: -100, opacity: 0 }"
         :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
         :transition="{ duration: 0.8 }"
       >
         <img
-          src="/images/Deliveries/Placeholder Image.png"
-          alt="Delivery Placeholder"
+          :src="problemData?.side_image || '/images/Deliveries/Placeholder Image.png'"
+          alt="Delivery Problem Image"
         />
       </motion.div>
 
-      <!-- Delivery List -->
-      <motion.div class="order-1 md:order-2 grid sm:grid-cols-2 gap-8 md:gap-16"
+      <!-- Problems List -->
+      <motion.div
+        class="order-1 md:order-2 grid sm:grid-cols-2 gap-8 md:gap-16"
         :initial="{ x: 100, opacity: 0 }"
         :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
         :transition="{ duration: 0.8 }"
       >
         <div
-          v-for="delivery in deliverList"
-          :key="delivery.id"
+          v-for="(problem, index) in problemList"
+          :key="index"
           class="text-center sm:text-start"
         >
           <div class="flex justify-center sm:justify-start">
             <img
-              :src="delivery.icon"
-              alt="Delivery Icon"
+              :src="problem.icon || '/images/Deliveries/remove 1.png'"
+              alt="Problem Icon"
               class="w-12 h-12 mb-4"
             />
           </div>
-          <h6 class="text-xl font-semibold mb-4">{{ delivery.title }}</h6>
-          <p>{{ delivery.description }}</p>
+          <h6 class="text-xl font-semibold mb-4">{{ problem.title }}</h6>
+          <p>{{ problem.description }}</p>
         </div>
       </motion.div>
     </div>
@@ -55,34 +59,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import { deliveries } from "~/data/deliveries.js";
+import { ref, onMounted } from "vue";
 import { motion } from "motion-v";
+import { useApi } from "~/composables/useApi";
+import { useInView } from "~/composables/useInView";
+import { deliveries } from "~/data/deliveries.js"; // fallback static list
 
-const deliverList = ref(deliveries);
-const inView = ref(false);
-const sectionRef = ref<HTMLElement | null>(null);
+const { getPagesBySlug } = useApi();
+const { inView, sectionRef } = useInView(0.2);
 
-let observer: IntersectionObserver | null = null;
+const problemData = ref<any>(null);
+const problemList = ref(deliveries);
 
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        inView.value = entry.isIntersecting;
-      });
-    },
-    { threshold: 0.2 } // 20% visible triggers animation
-  );
+onMounted(async () => {
+  try {
+    const response = await getPagesBySlug("home");
+    const blocks = response?.data?.blocks || [];
+    const problemBlock = blocks.find((b: any) => b.type === "Problem");
 
-  if (sectionRef.value) observer.observe(sectionRef.value);
-});
+    if (problemBlock && problemBlock.data) {
+      const data = problemBlock.data;
 
-onBeforeUnmount(() => {
-  if (observer && sectionRef.value) observer.unobserve(sectionRef.value);
+      problemData.value = {
+        title: data.title,
+        description: data.description,
+        side_image: data.side_image || null,
+      };
+
+      // use API-provided problems if available, otherwise fallback
+      problemList.value = data.problems?.length ? data.problems : deliveries;
+    }
+  } catch (error) {
+    console.error("Failed to load Problem section:", error);
+  }
 });
 </script>
 
 <style scoped>
-/* Add custom styles here if needed */
+h2 {
+  @apply text-3xl md:text-4xl font-bold;
+}
+p {
+  @apply text-base leading-relaxed;
+}
 </style>

@@ -1,24 +1,12 @@
 <template>
   <section class="highest-width our-story-section mx-auto overflow-hidden" ref="sectionRef">
     <!-- Desktop & Tablet version -->
-    <div sm:flex>
-      <div class="mx-auto py-16">
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-10">
-          <motion.div 
-            class="lg:w-1/2"
-            :initial="{ x: 100, opacity: 0 }"
-            :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
-            :transition="{ duration: 0.8 }"
-          >
-            <img
-              src="/images/About/logistic/meeting.jpg"
-              alt="Logistics Journey Team Meeting"
-              class="rounded-xl w-full"
-            />
-          </motion.div>
+    <div class="sm:flex">
+      <div class="mx-auto py-24">
+        <div class="block md:flex items-center gap-6 lg:gap-10">
           
           <motion.div 
-            class="lg:w-1/2 space-y-6 mb-25"
+            class="md:w-1/2 space-y-6 mb-25"
             :initial="{ x: -100, opacity: 0 }"
             :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
             :transition="{ duration: 0.8 }"
@@ -62,6 +50,20 @@
               </p>
             </div>
           </motion.div>
+
+          <motion.div 
+            class="md:w-1/2"
+            :initial="{ x: 100, opacity: 0 }"
+            :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
+            :transition="{ duration: 0.8 }"
+          >
+            <img
+              src="/images/About/logistic/meeting.jpg"
+              alt="Logistics Journey Team Meeting"
+              class="rounded-xl w-full"
+            />
+          </motion.div>
+          
         </div>
       </div>
     </div>
@@ -93,4 +95,3 @@ const { inView, sectionRef } = useInView(0.2)
   color: #df900a;
 }
 </style>
-

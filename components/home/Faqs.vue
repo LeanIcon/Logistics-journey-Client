@@ -1,18 +1,15 @@
 <template>
-  <section class="highest-width bg-white py-20">
+  <section class="highest-width bg-white pt-24 pb-32">
     <div class="grid md:grid-cols-2 gap-10">
       <!-- Left Section -->
       <div>
         <h2 class="">
           Frequently Asked<br />Questions
         </h2>
-        <p class="mt-6 mb-4 text-gray-700 text-lg leading-relaxed">
-          Here are answers to the most common questions about
-          <br class="hidden md:block" />
-          Logistic Journey and how it can support your logistics
-          operations.
-        </p>
-
+        <p 
+          class="mt-6 mb-4 text-gray-700 text-lg leading-relaxed"
+          v-html="faqsData?.title || fallbackDescription"
+        ></p>
         <NuxtLink to="/faqs">
           <button
             class="inline-flex items-center justify-center bg-white rounded-lg text-base font-medium text-gray-900 hover:bg-gray-50 transition" style="border-color: #E2E8F0;"
@@ -26,9 +23,9 @@
       <!-- Questions and Answers -->
       <div class="border-t border-[#64748A] -mb-4 divide-y divide-[#64748A]">
         <div
-          v-for="(faq, index) in faqs"
+          v-for="(faq, index) in limitedFaqs"
           :key="index"
-          class="p-6 cursor-pointer"
+          class="px-1 py-6 cursor-pointer"
           @click="toggle(index)"
         >
           <div class="flex justify-between items-center">
@@ -42,7 +39,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-5 h-5 text-gray-700 transition-transform duration-300"
+              class="w-5 h-5 text-[#64748A] transition-transform duration-300 shrink-0"
             >
               <path
                 stroke-linecap="round"
@@ -53,8 +50,7 @@
           </div>
 
           <transition name="accordion">
-            <p v-if="openIndex === index" class="mt-4 text-gray-700 leading-relaxed">
-              {{ faq.answer }}
+            <p v-if="openIndex === index" v-html="faq.answer" class="mt-4 text-[#16181B] leading-relaxed">
             </p>
           </transition>
         </div>
@@ -64,38 +60,49 @@
   </section>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
+import { useApi } from "~/composables/useApi";
+import { faqs as staticFaqs } from "~/data/faqs"
 
-const openIndex = ref(0)
+const { getPagesBySlug } = useApi();
+const faqsData = ref<any>(null);
+const faqsList = ref(staticFaqs);
+const openIndex = ref<number | null>(0);
 
-const toggle = (index) => {
-  openIndex.value = openIndex.value === index ? null : index
+const toggle = (index: number) => {
+  openIndex.value = openIndex.value === index ? null : index;
 }
 
-const faqs = ref([
-  {
-    question: 'What is last–mile delivery?',
-    answer:
-      'Last-mile delivery is the final step of the logistics process — when goods move from a warehouse, depot, or hub to the customer’s final destination. It’s called the last mile because it’s the last (and often most complex) part of the delivery chain. This stage directly impacts customer satisfaction, delivery costs, and brand reputation — which is why optimising it is so critical.'
-  },
-  {
-    question: 'Why is last–mile delivery so expensive in South Africa?',
-    answer: 'Last-mile delivery is the final step of the logistics process — when goods move from a warehouse, depot, or hub to the customer’s final destination. It’s called the last mile because it’s the last (and often most complex) part of the delivery chain. This stage directly impacts customer satisfaction, delivery costs, and brand reputation — which is why optimising it is so critical.'
-  },
-  {
-    question: 'How can logistics companies reduce last–mile delivery costs?',
-    answer: ''
-  },
-  {
-    question: 'What are the biggest challenges in last–mile delivery in South Africa?',
-    answer: ''
-  },
-  {
-    question: 'What does real–time delivery tracking mean?',
-    answer: ''
+onMounted(async () => {
+  try {
+    const response = await getPagesBySlug("home");
+    const blocks = response?.data?.blocks || [];
+    const faqsBlock = blocks.find((b: any) => b.type === "Faqs");
+
+    if (faqsBlock?.data) {
+      const data = faqsBlock.data;
+
+       faqsData.value = {
+        title: data.title,
+      };
+
+      // Use API FAQ list or fallback
+      faqsList.value = data.faqs?.length ? data.faqs : staticFaqs;
+    }
+  } catch (error) {
+    console.error("Failed to load FAQs:", error);
   }
-])
+});
+
+const limitedFaqs = computed(() => faqsList.value.slice(0, 5));
+
+const fallbackDescription = `
+  Here are answers to the most common questions about 
+  <br class="hidden md:block" />
+  Logistic Journey and how it can support your logistics operations.
+`;
+
 </script>
 
 <style scoped>

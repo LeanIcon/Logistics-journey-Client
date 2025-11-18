@@ -1,7 +1,10 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-      <main class="policy-main">
+      <main class="policy-main" v-if="policyContent">
+        <div v-html="renderedContent"></div>
+      </main>
+      <main class="policy-main" v-else>
         <h2 id="background">Background</h2>
 
         <p class="lead text-[#16181B]">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
@@ -96,32 +99,128 @@
         </address>
       </main>
 
-      <aside class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents">
+      <!-- <aside class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents" v-if="tocItems.length > 0">
         <nav>
           <ul>
-            <li><a href="#background">Background</a></li>
-            <li><a href="#information-we-collect">Information We Collect</a></li>
-            <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
-            <li><a href="#sharing-of-information">Sharing of Information</a></li>
-            <li><a href="#data-security">Data Security</a></li>
-            <li><a href="#data-retention">Data Retention</a></li>
-            <li><a href="#your-rights">Data Security</a></li>
-            <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
-            <li><a href="#contact-us">Contact Us</a></li>
+            <li v-for="item in tocItems" :key="item.id">
+              <a :href="`#${item.id}`">{{ item.text }}</a>
+            </li>
           </ul>
         </nav>
-      </aside>
+      </aside> -->
+
+      <!-- ✅ Dynamic TOC (only when backend policy exists) -->
+        <aside
+          class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]"
+          aria-label="Table of contents"
+          v-if="policyContent && tocItems.length > 0"
+        >
+          <nav>
+            <ul>
+              <li v-for="item in tocItems" :key="item.id">
+                <a :href="`#${item.id}`">{{ item.text }}</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- ✅ Static fallback TOC (only when backend fails) -->
+        <!-- <aside
+          class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]"
+          aria-label="Table of contents"
+          v-else
+        >
+          <nav>
+            <ul>
+              <li><a href="#background">Background</a></li>
+              <li><a href="#information-we-collect">Information We Collect</a></li>
+              <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
+              <li><a href="#sharing-of-information">Sharing of Information</a></li>
+              <li><a href="#data-security">Data Security</a></li>
+              <li><a href="#data-retention">Data Retention</a></li>
+              <li><a href="#your-rights">Your Rights</a></li>
+              <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
+              <li><a href="#contact-us">Contact Us</a></li>
+            </ul>
+          </nav>
+        </aside> -->
+
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue'
+import { useApi } from '~/composables/useApi'
 
-let observer: IntersectionObserver | null = null
-let footerObserver: IntersectionObserver | null = null
+const { getPolicyBySlug } = useApi()
 
-onMounted(() => {
+interface PolicyData {
+  id: number
+  title: string
+  slug: string
+  status: string
+  content: string
+  meta_title: string
+  meta_description: string
+  created_at: string
+  updated_at: string
+}
+
+interface TocItem {
+  id: string
+  text: string
+}
+
+const loading = ref(true)
+
+const policyContent = ref<PolicyData | null>(null)
+const tocItems = ref<TocItem[]>([])
+
+const renderedContent = computed(() => {
+  return policyContent.value ? policyContent.value.content : '';
+});
+
+
+const generateToc = (html: string) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, 'text/html')
+  const headings = doc.querySelectorAll('h2, h3')
+  const items: TocItem[] = []
+  headings.forEach(h => {
+    if (h.id) {
+      items.push({
+        id: h.id,
+        text: h.textContent || ''
+      })
+    }
+  })
+  tocItems.value = items
+}
+
+onMounted(async () => {
+  try {
+    const response = await getPolicyBySlug('privacy-policy')
+    if (response && response.data) {
+      policyContent.value = response.data
+      const html = renderedContent.value
+      generateToc(html)
+    }
+  } catch (error) {
+    console.error('Failed to fetch policy:', error)
+    // Fallback to static content
+  }
+
+  // Setup TOC functionality if we have content
+  if (policyContent.value || tocItems.value.length > 0) {
+    setupToc()
+  }
+})
+
+const setupToc = () => {
+  let observer: IntersectionObserver | null = null
+  let footerObserver: IntersectionObserver | null = null
+
   const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
   const headings = Array.from(document.querySelectorAll<HTMLElement>('.policy-main h2, .policy-main h3')).filter(h => h.id)
 
@@ -209,27 +308,26 @@ onMounted(() => {
       if (firstLink) firstLink.classList.add('active')
     }
   }, 50)
-})
 
-onBeforeUnmount(() => {
-  if (observer) {
-    observer.disconnect()
-    observer = null
-  }
-  if (footerObserver) {
-    footerObserver.disconnect()
-    footerObserver = null
-  }
-  // remove click listeners by cloning nodes (simple cleanup)
-  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.policy-toc a'))
-  tocLinks.forEach(link => {
-    const clone = link.cloneNode(true) as HTMLElement
-    link.parentNode && link.parentNode.replaceChild(clone, link)
+  onBeforeUnmount(() => {
+    if (observer) {
+      observer.disconnect()
+      observer = null
+    }
+    if (footerObserver) {
+      footerObserver.disconnect()
+      footerObserver = null
+    }
+    // remove click listeners by cloning nodes (simple cleanup)
+    tocLinks.forEach(link => {
+      const clone = link.cloneNode(true) as HTMLElement
+      link.parentNode && link.parentNode.replaceChild(clone, link)
+    })
   })
-})
+}
 </script>
 
-<style scoped>
+<style>
 .policy-wrap {
   padding: 48px 20px;
 }
@@ -242,7 +340,12 @@ onBeforeUnmount(() => {
   align-items: start;
 }
 .policy-main {
-  font-family: monospace, monospace;
+  /* font-family: monospace, monospace; */
+  color: #16181B;
+}
+
+.policy-main a {
+  font-weight: 300;
   color: #16181B;
 }
 .policy-main h1 {
@@ -256,7 +359,8 @@ onBeforeUnmount(() => {
   margin-bottom: 12px;
 }
 .policy-main h3 {
-  font-size: 14px;
+  font-size: 22px;
+  font-weight: 500;
   margin-top: 18px;
   margin-bottom: 8px;
 }
@@ -277,6 +381,7 @@ onBeforeUnmount(() => {
   margin-left: 20px;
 }
 .policy-main ul li { 
+  list-style: disc;
   margin-bottom: 8px;
 }
 .contact-info {
