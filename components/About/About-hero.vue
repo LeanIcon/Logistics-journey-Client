@@ -33,4 +33,3 @@ defineProps<{
     @apply text-[34px] lg:text-[45px] xl:text-[47px] lg:leading-[60px] font-bold -mt-1;
     }
 </style>
-

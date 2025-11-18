@@ -95,4 +95,3 @@ const { inView, sectionRef } = useInView(0.2)
   color: #df900a;
 }
 </style>
-

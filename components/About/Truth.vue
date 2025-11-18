@@ -67,5 +67,3 @@ defineProps<{
 
 const { inView, sectionRef } = useInView(0.2)
 </script>
-
-
