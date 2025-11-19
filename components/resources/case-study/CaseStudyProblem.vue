@@ -10,5 +10,9 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{ problems: string[] }>();
+import type { PropType } from "vue";
+
+const props = defineProps({
+  problems: { type: Array as PropType<string[]>, default: () => [] },
+});
 </script>

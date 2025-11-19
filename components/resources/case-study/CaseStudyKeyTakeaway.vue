@@ -5,5 +5,7 @@
   </div>
 </template>
 <script setup lang="ts">
-defineProps<{ takeaway: string }>();
+const props = defineProps({
+  takeaway: { type: String, default: "" },
+});
 </script>

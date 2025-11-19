@@ -53,9 +53,7 @@
           :transition="{ duration: 0.8 }"
         >
           <img
-            :src="
-              featured?.featured_image?.url || '/public/images/Blog/Tech.png'
-            "
+            :src="featured?.featured_image?.url || '/images/About/Image.png'"
             alt=""
           />
         </motion.div>
@@ -65,10 +63,7 @@
           :transition="{ duration: 0.8 }"
         >
           <img
-            :src="
-              featured?.client?.logo ||
-              '/public/images/pas-logo-4-1-600x212 1.png'
-            "
+            :src="featured?.client?.logo || '/images/About/Image.png'"
             alt="client logo"
           />
           <p class="text-start pt-5 pb-4" v-if="featured">
@@ -83,10 +78,7 @@
             <div>
               <img
                 class="w-16 h-16 object-cover rounded-full border-4 border-red-400 shadow-2xl"
-                :src="
-                  featured?.client?.logo ||
-                  'https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&w=334&q=80'
-                "
+                :src="featured?.client?.logo || '/images/About/Image.png'"
               />
             </div>
             <div>

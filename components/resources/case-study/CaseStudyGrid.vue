@@ -1,6 +1,10 @@
 <template>
   <div class="max-w-7xl mx-auto px-4 py-10">
-    <CaseStudyHeader />
+    <CaseStudyHeader
+      :title="caseStudies[0]?.title"
+      :client="caseStudies[0]?.client?.name"
+      :breadcrumbTitle="caseStudies[0]?.title"
+    />
     <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
     <div v-if="caseStudies.length > 0">
       <!-- Display the first case study or loop through them -->
@@ -8,44 +12,20 @@
         <CaseStudyHero
           :image="caseStudy.featured_image?.url || ''"
           :client="caseStudy.client?.name || caseStudy.title"
+          :clientLogo="caseStudy.client?.logo || ''"
           :industry="caseStudy.sidebar?.industry || 'Industry'"
           :location="caseStudy.sidebar?.location || 'Location'"
           :engagementType="caseStudy.sidebar?.engagement_type || ''"
           :implementationPeriod="caseStudy.sidebar?.implementation_period || ''"
-          :solution="caseStudy.content?.introduction || ''"
+          :introduction="caseStudy.content?.introduction || ''"
         />
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
           <div class="lg:col-span-2">
             <div class="prose max-w-none">
-              <div
-                v-if="caseStudy.content?.introduction"
-                v-html="decodeHtml(caseStudy.content.introduction)"
-              ></div>
-              <!-- Key takeaway, road ahead and testimonial (use components if data available) -->
-              <div v-if="caseStudy.content?.key_takeaway">
+              <!-- Key takeaway (kept here) -->
+              <div v-if="caseStudy.content?.key_takeaway" id="key-takeaway">
                 <CaseStudyKeyTakeaway
                   :takeaway="caseStudy.content.key_takeaway"
-                />
-              </div>
-              <div v-if="caseStudy.content?.the_road_ahead">
-                <CaseStudyRoadAhead
-                  :roadAhead="caseStudy.content.the_road_ahead"
-                />
-              </div>
-              <div
-                v-if="caseStudy.client?.quote || caseStudy.content?.testimonial"
-              >
-                <CaseStudyTestimonial
-                  :testimonial="
-                    caseStudy.client?.quote ||
-                    caseStudy.content?.testimonial ||
-                    ''
-                  "
-                  :author="
-                    caseStudy.client?.quote_author ||
-                    caseStudy.client?.name ||
-                    ''
-                  "
                 />
               </div>
               <div>
@@ -70,9 +50,11 @@
 
                 <!-- Solutions: prefer structured component when API returns array, otherwise fall back to raw HTML -->
                 <template v-if="Array.isArray(caseStudy.content?.the_solution)">
-                  <CaseStudySolution
-                    :solutions="caseStudy.content.the_solution"
-                  />
+                  <section id="the-solution">
+                    <CaseStudySolution
+                      :solutions="caseStudy.content.the_solution"
+                    />
+                  </section>
                 </template>
                 <template
                   v-else-if="
@@ -80,53 +62,153 @@
                     htmlListToArray(caseStudy.content.the_solution).length
                   "
                 >
-                  <CaseStudySolution
-                    :solutions="htmlListToArray(caseStudy.content.the_solution)"
-                  />
+                  <section id="the-solution">
+                    <CaseStudySolution
+                      :solutions="
+                        htmlListToArray(caseStudy.content.the_solution)
+                      "
+                    />
+                  </section>
                 </template>
                 <template v-else-if="caseStudy.content?.the_solution">
-                  <h3>The solution</h3>
-                  <div
-                    v-html="decodeHtml(caseStudy.content.the_solution)"
-                  ></div>
+                  <section id="the-solution">
+                    <h3>The solution</h3>
+                    <div
+                      v-html="decodeHtml(caseStudy.content.the_solution)"
+                    ></div>
+                  </section>
                 </template>
 
                 <!-- Results: structured component if array, otherwise render as html/text -->
                 <template v-if="Array.isArray(caseStudy.content?.the_result)">
-                  <CaseStudyResult :results="caseStudy.content.the_result" />
+                  <section id="the-result">
+                    <CaseStudyResult :results="caseStudy.content.the_result" />
+                  </section>
                 </template>
                 <template v-else-if="caseStudy.content?.the_result">
-                  <CaseStudyResult
-                    :results="
-                      Array.isArray(caseStudy.content.the_result)
-                        ? caseStudy.content.the_result
-                        : htmlListToArray(caseStudy.content.the_result).length
-                        ? htmlListToArray(caseStudy.content.the_result)
-                        : [decodeHtml(caseStudy.content.the_result)]
-                    "
-                  />
+                  <section id="the-result">
+                    <CaseStudyResult
+                      :results="
+                        Array.isArray(caseStudy.content.the_result)
+                          ? caseStudy.content.the_result
+                          : htmlListToArray(caseStudy.content.the_result).length
+                          ? htmlListToArray(caseStudy.content.the_result)
+                          : [decodeHtml(caseStudy.content.the_result)]
+                      "
+                    />
+                  </section>
                 </template>
+
+                <!-- After problem/solution/result: Road Ahead and Testimonial (placed last) -->
+                <div>
+                  <div
+                    v-if="caseStudy.content?.the_road_ahead"
+                    id="the-road-ahead"
+                    class="mt-8"
+                  >
+                    <CaseStudyRoadAhead
+                      :roadAhead="decodeHtml(caseStudy.content.the_road_ahead)"
+                    />
+                  </div>
+                  <div
+                    v-if="
+                      caseStudy.client?.quote || caseStudy.content?.testimonial
+                    "
+                    id="testimonial"
+                    class="mt-6"
+                  >
+                    <CaseStudyTestimonial
+                      :testimonial="
+                        decodeHtml(
+                          caseStudy.client?.quote ||
+                            caseStudy.content?.testimonial ||
+                            ''
+                        )
+                      "
+                      :author="
+                        caseStudy.client?.quote_author ||
+                        caseStudy.client?.name ||
+                        ''
+                      "
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div>
-            <!-- Sidebar with post metadata -->
-            <div class="bg-white rounded-lg shadow p-6">
-              <h3 class="font-semibold mb-4">Post Details</h3>
-              <div class="space-y-2 text-sm text-gray-600">
-                <div>Client: {{ caseStudy.client?.name || "-" }}</div>
-                <div>Industry: {{ caseStudy.sidebar?.industry || "-" }}</div>
-                <div>Location: {{ caseStudy.sidebar?.location || "-" }}</div>
-                <div>
-                  Engagement: {{ caseStudy.sidebar?.engagement_type || "-" }}
-                </div>
-                <div>
-                  Implementation:
-                  {{ caseStudy.sidebar?.implementation_period || "-" }}
-                </div>
-                <div>Status: {{ caseStudy.meta?.status || "-" }}</div>
-              </div>
-            </div>
+            <!-- Sidebar: table of contents / post details (click to scroll) -->
+            <nav class="bg-white rounded-lg shadow p-4 sticky top-28">
+              <!-- <h3 class="font-semibold mb-3">On this page</h3> -->
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'the-problem',
+                    }"
+                    @click="scrollTo('the-problem')"
+                  >
+                    The Problem
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'the-solution',
+                    }"
+                    @click="scrollTo('the-solution')"
+                  >
+                    What We Did to Solve It
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'the-result',
+                    }"
+                    @click="scrollTo('the-result')"
+                  >
+                    The Result
+                  </button>
+                </li>
+                <!-- <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'key-takeaway',
+                    }"
+                    @click="scrollTo('key-takeaway')"
+                  >
+                    Key Takeaway
+                  </button>
+                </li> -->
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'the-road-ahead',
+                    }"
+                    @click="scrollTo('the-road-ahead')"
+                  >
+                    The Road Ahead
+                  </button>
+                </li>
+                <!-- <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'testimonial',
+                    }"
+                    @click="scrollTo('testimonial')"
+                  >
+                    Testimonial
+                  </button>
+                </li> -->
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -156,6 +238,16 @@ import Transform from "~/components/home/Transform.vue";
 const caseStudies = ref<CaseStudy[]>([]);
 const error = ref<string>("");
 const loading = ref(true);
+const activeId = ref<string | null>(null);
+
+function scrollTo(id: string) {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    activeId.value = id;
+  }
+}
 
 // Decode HTML entities and return a decoded string that can be safely used with v-html.
 // Uses DOM when available (client) for robust decoding, falls back to simple replacements on server.
@@ -250,4 +342,37 @@ onMounted(async () => {
     loading.value = false;
   }
 });
+
+// Scroll spy: observe section headings and update activeId
+if (typeof window !== "undefined") {
+  window.requestAnimationFrame(() => {
+    try {
+      const ids = [
+        "introduction",
+        "the-problem",
+        "the-solution",
+        "the-result",
+        "key-takeaway",
+        "the-road-ahead",
+        "testimonial",
+      ];
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((ent) => {
+            if (ent.isIntersecting) {
+              activeId.value = ent.target.id || null;
+            }
+          });
+        },
+        { root: null, rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+      );
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    } catch (e) {
+      // ignore
+    }
+  });
+}
 </script>

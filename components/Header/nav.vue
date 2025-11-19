@@ -39,12 +39,16 @@
       <NuxtLink class="nav-link" to="/features" active-class="active"
         >Features</NuxtLink
       >
-      <div v-if="route.path.startsWith('/resources')" class="relative">
-        <button
-          class="nav-link flex items-center gap-1 border-none bg-transparent"
-          @click="toggleResourcesDropdown"
+      <div
+        v-if="route.path.startsWith('/resources')"
+        class="relative"
+        @mouseenter="showResourcesDropdown = true"
+        @mouseleave="showResourcesDropdown = false"
+      >
+        <NuxtLink
+          class="nav-link flex items-center gap-1"
+          to="/resources"
           :class="{ active: isResourcesActive }"
-          type="button"
         >
           Resources
           <svg
@@ -61,7 +65,7 @@
               d="M19 9l-7 7-7-7"
             />
           </svg>
-        </button>
+        </NuxtLink>
         <div
           v-show="showResourcesDropdown"
           class="absolute left-0 top-full mt-2 min-w-[160px] bg-white border border-gray-200 shadow-lg z-50"
@@ -112,7 +116,6 @@
           @click="toggleResourcesDropdown"
           class="nav-link w-full text-left flex items-center gap-1 border-none bg-transparent"
           :class="{ active: isResourcesActive }"
-          type="button"
         >
           Resources
           <svg
