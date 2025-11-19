@@ -59,13 +59,15 @@
 
       <div>
         <!-- Sidebar: table of contents / post details (click to scroll) -->
-        <nav class="bg-white rounded-lg shadow p-4 sticky top-28">
+        <nav class="bg-white rounded-lg p-4 sticky top-28">
           <ul class="space-y-2 text-sm">
             <li>
               <button
-                class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
                 :class="{
-                  'bg-blue-600 text-white': activeId === 'the-problem',
+                  'bg-blue-600 text-white rounded-md':
+                    activeId === 'the-problem',
+                  'bg-transparent text-black': activeId !== 'the-problem',
                 }"
                 @click="scrollTo('the-problem')"
               >
@@ -74,9 +76,11 @@
             </li>
             <li>
               <button
-                class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
                 :class="{
-                  'bg-blue-600 text-white': activeId === 'the-solution',
+                  'bg-blue-600 text-white rounded-md':
+                    activeId === 'the-solution',
+                  'bg-transparent text-black': activeId !== 'the-solution',
                 }"
                 @click="scrollTo('the-solution')"
               >
@@ -85,8 +89,12 @@
             </li>
             <li>
               <button
-                class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
-                :class="{ 'bg-blue-600 text-white': activeId === 'the-result' }"
+                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
+                :class="{
+                  'bg-blue-600 text-white rounded-md':
+                    activeId === 'the-result',
+                  'bg-transparent text-black': activeId !== 'the-result',
+                }"
                 @click="scrollTo('the-result')"
               >
                 The Result
@@ -94,9 +102,11 @@
             </li>
             <li>
               <button
-                class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
                 :class="{
-                  'bg-blue-600 text-white': activeId === 'the-road-ahead',
+                  'bg-blue-600 text-white rounded-md':
+                    activeId === 'the-road-ahead',
+                  'bg-transparent text-black': activeId !== 'the-road-ahead',
                 }"
                 @click="scrollTo('the-road-ahead')"
               >
@@ -225,7 +235,7 @@ const testimonialAuthor = computed(
 );
 
 // Scroll-to and scroll-spy state
-const activeId = ref(null);
+const activeId = ref("the-problem");
 
 function scrollTo(id) {
   if (typeof document === "undefined") return;
@@ -242,7 +252,6 @@ if (typeof window !== "undefined") {
     try {
       window.requestAnimationFrame(() => {
         const ids = [
-          "introduction",
           "the-problem",
           "the-solution",
           "the-result",
@@ -252,11 +261,15 @@ if (typeof window !== "undefined") {
         ];
         const observer = new IntersectionObserver(
           (entries) => {
-            entries.forEach((ent) => {
-              if (ent.isIntersecting) {
-                activeId.value = ent.target.id || null;
-              }
-            });
+            // Find the first visible section in viewport
+            const visible = entries.filter((ent) => ent.isIntersecting);
+            if (visible.length) {
+              // Sort by boundingClientRect.top (closest to top)
+              visible.sort(
+                (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+              );
+              activeId.value = visible[0].target.id || "the-problem";
+            }
           },
           { root: null, rootMargin: "-40% 0px -40% 0px", threshold: 0 }
         );
