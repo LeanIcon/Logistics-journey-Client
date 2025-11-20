@@ -5,18 +5,17 @@
         </div>
         <div class="rounded-2xl flex items-center bg-[#225AD6] mx-auto">
             <div class="px-8 py-10 sm:py-0 text-center sm:text-start mx-auto sm:w-1/2">
-                <h2 class="text-white mb-4">
-                    Stop firefighting. <br> Start delivering with confidence.
+                <h2 v-html= "heroData?.headline || fallbackDescription"  class="text-white mb-4">                   
                 </h2>
                 <NuxtLink to="/Request_demo">
                     <button class="solid-btn2">
-                        Book a Demo Now
+                        {{ heroData?.button.text || 'Book a Demo Now' }}
                     </button>
                 </NuxtLink>
             </div>
 
             <div class="hidden sm:flex w-1/2">
-                <img class="rounded-r-2xl" src="/public/images/bike_delivery.png" alt="bike_delivery">
+                <img class="rounded-r-2xl" :src=" heroData?.mobile_image || '/images/bike_delivery.png'" alt="bike_delivery">
             </div>
         </div>
          <div class="flex sm:hidden -mt-[4cm] z-4">
@@ -25,8 +24,34 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useApi } from '~/composables/useApi'
+import { motion } from "motion-v"
+import { ref, onMounted } from 'vue'
 
+const { getPagesBySlug } = useApi()
+
+const heroData = ref<any>(null)
+
+onMounted(async () => {
+  try {
+    const response = await getPagesBySlug('home')
+    const blocks = response?.data?.blocks || []
+    const heroBlock = blocks.find((b: any) => b.type === 'CTAHomepage')
+
+    if (heroBlock && heroBlock.data) {
+      heroData.value = heroBlock.data
+    }
+  } catch (error) {
+    console.error('Failed to load hero section:', error)
+  }
+})
+
+const fallbackDescription = `
+  Stop firefighting. 
+  <br> 
+  Start delivering with confidence.
+`;
 </script>
 
 <style>
