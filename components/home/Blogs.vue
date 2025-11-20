@@ -50,72 +50,12 @@
     </motion.div>
 
     <motion.div
-      class="grid sm:grid-cols-2 gap-8 items-stretch mx-auto max-w-5xl overflow-x-hidden"
+      class="mx-auto max-w-5xl overflow-x-hidden"
       :initial="{ opacity: 0 }"
       :animate="inView ? { opacity: 1 } : { opacity: 0 }"
       :transition="{ duration: 1.4 }"
     >
-      <div
-        v-for="(blog, index) in blogsList"
-        :key="blog.id"
-        class="overflow-hidden"
-      >
-        <!-- Motion wrapper per blog card -->
-        <motion.div
-          :initial="
-            index % 2 === 0 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }
-          "
-          :animate="
-            inView
-              ? { x: 0, opacity: 1 }
-              : index % 2 === 0
-              ? { x: -100, opacity: 0 }
-              : { x: 100, opacity: 0 }
-          "
-          :transition="{ duration: 0.8, delay: index * 0.1 }"
-          class="bg-white flex flex-col h-full rounded-lg mb-6 tracking-wide"
-        >
-          <div class="md:shrink-0">
-            <img
-              :src="blog.image || '/images/About/Image.png'"
-              alt="Blog Image"
-              class="w-full h-64 rounded-lg object-cover"
-            />
-          </div>
-          <div class="flex justify-between px-4 items-center pt-3">
-            <span class="text-xs rounded-md p-1 bg-[#C2F0B2]">{{
-              blog.type
-            }}</span>
-            <span class="text-xs text-start">{{ blog.date }}</span>
-          </div>
-          <div class="px-4 py-2 mt-2">
-            <h6 class="font-bold text-start mb-2 text-xl tracking-normal">
-              {{ blog.title }}
-            </h6>
-            <p class="text-sm text-start grow">
-              {{ blog.excerpt }}
-            </p>
-            <div class="flex items-center mt-3 space-x-2">
-              <a :href="blog.link" class="text-[#225AD6] text-xs">Read More</a>
-              <a :href="blog.link" class="flex text-gray-700">
-                <svg
-                  width="7"
-                  height="12"
-                  viewBox="0 0 7 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0.876953 0.5C0.977777 0.5 1.05475 0.530412 1.13281 0.608398L6.07715 5.55273C6.13104 5.60665 6.15622 5.64863 6.16797 5.67676V5.67773C6.18275 5.71329 6.19141 5.75306 6.19141 5.80176C6.19141 5.85046 6.18275 5.89022 6.16797 5.92578V5.92676C6.15621 5.95488 6.13103 5.99687 6.07715 6.05078L1.1084 11.0195C1.03063 11.0973 0.963489 11.1192 0.882812 11.1162C0.788784 11.1127 0.707921 11.0809 0.62207 10.9951C0.543947 10.917 0.512697 10.8402 0.512695 10.7393C0.512695 10.6384 0.543945 10.5615 0.62207 10.4834L5.30371 5.80176L0.59668 1.09473C0.519014 1.01703 0.497072 0.95072 0.5 0.870117C0.503448 0.77585 0.536015 0.694453 0.62207 0.608398C0.699995 0.530589 0.776363 0.500076 0.876953 0.5Z"
-                    fill="#225AD6"
-                    stroke="#225AD6"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </div>
+      <OtherInsights :posts="insightsList" />
     </motion.div>
 
     <motion.div
@@ -124,47 +64,54 @@
       :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
       :transition="{ duration: 0.8 }"
     >
-      <!-- <button
-                class="solid-btn"
-                type="button">
-                See more blogs
-            </button> -->
-      <NuxtLink to="/More_blogs"
-        ><button class="solid-btn">See more blogs</button></NuxtLink
+      <NuxtLink
+        to="/resources/blog"
+        class="text-blue-600 font-medium hover:underline"
+        >See more →</NuxtLink
       >
     </motion.div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { blogPosts } from "~/data/blogs.js";
+import { ref, onMounted } from "vue";
 import { motion } from "motion-v";
 import { useInView } from "~/composables/useInView";
+import OtherInsights from "~/components/OtherInsights.vue";
+import { blogPosts } from "~/data/blogs.js";
 
 const { inView, sectionRef } = useInView(0.2);
 
-const blogsList = ref<
-  {
-    id: number;
-    title: string;
-    link: string;
-    excerpt: string;
-    image: string;
-    date: string;
-    type: string;
-  }[]
->([]);
+type Insight = {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  published_at: string;
+  featured_image: { url: string; alt: string };
+  categories: { name: string }[];
+};
+
+const insightsList = ref<Insight[]>([]);
+
+function slugify(text: string) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
 onMounted(() => {
-  blogsList.value = blogPosts.map((blog) => ({
-    id: blog.id,
-    title: blog.title,
-    link: blog.link,
-    excerpt: blog.excerpt,
-    image: blog.image,
-    date: blog.date,
-    type: blog.type,
+  insightsList.value = blogPosts.map((b) => ({
+    id: b.id,
+    title: b.title,
+    slug: slugify(b.title),
+    excerpt: b.excerpt,
+    published_at: b.date,
+    featured_image: { url: b.image, alt: b.title },
+    categories: b.type ? [{ name: b.type }] : [],
   }));
 });
 </script>
@@ -173,7 +120,6 @@ onMounted(() => {
 p {
   color: gray;
 }
-
 span {
   font-weight: 10;
   color: gray;

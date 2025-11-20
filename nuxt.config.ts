@@ -4,7 +4,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: "2025-10-31",
   css: ["~/assets/css/main.css", "~/assets/css/fonts.css"],
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/motion/nuxt", "motion-v/nuxt"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/motion/nuxt",
+    "motion-v/nuxt",
+    [
+      "@nuxt/image",
+      {
+        quality: 80,
+        format: ["webp", "avif", "png", "jpg"],
+        sizes: "320,640,768,1024,1280,1536",
+        loading: "lazy",
+      },
+    ],
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -58,5 +71,9 @@ export default defineNuxtConfig({
         },
       ],
     },
+  },
+
+  nitro: {
+    compressPublicAssets: true,
   },
 });

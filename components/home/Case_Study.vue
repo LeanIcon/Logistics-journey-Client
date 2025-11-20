@@ -53,7 +53,7 @@
           :transition="{ duration: 0.8 }"
         >
           <img
-            :src="featured?.featured_image?.url || '/images/About/Image.png'"
+            :src="featured?.featured_image?.url || '/images/cs2.jpg'"
             alt=""
           />
         </motion.div>
@@ -63,8 +63,9 @@
           :transition="{ duration: 0.8 }"
         >
           <img
-            :src="featured?.client?.logo || '/images/About/Image.png'"
+            :src="'/images/b12.png'"
             alt="client logo"
+            class="h-16 w-auto rounded -ml-2"
           />
           <p class="text-start pt-5 pb-4" v-if="featured">
             {{
@@ -78,7 +79,7 @@
             <div>
               <img
                 class="w-16 h-16 object-cover rounded-full border-4 border-red-400 shadow-2xl"
-                :src="featured?.client?.logo || '/images/About/Image.png'"
+                :src="featured?.client?.logo || '/images/b12.png'"
               />
             </div>
             <div>

@@ -19,7 +19,7 @@
           :implementationPeriod="caseStudy.sidebar?.implementation_period || ''"
           :introduction="caseStudy.content?.introduction || ''"
         />
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 mt-6">
           <div class="lg:col-span-2">
             <div class="prose max-w-none">
               <!-- Key takeaway (kept here) -->

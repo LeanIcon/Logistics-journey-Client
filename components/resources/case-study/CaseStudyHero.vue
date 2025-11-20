@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1200px] mx-auto">
+  <div class="max-w-7xl mx-auto px-4 py-10">
     <div class="flex flex-col lg:flex-row items-start gap-6">
       <!-- Left: main image/content -->
       <div class="flex-1">
@@ -20,10 +20,10 @@
       </div>
 
       <!-- Divider (visible on lg) -->
-      <div class="hidden lg:block w-px bg-gray-200 h-[320px]"></div>
+      <div class="hidden lg:block w-px bg-gray-200 h-[570px]"></div>
 
       <!-- Right: sidebar card -->
-      <div class="w-full lg:w-[340px]">
+      <div class="w-full lg:w-[440px] h-[570px]">
         <div class="bg-[#E9EFFD80] rounded-xl p-6 h-full">
           <!-- <div v-if="clientLogo" class="flex justify-center mb-2">
               <img
@@ -34,15 +34,21 @@
             </div> -->
 
           <!-- b12 image at top of sidebar info -->
-          <div class="flex justify-start mb-4">
+          <div class="flex justify-start mb-6">
             <img
               src="/images/b12.png"
               alt="b12"
               class="h-16 w-auto rounded -ml-2"
+              you
+              need
+              to
+              use
+              material
+              icon
             />
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-6">
             <div class="font-semibold text-base text-gray-900">Industry</div>
             <div class="text-sm text-gray-700">{{ industry }}</div>
 
