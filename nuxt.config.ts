@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'http://cms.logisticjourney.com/',
+      apiBase: 'https://cms.logisticjourney.com/',
     },
   },
 
