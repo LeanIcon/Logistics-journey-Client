@@ -107,10 +107,20 @@ export const useApi = () => {
   }
 
   const submitForm = async (identifier: string, data: any) => {
-    const result = await api(`/api/v1/pages/${identifier}/submit`, { method: 'POST', body: data })
-    // console.log(`Submitted form for ${identifier}:`, result)
-    return result
-  }
+  const { captcha, ...formData } = data
+
+  const result = await api(`/api/v1/pages/${identifier}/submit`, {
+    method: 'POST',
+    body: {
+      ...formData,
+      captcha, // Send the CAPTCHA token with the correct key
+    }
+  })
+
+  return result
+}
+
+
 
   // Policies API methods
   const getPolicies = async (params?: any) => {

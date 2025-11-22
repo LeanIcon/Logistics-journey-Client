@@ -281,7 +281,7 @@ const handleSubmit = async () => {
     
     const submissionData = {
       ...formData.value,
-      'captcha': token,
+      'g-recaptcha-response': token,
     }
 
     const response = await submitForm('newsletter-signup', submissionData)

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'https://cms.logisticjourney.com/',
+      apiBase: 'https://logisticjourney.onrender.com/',
+      recaptchaSiteKey: '6LdeOxQsAAAAANOxs0ENs6ILBUMlWoHp3_ARnTxd'
     },
   },
 
