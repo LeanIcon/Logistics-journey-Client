@@ -150,8 +150,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useApi } from '~/composables/useApi'
+import { useReCaptcha } from 'vue-recaptcha-v3'
 
 const { getFormBySlug, submitForm } = useApi()
+
+let recaptchaInstance = null
 
 const formFields = ref([])
 const formData = ref({})
@@ -207,6 +210,7 @@ const fallbackFields = [
 ]
 
 onMounted(async () => {
+  recaptchaInstance = useReCaptcha()
   try {
     const response = await getFormBySlug('contact-form')
     if (response && response.data && response.data.fields && response.data.fields.length > 0) {
@@ -232,11 +236,24 @@ const handleSubmit = async () => {
   formErrors.value = {}
 
   try {
-    const response = await submitForm('contact-form', formData.value)
-    // console.log('Form submitted successfully:', response)
-    // Handle success (e.g., show success message, reset form)
+    await recaptchaInstance?.recaptchaLoaded()
+    const token = await recaptchaInstance?.executeRecaptcha('contact_form_submit')
+
+    if (!token || typeof token !== 'string' || token.length === 0) {
+      formErrors.value = { general: ['reCAPTCHA token is invalid or empty. Please try again.'] }
+      isSubmitting.value = false
+      return
+    }
+
+    const submissionData = {
+      ...formData.value,
+      captcha: token
+    }
+    const response = await submitForm('contact-form', submissionData)
+
     successMessage.value = response.message || 'Thank you for your message! We will get back to you soon.'
     showSuccessPopup.value = true
+
     // Reset formData to empty strings for each field
     formData.value = formFields.value.reduce((acc, field) => {
       acc[field.name] = ''
@@ -249,7 +266,6 @@ const handleSubmit = async () => {
       const mappedErrors = {}
       for (const [key, value] of Object.entries(error.response._data.errors)) {
         if (key === 'message') {
-          // The 'message' key contains a summary, but we can ignore it or use it for general errors
           continue
         }
         mappedErrors[key] = value

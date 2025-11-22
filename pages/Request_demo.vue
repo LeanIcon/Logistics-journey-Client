@@ -1,4 +1,4 @@
-<template>
+o<template>
   <section class="highest-width bg-white min-h-screen flex items-center justify-center p-0 px-4 lg:px-24 md:py-24">
     <div class="w-full px-4 xs:px-6 lg:px-10 py-16 bg-[#E9EFFD] gap-4 lg:gap-10 md:flex md:rounded-2xl overflow-hidden">
       <!-- Left Section -->
@@ -215,8 +215,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useApi } from '~/composables/useApi'
+import { useReCaptcha } from 'vue-recaptcha-v3'
 
 const { getFormBySlug, submitForm } = useApi()
+
+let recaptchaInstance = null
 
 const formFields = ref([])
 const formData = ref({})
@@ -280,6 +283,7 @@ const fallbackFields = [
 ]
 
 onMounted(async () => {
+  recaptchaInstance = useReCaptcha()
   try {
     const response = await getFormBySlug('demo-request')
     if (response && response.data && response.data.fields && response.data.fields.length > 0) {
@@ -305,11 +309,24 @@ const handleSubmit = async () => {
   formErrors.value = {}
 
   try {
-    const response = await submitForm('demo-request', formData.value)
-    // console.log('Form submitted successfully:', response)
-    // Handle success (e.g., show success message, reset form)
+    await recaptchaInstance?.recaptchaLoaded()
+    const token = await recaptchaInstance?.executeRecaptcha('demo_request_submit')
+
+    if (!token || typeof token !== 'string' || token.length === 0) {
+      formErrors.value = { general: ['reCAPTCHA token is invalid or empty. Please try again.'] }
+      isSubmitting.value = false
+      return
+    }
+
+    const submissionData = {
+      ...formData.value,
+      captcha: token
+    }
+    const response = await submitForm('demo-request', submissionData)
+
     successMessage.value = 'Thank you for your request! We will get back to you soon.'
     showSuccessPopup.value = true
+
     // Reset formData to empty strings for each field
     formData.value = formFields.value.reduce((acc, field) => {
       acc[field.name] = ''
@@ -322,7 +339,6 @@ const handleSubmit = async () => {
       const mappedErrors = {}
       for (const [key, value] of Object.entries(error.response._data.errors)) {
         if (key === 'message') {
-          // The 'message' key contains a summary, but we can ignore it or use it for general errors
           continue
         }
         mappedErrors[key] = value

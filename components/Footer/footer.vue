@@ -224,12 +224,13 @@
 </template>
 
 <script setup>
+
 import { ref, onMounted } from 'vue'
 import { useApi } from '~/composables/useApi'
 import { useReCaptcha } from 'vue-recaptcha-v3'
 
 const { getFormBySlug, submitForm } = useApi()
-const recaptchaInstance = useReCaptcha()
+let recaptchaInstance = null
 
 const formFields = ref([])
 const formData = ref({})
@@ -251,6 +252,7 @@ const fallbackFields = [
 ]
 
 onMounted(async () => {
+  recaptchaInstance = useReCaptcha()
   try {
     const response = await getFormBySlug('newsletter-signup')
     if (response && response.data && response.data.fields && response.data.fields.length > 0) {
@@ -280,7 +282,6 @@ const handleSubmit = async () => {
 
     // Generate token for the action 'newsletter_signup'
     const token = await recaptchaInstance?.executeRecaptcha('newsletter_signup')
-    console.log('Generated reCAPTCHA token:', token)
 
     // Defensive check for token validity before submission
     if (!token || typeof token !== 'string' || token.length === 0) {
@@ -289,12 +290,11 @@ const handleSubmit = async () => {
       return
     }
 
-    console.log('Form data before submission:', JSON.stringify(formData.value))
+    // console.log('Form data before submission:', JSON.stringify(formData.value))
     const submissionData = {
       ...formData.value,
       'captcha': token,
     }
-    console.log('Submission data:', submissionData)
 
     // Submit form with captcha token
     const response = await submitForm('newsletter-signup', submissionData)
