@@ -277,33 +277,55 @@ const handleSubmit = async () => {
 
   try {
     await recaptchaInstance?.recaptchaLoaded()
+
+    // Generate token for the action 'newsletter_signup'
     const token = await recaptchaInstance?.executeRecaptcha('newsletter_signup')
-    
+    console.log('Generated reCAPTCHA token:', token)
+
+    // Defensive check for token validity before submission
+    if (!token || typeof token !== 'string' || token.length === 0) {
+      formErrors.value = { general: ['reCAPTCHA token is invalid or empty. Please try again.'] }
+      isSubmitting.value = false
+      return
+    }
+
+    console.log('Form data before submission:', JSON.stringify(formData.value))
     const submissionData = {
       ...formData.value,
       'captcha': token,
     }
+    console.log('Submission data:', submissionData)
 
+    // Submit form with captcha token
     const response = await submitForm('newsletter-signup', submissionData)
     successMessage.value = response.message || 'Successfully subscribed! Please check your email to confirm your subscription.'
     showSuccessPopup.value = true
+
+    // Clear form data on success
     formData.value = formFields.value.reduce((acc, field) => {
       acc[field.name] = ''
       return acc
     }, {})
+
   } catch (error) {
     console.error('Form submission failed:', error)
-    if (error.response && error.response._data && error.response._data.errors) {
-      // Map the errors to match the field names
-      const mappedErrors = {}
-      for (const [key, value] of Object.entries(error.response._data.errors)) {
-        if (key === 'message') {
-          // The 'message' key contains a summary, but we can ignore it or use it for general errors
-          continue
-        }
-        mappedErrors[key] = value
+
+    // Check for general error message in response data
+    if (error.response && error.response._data) {
+      if (error.response._data.message) {
+        formErrors.value.general = [error.response._data.message]
       }
-      formErrors.value = mappedErrors
+
+      // Map detailed field errors if present
+      if (error.response._data.errors) {
+        for (const [key, value] of Object.entries(error.response._data.errors)) {
+          if (key !== 'message') {
+            if (!formErrors.value[key]) {
+              formErrors.value[key] = value
+            }
+          }
+        }
+      }
     } else {
       formErrors.value = { general: ['An error occurred while submitting the form.'] }
     }

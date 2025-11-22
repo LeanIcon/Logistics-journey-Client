@@ -83,13 +83,13 @@ export const useApi = () => {
   }
 
   // Pages
-    const getPages = async (params?: { include_pages?: boolean; active?: boolean }) => {
+  const getPages = async (params?: { include_pages?: boolean; active?: boolean }) => {
     const result = await api('/api/v1/pages', { method: 'GET', query: params })
     console.log('Fetched all pages:', result)
     return result
   }
 
-   const getPagesBySlug = async (slug: string) => {
+  const getPagesBySlug = async (slug: string) => {
     return await api(`/api/v1/pages/${slug}`, { method: 'GET' })
   }
 
@@ -106,19 +106,28 @@ export const useApi = () => {
     return result
   }
 
-  const submitForm = async (identifier: string, data: any) => {
-  const { captcha, ...formData } = data
+const submitForm = async (identifier: string, data: any) => {
+    const { captcha, ...formData } = data
 
-  const result = await api(`/api/v1/pages/${identifier}/submit`, {
-    method: 'POST',
-    body: {
-      ...formData,
-      captcha, // Send the CAPTCHA token with the correct key
+    try {
+      const result = await api(`/api/v1/pages/${identifier}/submit`, {
+        method: 'POST',
+        body: {
+          ...formData,
+          captcha,
+        }
+      })
+      return result
+    } catch (err: any) {
+      if (err?.response?._data?.message) {
+        console.error('API submitForm error:', err.response._data.message)
+        throw new Error(err.response._data.message)
+      } else {
+        console.error('API submitForm unknown error:', err)
+        throw err
+      }
     }
-  })
-
-  return result
-}
+  }
 
 
 
@@ -131,9 +140,9 @@ export const useApi = () => {
     return await api(`/api/v1/policies/${slug}`, { method: 'GET' })
   }
 
- const getPageBySlug = async (slug: string) => {
+  const getPageBySlug = async (slug: string) => {
     return await api(`/api/v1/pages/${slug}`, { method: 'GET' })
- }
+  }
   const getAboutUsPage = async () => {
     return await api('/api/v1/pages/about-us', { method: 'GET' })
   }
