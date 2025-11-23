@@ -3,10 +3,10 @@
     <div
       v-for="post in posts"
       :key="post.id"
-      class="border rounded-2xl p-4 hover:shadow-lg transition bg-white"
+      class=" rounded-2xl p-4 hover:shadow-lg transition bg-white"
     >
       <NuxtImg
-        :src="post.featured_image?.url || '/images/About/Image.png'"
+        :src="post.featured_image?.url || '/images/Blog/Tech.png'"
         :alt="post.featured_image?.alt || post.title"
         class="w-full h-56 object-cover rounded-xl mb-4"
         loading="lazy"
@@ -18,7 +18,7 @@
         >
           {{ post.categories[0].name }}
         </span>
-        <span class="text-xs text-gray-500">{{
+        <span class="font-light text-xs text-gray-500">{{
           new Date(post.published_at).toLocaleDateString()
         }}</span>
       </div>

@@ -54,7 +54,7 @@
     <!-- Featured Image (use fallback when backend image missing) -->
     <div class="mb-10">
       <img
-        :src="blog.featured_image?.url || '/images/About/Image.png'"
+        :src="blog.featured_image?.url || '/images/Blog/Tech.png'"
         :alt="blog.featured_image?.alt || blog.title"
         class="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-sm"
       />
