@@ -7,7 +7,7 @@
     >
       <NuxtImg
         :src="post.featured_image?.url || '/images/Blog/Tech.png'"
-        :alt="post.featured_image?.alt || post.title"
+        alt="blog image"
         class="w-full h-56 object-cover rounded-xl mb-4"
         loading="lazy"
       />

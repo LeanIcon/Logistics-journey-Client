@@ -41,12 +41,12 @@
               fill="#DF900A"
             />
           </svg>
-          <span class="text-[15px]" style="color: #df900a">Resources</span>
+          <span class="text-[15px] font-light" style="color: #df900a">Resources</span>
         </div>
         <h2>Case Study</h2>
       </motion.div>
 
-      <div class="grid gap-6 items-center md:grid-cols-2 justify-between">
+      <div class="grid gap-14 items-center md:grid-cols-2 justify-between">
         <motion.div
           :initial="{ x: -100, opacity: 0 }"
           :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"

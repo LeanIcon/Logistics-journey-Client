@@ -40,7 +40,7 @@
             fill="#DF900A"
           />
         </svg>
-        <span class="text-[15px]" style="color: #df900a">Blogs</span>
+        <span class="text-[15px] font-light" style="color: #df900a">Blogs</span>
       </div>
       <h2>Insights & Updates</h2>
       <p class="max-w-lg mx-auto">
@@ -68,7 +68,7 @@
         to="/resources/blog"
         >
         <button class="solid-btn">
-          See more →
+          See more blogs →
         </button>
       </NuxtLink>
     </motion.div>
