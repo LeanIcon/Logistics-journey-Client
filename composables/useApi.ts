@@ -106,6 +106,8 @@ export const useApi = () => {
     return result
   }
 
+
+  
 const submitForm = async (identifier: string, data: any) => {
     const { captcha, ...formData } = data
 

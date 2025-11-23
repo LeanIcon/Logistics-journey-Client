@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2025-10-31',
   css: ['~/assets/css/main.css', '~/assets/css/fonts.css'],
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/motion/nuxt', 'motion-v/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@vueuse/motion/nuxt', 'motion-v/nuxt', '@nuxt/image'],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -14,14 +14,14 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'https://cms.logisticjourney.com/',
+      apiBase: 'https://cms.logisticjourney.com',
       recaptchaSiteKey: '6LdeOxQsAAAAANOxs0ENs6ILBUMlWoHp3_ARnTxd'
     },
   },
 
   app: {
     head: {
-      title: 'Logistics Journey',
+      title: "Logistics Journey",
       meta: [
         {
           name: 'description',
@@ -53,10 +53,32 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', sizes:'16x16', href: '/Navbar/2/Logistics Journey Logo.png' },
         // Preload critical fonts
-        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Regular.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
-        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Medium.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
-        { rel: 'preload', as: 'font', href: '/fonts/Gilroy-Bold.ttf', type: 'font/ttf', crossorigin: 'anonymous' },
+        {
+          rel: "preload",
+          as: "font",
+          href: "/fonts/Gilroy-Regular.ttf",
+          type: "font/ttf",
+          crossorigin: "anonymous",
+        },
+        {
+          rel: "preload",
+          as: "font",
+          href: "/fonts/Gilroy-Medium.ttf",
+          type: "font/ttf",
+          crossorigin: "anonymous",
+        },
+        {
+          rel: "preload",
+          as: "font",
+          href: "/fonts/Gilroy-Bold.ttf",
+          type: "font/ttf",
+          crossorigin: "anonymous",
+        },
       ],
     },
   },
-})
+
+  nitro: {
+    compressPublicAssets: true,
+  },
+});

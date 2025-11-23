@@ -28,13 +28,20 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-interface Props {
-  data: any
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  data: null
-})
+const props = withDefaults(
+  defineProps<{
+    data?: {
+      headline?: string
+      buttons?: { text: string; link?: string }[]
+    }
+  }>(),
+  {
+    data: () => ({
+      headline: 'Stop firefighting. <br> Start delivering with confidence.',
+      buttons: [{ text: 'Book a Demo Now', link: '/Request_demo' }]
+    }),
+  }
+)
 
 const ctaData = computed(() => props.data)
 </script>

@@ -1,280 +1,406 @@
 <template>
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Main Content -->
-      <div class="lg:col-span-2">
-        <div class="mb-6">
-          <NuxtLink to="/resources/case-study" class="text-xs text-gray-400"
-            >Case Study</NuxtLink
-          >
-          <span class="mx-2 text-xs text-gray-400">/</span>
-          <NuxtLink to="#" class="text-xs text-blue-600 font-medium"
-            >Park Avenue Stationers</NuxtLink
-          >
-        </div>
-        <h1 class="text-2xl md:text-3xl font-bold mb-4">
-          How Logistic Journey Helped Turn Paper Chaos into Digital Clarity
-        </h1>
-        <div class="mb-4">
-          <img
-            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80"
-            alt="Case Study"
-            class="w-full h-56 object-cover rounded-xl mb-2"
-          />
-          <p class="text-xs text-gray-500">
-            Park Avenue Stationers is a long-established distributor of office
-            supplies, serving schools, corporates, and small businesses in South
-            Africa. With a busy fleet of delivery vehicles, the challenge wasn’t
-            about getting stock out the door – it was about how they got
-            there.<br /><br />Before partnering with Logistic Journey,
-            inefficiencies in route planning and delivery tracking were costing
-            them precious time, fuel, and customer satisfaction.
-          </p>
-        </div>
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold mb-2">The Problem</h2>
-          <ol class="list-decimal list-inside text-gray-700 space-y-2">
-            <li>
-              <span class="font-semibold">Inefficient Route Planning</span
-              ><br />
-              Routes were assigned manually, often based on experience rather
-              than data. This led to:
-              <ul class="list-disc list-inside ml-5">
-                <li>Higher fuel costs</li>
-                <li>Slower delivery times</li>
-              </ul>
-            </li>
-            <li>
-              <span class="font-semibold">A paper based system</span><br />
-              Delivery paperwork was lost, delayed, and hard to reconcile. This
-              meant:
-              <ul class="list-disc list-inside ml-5">
-                <li>Hours of administrative work each week</li>
-                <li>Lost paperwork and inconsistent data capture</li>
-                <li>Limited ability to analyze delivery performance</li>
-              </ul>
-            </li>
-            <li>
-              <span class="font-semibold">Limited Post-Delivery Insight</span
-              ><br />
-              After deliveries, management could only review video recordings
-              and GPS trails, which showed where vehicles went – but not why.
-            </li>
-            <li>
-              <span class="font-semibold">Misuse of Company Vehicles</span
-              ><br />
-              Without visibility between trips, some drivers occasionally used
-              company vehicles for personal errands during routes – unseen until
-              after the fact.
-            </li>
-          </ol>
-        </div>
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold mb-2">What We Did to Solve It</h2>
-          <ol class="list-decimal list-inside text-gray-700 space-y-2">
-            <li>
-              <span class="font-semibold">Journey-Level Visibility</span><br />
-              We introduced journey-wise statistics to measure estimated vs.
-              actual distances, helping identify:
-              <ul class="list-disc list-inside ml-5">
-                <li>Route deviations</li>
-                <li>Extra kilometers travelled</li>
-                <li>Fuel inefficiencies</li>
-              </ul>
-              This instantly reduced accountability and empowered managers to
-              take proactive action.
-            </li>
-            <li>
-              <span class="font-semibold">Intuitive Reporting & Analytics</span
-              ><br />
-              We built simple reporting tools to let managers and dispatchers
-              view delivery performance by:
-              <ul class="list-disc list-inside ml-5">
-                <li>Date range</li>
-                <li>Driver</li>
-                <li>Route</li>
-                <li>Customer outlet</li>
-              </ul>
-              These insights turned what used to be “gut feel” into data-driven
-              decision-making.
-            </li>
-            <li>
-              <span class="font-semibold">Real-Time Communication</span><br />
-              We implemented a simple mobile app, dispatch sheets, and drivers
-              could now communicate directly inside the platform – reducing
-              reliance on WhatsApp messages and phone calls that previously
-              scattered information.
-              <ul class="list-disc list-inside ml-5">
-                <li>Improved delivery coordination</li>
-                <li>Stronger chain of custody</li>
-                <li>
-                  Created a permanent communication log for accountability
-                </li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold mb-2">The Result</h2>
-          <ul class="list-disc list-inside text-gray-700 space-y-2 ml-5">
-            <li>
-              <span class="font-semibold">Real-Time Vehicle Tracking:</span> For
-              the first time, management can view journey in detail – from
-              departure to delivery completion. Deviations and over-runs are
-              flagged automatically, helping identify route inefficiencies and
-              potential misuse of company vehicles.
-            </li>
-            <li>
-              <span class="font-semibold">Enhanced Accountability:</span>
-              Drivers now know that every kilometer and stop is tracked
-              transparently. The result? A noticeable shift in behavior and
-              ownership of delivery performance.
-            </li>
-            <li>
-              <span class="font-semibold">Smarter Decisions Through Data:</span>
-              Easy trip data is a growing pool of delivery stats. Over time,
-              this allows Park Avenue to analyze trends, predict resource needs,
-              and continually refine route planning for maximum efficiency.
-            </li>
-            <li>
-              <span class="font-semibold">Communication Clarity:</span> In-app
-              messaging and notification system replaced scattered WhatsApp
-              threads, streamlining dispatcher-driver collaboration.
-            </li>
-          </ul>
-        </div>
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold mb-2">The Road Ahead</h2>
-          <ul class="list-disc list-inside text-gray-700 space-y-2 ml-5">
-            <li>
-              Park Avenue Stationers continues to use Logistic Journey as part
-              of its ongoing digital transformation, and next steps include:
-            </li>
-            <li>Expanding analytics to include delivery cost-per-route.</li>
-            <li>Creating a driver leaderboard to recognize high performers.</li>
-            <li>
-              As data flows through the system, Park Avenue will be able to make
-              decisions not on assumptions – but on evidence, insight, and
-              impact.
-            </li>
-          </ul>
-        </div>
-        <div class="mb-8">
-          <h2 class="text-lg font-semibold mb-2">Key Takeaway</h2>
-          <p class="text-gray-700">
-            When logistics systems lose the journey, they start to own the
-            outcome.<br /><br />Logistic Journey’s partnership with Park Avenue
-            Stationers shows that visibility isn’t just about control – it’s
-            about
-            <span class="font-semibold">accountability, and progress</span
-            >.<br /><br />As the digital maturity curve grows, so too will their
-            competitive advantage.
-          </p>
-        </div>
-        <div class="bg-blue-50 rounded-xl p-6 flex items-center gap-4 mb-8">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="User"
-            class="w-14 h-14 rounded-full"
-          />
-          <div>
-            <p class="italic text-gray-700 mb-1">
-              “It’s early days, but the difference is already clear. We can
-              finally see what’s really happening on the road – and that
-              visibility changes everything.”
-            </p>
-            <div class="font-semibold">Devon Miles</div>
-            <div class="text-xs text-gray-400">
-              Operations Manager, Park Avenue Stationers
+  <div class="max-w-7xl mx-auto px-4 py-10">
+    <CaseStudyHeader
+      :title="caseStudies[0]?.title"
+      :client="caseStudies[0]?.client?.name"
+      :breadcrumbTitle="caseStudies[0]?.title"
+    />
+    <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
+    <div v-if="caseStudies.length > 0">
+      <!-- Display the first case study or loop through them -->
+      <div v-for="caseStudy in caseStudies.slice(0, 1)" :key="caseStudy.id">
+        <CaseStudyHero
+          :image="caseStudy.featured_image?.url || ''"
+          :client="caseStudy.client?.name || caseStudy.title"
+          :clientLogo="caseStudy.client?.logo || ''"
+          :industry="caseStudy.sidebar?.industry || 'Industry'"
+          :location="caseStudy.sidebar?.location || 'Location'"
+          :engagementType="caseStudy.sidebar?.engagement_type || ''"
+          :implementationPeriod="caseStudy.sidebar?.implementation_period || ''"
+          :introduction="caseStudy.content?.introduction || ''"
+        />
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 mt-6">
+          <div class="lg:col-span-2">
+            <div class="prose max-w-none">
+              <!-- Key takeaway (kept here) -->
+              <section v-if="caseStudy.content?.key_takeaway" id="key-takeaway">
+                <CaseStudyKeyTakeaway
+                  :takeaway="caseStudy.content.key_takeaway"
+                />
+              </section>
+              <div>
+                <!-- Problems: prefer structured component when API returns array, otherwise fall back to raw HTML -->
+                <section id="the-problem">
+                  <template
+                    v-if="Array.isArray(caseStudy.content?.the_problem)"
+                  >
+                    <CaseStudyProblem
+                      :problems="caseStudy.content.the_problem"
+                    />
+                  </template>
+                  <template
+                    v-else-if="
+                      typeof caseStudy.content?.the_problem === 'string' &&
+                      htmlListToArray(caseStudy.content.the_problem).length
+                    "
+                  >
+                    <CaseStudyProblem
+                      :problems="htmlListToArray(caseStudy.content.the_problem)"
+                    />
+                  </template>
+                  <template v-else-if="caseStudy.content?.the_problem">
+                    <h3>The problem</h3>
+                    <div
+                      v-html="decodeHtml(caseStudy.content.the_problem)"
+                    ></div>
+                  </template>
+                </section>
+
+                <!-- Solutions: prefer structured component when API returns array, otherwise fall back to raw HTML -->
+                <section id="the-solution">
+                  <template
+                    v-if="Array.isArray(caseStudy.content?.the_solution)"
+                  >
+                    <CaseStudySolution
+                      :solutions="caseStudy.content.the_solution"
+                    />
+                  </template>
+                  <template
+                    v-else-if="
+                      typeof caseStudy.content?.the_solution === 'string' &&
+                      htmlListToArray(caseStudy.content.the_solution).length
+                    "
+                  >
+                    <CaseStudySolution
+                      :solutions="
+                        htmlListToArray(caseStudy.content.the_solution)
+                      "
+                    />
+                  </template>
+                  <template v-else-if="caseStudy.content?.the_solution">
+                    <h3>The solution</h3>
+                    <div
+                      v-html="decodeHtml(caseStudy.content.the_solution)"
+                    ></div>
+                  </template>
+                </section>
+
+                <!-- Results: structured component if array, otherwise render as html/text -->
+                <section id="the-result">
+                  <template v-if="Array.isArray(caseStudy.content?.the_result)">
+                    <CaseStudyResult :results="caseStudy.content.the_result" />
+                  </template>
+                  <template v-else-if="caseStudy.content?.the_result">
+                    <CaseStudyResult
+                      :results="
+                        Array.isArray(caseStudy.content.the_result)
+                          ? caseStudy.content.the_result
+                          : htmlListToArray(caseStudy.content.the_result).length
+                          ? htmlListToArray(caseStudy.content.the_result)
+                          : [decodeHtml(caseStudy.content.the_result)]
+                      "
+                    />
+                  </template>
+                </section>
+
+                <!-- After problem/solution/result: Road Ahead and Testimonial (placed last) -->
+                <div>
+                  <section
+                    v-if="caseStudy.content?.the_road_ahead"
+                    id="the-road-ahead"
+                    class="mt-8"
+                  >
+                    <CaseStudyRoadAhead
+                      :roadAhead="decodeHtml(caseStudy.content.the_road_ahead)"
+                    />
+                  </section>
+                  <section
+                    v-if="
+                      caseStudy.client?.quote || caseStudy.content?.testimonial
+                    "
+                    id="testimonial"
+                    class="mt-6"
+                  >
+                    <CaseStudyTestimonial
+                      :testimonial="
+                        decodeHtml(
+                          caseStudy.client?.quote ||
+                            caseStudy.content?.testimonial ||
+                            ''
+                        )
+                      "
+                      :author="
+                        caseStudy.client?.quote_author ||
+                        caseStudy.client?.name ||
+                        ''
+                      "
+                    />
+                  </section>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="bg-blue-50 rounded-xl p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Park_Avenue_Stationers_logo.png"
-              alt="Park Avenue Stationers Logo"
-              class="w-10 h-10 object-contain"
-            />
-            <span class="font-semibold text-gray-700"
-              >Park Avenue Stationers</span
-            >
+          <div>
+            <!-- Sidebar: table of contents / post details (click to scroll) -->
+            <nav class="bg-white rounded-lg shadow p-4 sticky top-28">
+              <!-- <h3 class="font-semibold mb-3">On this page</h3> -->
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
+                    :class="{
+                      'bg-blue-600 text-white rounded-md':
+                        activeId === 'the-problem',
+                      'bg-transparent text-black': activeId !== 'the-problem',
+                    }"
+                    @click="scrollTo('the-problem')"
+                  >
+                    The Problem
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
+                    :class="{
+                      'bg-blue-600 text-white rounded-md':
+                        activeId === 'the-solution',
+                      'bg-transparent text-black': activeId !== 'the-solution',
+                    }"
+                    @click="scrollTo('the-solution')"
+                  >
+                    What We Did to Solve It
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
+                    :class="{
+                      'bg-blue-600 text-white rounded-md':
+                        activeId === 'the-result',
+                      'bg-transparent text-black': activeId !== 'the-result',
+                    }"
+                    @click="scrollTo('the-result')"
+                  >
+                    The Result
+                  </button>
+                </li>
+                <!-- <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'key-takeaway',
+                    }"
+                    @click="scrollTo('key-takeaway')"
+                  >
+                    Key Takeaway
+                  </button>
+                </li> -->
+
+                <li>
+                  <button
+                    class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
+                    :class="{
+                      'bg-blue-600 text-white rounded-md':
+                        activeId === 'the-road-ahead',
+                      'bg-transparent text-black':
+                        activeId !== 'the-road-ahead',
+                    }"
+                    @click="scrollTo('the-road-ahead')"
+                  >
+                    The Road Ahead
+                  </button>
+                </li>
+                <!-- <li>
+                  <button
+                    class="w-full text-left px-3 py-2 rounded hover:bg-blue-50"
+                    :class="{
+                      'bg-blue-600 text-white': activeId === 'testimonial',
+                    }"
+                    @click="scrollTo('testimonial')"
+                  >
+                    Testimonial
+                  </button>
+                </li> -->
+              </ul>
+            </nav>
           </div>
-          <p class="text-xs text-gray-500">
-            Making Every Journey Count<br />With Logistic Journey
-          </p>
-        </div>
-      </div>
-      <!-- Side Card -->
-      <div class="bg-white rounded-xl shadow p-6 h-fit">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Park_Avenue_Stationers_logo.png"
-          alt="Park Avenue Stationers Logo"
-          class="w-32 h-16 object-contain mb-4"
-        />
-        <div class="mb-2">
-          <div class="text-xs text-gray-400">Industry</div>
-          <div class="font-medium text-gray-700">
-            Office Supplies & Distribution
-          </div>
-        </div>
-        <div class="mb-2">
-          <div class="text-xs text-gray-400">Location</div>
-          <div class="font-medium text-gray-700">South Africa</div>
-        </div>
-        <div class="mb-2">
-          <div class="text-xs text-gray-400">Engagement Type</div>
-          <div class="font-medium text-gray-700">Pilot</div>
-        </div>
-        <div class="mb-2">
-          <div class="text-xs text-gray-400">Implementation Period</div>
-          <div class="font-medium text-gray-700">2025</div>
-        </div>
-        <div class="mb-2">
-          <div class="text-xs text-gray-400">Solution</div>
-          <div class="font-medium text-gray-700">
-            Logistic Journey delivery management platform
-          </div>
-        </div>
-        <div class="mt-6">
-          <ul class="space-y-2">
-            <li>
-              <button
-                class="w-full text-left px-4 py-2 rounded bg-blue-100 text-blue-700 font-medium"
-              >
-                The Problem
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-4 py-2 rounded hover:bg-blue-50 text-blue-700 font-medium"
-              >
-                What We Did to Solve It
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-4 py-2 rounded hover:bg-blue-50 text-blue-700 font-medium"
-              >
-                The Result
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-4 py-2 rounded hover:bg-blue-50 text-blue-700 font-medium"
-              >
-                The Road Ahead
-              </button>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
-  </section>
+    <div v-else-if="!error" class="text-gray-500">Loading case studies...</div>
+  </div>
   <Transform />
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, onMounted, nextTick } from "vue";
+import {
+  fetchCaseStudiesList,
+  fetchFeaturedCaseStudy,
+  type CaseStudy,
+} from "~/api/caseStudies";
+import CaseStudyHeader from "./CaseStudyHeader.vue";
+import CaseStudyHero from "./CaseStudyHero.vue";
+import CaseStudyProblem from "./CaseStudyProblem.vue";
+import CaseStudySolution from "./CaseStudySolution.vue";
+import CaseStudyResult from "./CaseStudyResult.vue";
+import CaseStudyRoadAhead from "./CaseStudyRoadAhead.vue";
+import CaseStudyKeyTakeaway from "./CaseStudyKeyTakeaway.vue";
+import CaseStudyTestimonial from "./CaseStudyTestimonial.vue";
 import Transform from "~/components/home/Transform.vue";
+
+const caseStudies = ref<CaseStudy[]>([]);
+const error = ref<string>("");
+const loading = ref(true);
+const activeId = ref<string>("the-problem");
+
+function scrollTo(id: string) {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    activeId.value = id;
+  }
+}
+
+// Decode HTML entities and return a decoded string that can be safely used with v-html.
+// Uses DOM when available (client) for robust decoding, falls back to simple replacements on server.
+function decodeHtml(input?: string | null) {
+  if (!input) return "";
+  try {
+    if (typeof document !== "undefined") {
+      const textarea = document.createElement("textarea");
+      textarea.innerHTML = input;
+      return textarea.value;
+    }
+  } catch (e) {
+    // ignore and fallback to regex decode
+  }
+  return String(input)
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ");
+}
+
+// Parse HTML lists (<ul>/<ol>) into a string[] of list item text.
+// Returns an empty array when no list items found.
+function htmlListToArray(input?: string | null): string[] {
+  const raw = decodeHtml(input);
+  if (!raw) return [];
+
+  // If running in browser, use DOM to parse reliably
+  try {
+    if (typeof document !== "undefined") {
+      const container = document.createElement("div");
+      container.innerHTML = raw;
+      const lis = Array.from(container.querySelectorAll("li"));
+      if (lis.length) {
+        return lis
+          .map((li) => li.textContent?.trim() || "")
+          .filter((t) => t.length > 0);
+      }
+    }
+  } catch (e) {
+    // fallback to regex below
+  }
+
+  // Server-side or fallback: extract <li>...</li> via regex
+  const liRegex = /<li[^>]*>(.*?)<\/li>/gi;
+  const matches: string[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = liRegex.exec(raw))) {
+    // Strip remaining tags from inner HTML
+    const inner = m[1] ?? "";
+    const text = inner.replace(/<[^>]+>/g, "").trim();
+    if (text) matches.push(text);
+  }
+
+  // If we found li items via regex, return them
+  if (matches.length) return matches;
+
+  // As a last resort, split by <br> or newlines
+  const brSplit = raw
+    .split(/<br\s*\/?\s*>|\n/)
+    .map((s) => s.replace(/<[^>]+>/g, "").trim())
+    .filter(Boolean);
+  return brSplit.length ? brSplit : [];
+}
+
+onMounted(async () => {
+  try {
+    // Try to fetch the featured case study first for the hero, and also fetch the list
+    const [list, featured] = await Promise.allSettled([
+      fetchCaseStudiesList(),
+      fetchFeaturedCaseStudy(),
+    ]);
+
+    if (list.status === "fulfilled" && Array.isArray(list.value)) {
+      caseStudies.value = list.value as CaseStudy[];
+    }
+
+    // If featured exists, ensure it's first in the array for display
+    if (featured.status === "fulfilled" && featured.value) {
+      // Put featured at the front (avoid duplicates)
+      const f = featured.value as CaseStudy;
+      caseStudies.value = [
+        f,
+        ...caseStudies.value.filter((c) => c.slug !== f.slug),
+      ];
+    }
+  } catch (e: any) {
+    error.value = e.message || "Failed to fetch case studies data.";
+  } finally {
+    loading.value = false;
+    // Wait for DOM to render sections, then set up scroll spy
+    await nextTick();
+    setupScrollSpy();
+  }
+});
+
+// Scroll spy: observe section headings and update activeId
+let _observer: IntersectionObserver | null = null;
+function setupScrollSpy() {
+  if (typeof window === "undefined") return;
+  try {
+    const ids = [
+      "the-problem",
+      "the-solution",
+      "the-result",
+      "key-takeaway",
+      "the-road-ahead",
+      "testimonial",
+    ];
+
+    if (_observer) {
+      _observer.disconnect();
+    }
+
+    _observer = new IntersectionObserver(
+      (entries) => {
+        // Find the first visible section in viewport
+        const visible = entries.filter((ent) => ent.isIntersecting);
+        if (visible.length && visible[0]?.target) {
+          visible.sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+          );
+          const id = (visible[0].target as HTMLElement).id || "the-problem";
+          activeId.value = id;
+        }
+      },
+      { root: null, rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) _observer!.observe(el);
+    });
+  } catch (e) {
+    // ignore
+  }
+}
 </script>
-<style scoped></style>
