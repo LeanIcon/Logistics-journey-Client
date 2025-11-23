@@ -1,104 +1,13 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-      <main class="policy-main" v-if="policyContent">
+      <main class="policy-main" v-if="refundContent">
         <div v-html="renderedContent"></div>
       </main>
-      <main class="policy-main" v-else>
-        <h2 id="background">Background</h2>
-
-        <p class="lead text-[#16181B]">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
-
-        <h2 id="information-we-collect">Information We Collect</h2>
-
-        <p>We may collect the following types of information:</p>
-
-        <h3>a. Information You Provide Directly</h3>
-        <ul>
-          <li>Name, email address, phone number, and company details when you create an account, request a demo, or contact us.</li>
-          <li>Billing and payment information when you purchase a subscription.</li>
-          <li>Any other information you provide voluntarily through forms, surveys, or communication.</li>
-        </ul>
-
-        <h3>b. Information Collected Automatically</h3>
-        <ul>
-          <li>IP address, browser type, device type, and operating system.</li>
-          <li>Usage data such as pages visited, time spent on site, and navigation patterns.</li>
-          <li>Cookies and tracking technologies for analytics and personalization.</li>
-        </ul>
-
-        <h3>c. Information From Third Parties</h3>
-        <ul>
-          <li>Data from integrations (e.g., payment processors, CRM tools).</li>
-          <li>Publicly available information related to your business or logistics operations.</li>
-        </ul>
-
-        <h2 id="how-we-use-your-information">How We Use Your Information</h2>
-        <p>We use the information collected to:</p>
-        <ul>
-          <li>Provide, operate, and improve our services.</li>
-          <li>Process payments and manage subscriptions.</li>
-          <li>Respond to inquiries and provide customer support.</li>
-          <li>Send important updates, service notifications, and promotional offers (you can opt out anytime).</li>
-          <li>Analyze usage trends to enhance performance and user experience.</li>
-          <li>Ensure security, fraud prevention, and compliance with legal obligations.</li>
-        </ul>
-
-        <h2 id="sharing-of-information">Sharing of Information</h2>
-        <p>We do not sell your personal information.</p>
-        <p>We may share information only with:</p>
-        <ul>
-          <li><strong>Service Providers:</strong> Third parties that help us operate (hosting, analytics, payments).</li>
-          <li><strong>Business Partners:</strong> If you opt into integrations or third-party services.</li>
-          <li><strong>Legal Authorities:</strong> If required by law, regulation, or legal process.</li>
-          <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets.</li>
-        </ul>
-
-        <h2 id="data-security">Data Security</h2>
-        <p>We use industry-standard measures to protect your data, including:</p>
-        <ul>
-          <li>Secure Sockets Layer (SSL) encryption.</li>
-          <li>Firewalls and access controls.</li>
-          <li>Regular security audits.</li>
-        </ul>
-        <p>However, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.</p>
-
-        <h2 id="data-retention">Data Retention</h2>
-        <p>We retain personal information only as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.</p>
-
-        <h2 id="your-rights">Data Security</h2>
-        <p>Depending on your location, you may have the following rights:</p>
-        <ul>
-          <li>Access, correct, or delete your personal information.</li>
-          <li>Opt-out of marketing communications.</li>
-          <li>Restrict or object to certain types of processing.</li>
-          <li>Request data portability.</li>
-          <li>Withdraw consent (where applicable).</li>
-        </ul>
-        <p>To exercise these rights, contact us at <a class="text-blue-500" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a>.</p>
-
-        <h2 id="cookies">Cookies &amp; Tracking Technologies</h2>
-        <p>We use cookies to:</p>
-        <ul>
-          <li>Enable essential functionality.</li>
-          <li>Understand usage patterns and improve services.</li>
-          <li>Deliver relevant content and promotions.</li>
-        </ul>
-        <p>You can manage cookie preferences through your browser settings.</p>
-
-        <h2 id="contact-us">Contact Us</h2>
-        <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
-        <address class="contact-info">
-          Logistic Journey<br>
-          The Workshop, Unit 7<br>
-          70 Seventh Avenue<br>
-          Parktown North, Johannesburg<br>
-          Gauteng, South Africa<br>
-          <span class="font-semibold text-[#16181B]">Email:</span> <a class="underline" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a><br>
-          <span class="font-semibold text-[#16181B]">Phone:</span> <span class="underline text-[#16181B]">+27 11 568 7109</span>
-        </address>
+     
+      <main v-else>
+        <div>Loading...</div>
       </main>
-
       <!-- <aside class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents" v-if="tocItems.length > 0">
         <nav>
           <ul>
@@ -113,7 +22,7 @@
         <aside
           class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]"
           aria-label="Table of contents"
-          v-if="policyContent && tocItems.length > 0"
+          v-if="refundContent && tocItems.length > 0"
         >
           <nav>
             <ul>
@@ -123,28 +32,6 @@
             </ul>
           </nav>
         </aside>
-
-        <!-- ✅ Static fallback TOC (only when backend fails) -->
-        <!-- <aside
-          class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]"
-          aria-label="Table of contents"
-          v-else
-        >
-          <nav>
-            <ul>
-              <li><a href="#background">Background</a></li>
-              <li><a href="#information-we-collect">Information We Collect</a></li>
-              <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
-              <li><a href="#sharing-of-information">Sharing of Information</a></li>
-              <li><a href="#data-security">Data Security</a></li>
-              <li><a href="#data-retention">Data Retention</a></li>
-              <li><a href="#your-rights">Your Rights</a></li>
-              <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
-              <li><a href="#contact-us">Contact Us</a></li>
-            </ul>
-          </nav>
-        </aside> -->
-
     </div>
   </div>
 </template>
@@ -174,11 +61,11 @@ interface TocItem {
 
 const loading = ref(true)
 
-const policyContent = ref<PolicyData | null>(null)
+const refundContent = ref<PolicyData | null>(null)
 const tocItems = ref<TocItem[]>([])
 
 const renderedContent = computed(() => {
-  return policyContent.value ? policyContent.value.content : '';
+  return refundContent.value ? refundContent.value.content : '';
 });
 
 
@@ -200,9 +87,9 @@ const generateToc = (html: string) => {
 
 onMounted(async () => {
   try {
-    const response = await getPolicyBySlug('privacy-policy')
+    const response = await getPolicyBySlug('refund-policy')
     if (response && response.data) {
-      policyContent.value = response.data
+      refundContent.value = response.data
       const html = renderedContent.value
       generateToc(html)
     }
@@ -212,7 +99,7 @@ onMounted(async () => {
   }
 
   // Setup TOC functionality if we have content
-  if (policyContent.value || tocItems.value.length > 0) {
+  if (refundContent.value || tocItems.value.length > 0) {
     setupToc()
   }
 })

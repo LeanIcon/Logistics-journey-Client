@@ -58,10 +58,11 @@
           class="bg-white hover:shadow-lg transition overflow-hidden block"
         >
           <img
-            v-if="post.featured_image?.url"
-            :src="post.featured_image.url"
-            :alt="post.featured_image.alt || post.title"
+            :src="post.featured_image?.url || '/images/About/Image.png'"
+            :alt="post.featured_image?.alt || post.title"
             class="w-full h-48 object-cover"
+            loading="lazy"
+            @error="onImgError"
           />
           <div class="p-5">
             <div class="flex items-center justify-between mb-2">
@@ -275,6 +276,14 @@ const categoryColor = (categoryName: string) => {
   };
   return colors[categoryName] || "bg-gray-100 text-gray-700";
 };
+
+// Fallback image handler — sets a safe placeholder when an image fails to load
+function onImgError(event: Event) {
+  const target = event.target as HTMLImageElement;
+  if (target && target.src.indexOf('/images/About/Image.png') === -1) {
+    target.src = '/images/About/Image.png';
+  }
+}
 </script>
 
 <style scoped></style>

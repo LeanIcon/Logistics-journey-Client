@@ -74,8 +74,8 @@ p
     <CategoryFilter />
   </div>
 
-  <FeatureCTA />
-  <HomeTestimonials />
+  <FeatureCTA class="mb-20"/>
+  <!-- <HomeTestimonials /> -->
   <HomeTransform />
 </template>
 

@@ -1,8 +1,11 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-      <main class="policy-main">
-        <h2 id="overview">Logistic Journey</h2>
+       <main class="policy-main" v-if="termsContent">
+        <div v-html="renderedContent"></div>
+      </main>
+      <main class="policy-main" v-else>
+        <h2 id="overview">Terms of Service - Logistic Journey</h2>
 
         <p class="lead text-[#16181B]">Logistic Journey (Pty) Ltd is a registered business entity in South Africa. Logistic Journey is a logistics management platform that enables businesses to manage, monitor, and optimize their fleet operations, deliveries, and supply chain processes. By using our website, web app, and mobile app, you agree to these Terms of Service.
           <br><br>These Terms are intended to provide a clear, reliable, and safe framework for your use of Logistic Journey. Please read them carefully. If you have any questions, contact us before continuing.
@@ -81,7 +84,7 @@
         
       </main>
 
-      <aside class="policy-toc mlg:fixed mlg:z-50 right-[50px] xl:right-[160px]" aria-label="Table of contents">
+      <!-- <aside class="policy-toc mlg:fixed mlg:z-50 right-[50px] xl:right-[160px]" aria-label="Table of contents">
         <nav>
           <ul>
             <li><a href="#overview">Logistic overview</a></li>
@@ -100,14 +103,79 @@
             <li><a href="#contact-us">Contact Us</a></li>
           </ul>
         </nav>
-      </aside>
+      </aside> -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue'
+import { useApi } from '~/composables/useApi'
 
+const { getPolicyBySlug } = useApi()
+
+interface PolicyData {
+  id: number
+  title: string
+  slug: string
+  status: string
+  content: string
+  meta_title: string
+  meta_description: string
+  created_at: string
+  updated_at: string
+}
+
+interface TocItem {
+  id: string
+  text: string
+}
+
+const loading = ref(true)
+
+const termsContent = ref<PolicyData | null>(null)
+const tocItems = ref<TocItem[]>([])
+
+const renderedContent = computed(() => {
+  return termsContent.value ? termsContent.value.content : '';
+});
+
+const generateToc = (html: string) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, 'text/html')
+  const headings = doc.querySelectorAll('h2, h3')
+  const items: TocItem[] = []
+  headings.forEach(h => {
+    if (h.id) {
+      items.push({
+        id: h.id,
+        text: h.textContent || ''
+      })
+    }
+  })
+  tocItems.value = items
+}
+
+onMounted(async () => {
+  try {
+    const response = await getPolicyBySlug('terms-and-conditions')
+    if (response && response.data) {
+      termsContent.value = response.data
+      const html = renderedContent.value
+      generateToc(html)
+    }
+  } catch (error) {
+    console.error('Failed to fetch policy:', error)
+    // Fallback to static content
+  }
+
+  // Setup TOC functionality if we have content
+  if (termsContent.value || tocItems.value.length > 0) {
+    setupToc()
+  }
+})
+
+const setupToc = () => {
 let observer: IntersectionObserver | null = null
 let footerObserver: IntersectionObserver | null = null
 
@@ -217,9 +285,10 @@ onBeforeUnmount(() => {
     link.parentNode && link.parentNode.replaceChild(clone, link)
   })
 })
+}
 </script>
 
-<style scoped>
+<style>
 .policy-wrap {
   padding: 48px 20px;
 }
@@ -232,12 +301,16 @@ onBeforeUnmount(() => {
   align-items: start;
 }
 .policy-main {
-  font-family: monospace, monospace;
+  /* font-family: monospace, monospace; */
   color: #16181B;
 }
 .policy-main h1 {
   font-size: 22px;
   margin: 0 0 18px 0;
+}
+.policy-main a {
+  font-weight: 300;
+  color: #16181B;
 }
 .policy-main h2 {
   font-size: 24px;
@@ -246,7 +319,8 @@ onBeforeUnmount(() => {
   margin-bottom: 12px;
 }
 .policy-main h3 {
-  font-size: 14px;
+  font-size: 22px;
+  font-weight: 500;
   margin-top: 18px;
   margin-bottom: 8px;
 }
@@ -257,7 +331,7 @@ onBeforeUnmount(() => {
   margin-bottom: 18px;
 }
 .policy-main p,
-.policy-main ul, ol,
+.policy-main ul,
 .policy-main address {
   font-size: 14px;
   line-height: 1.6;
@@ -265,21 +339,11 @@ onBeforeUnmount(() => {
 }
 .policy-main ul { 
   margin-left: 20px;
-  list-style-type: disc;
 }
 .policy-main ul li { 
+  list-style: disc;
   margin-bottom: 8px;
 }
-
-.policy-main ol { 
-  margin-left: 20px;
-  list-style-type: numeric;
-}
-
-.policy-main ol li { 
-  margin-bottom: 8px;
-}
-
 .contact-info {
   margin-top: 8px;
   font-style: normal;

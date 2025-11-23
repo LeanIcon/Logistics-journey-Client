@@ -6,7 +6,11 @@
     <!-- Logo -->
     <div>
       <NuxtLink to="/">
-        <img src="/public/Navbar/2/Logistics Journey Logo.png" alt="logo" />
+        <img
+          src="/Navbar/2/Logistics Journey Logo.png"
+          alt="logo"
+          class="h-10"
+        />
       </NuxtLink>
     </div>
 
@@ -15,6 +19,8 @@
       <button
         @click="toggleMenu"
         class="flex flex-col space-y-1 p-2 border-none"
+        :aria-expanded="isOpen"
+        aria-label="Toggle menu"
       >
         <span
           class="block w-6 h-0.5 bg-black transition-transform duration-300"
@@ -33,6 +39,7 @@
 
     <!-- Desktop Menu -->
     <div
+      ref="desktopMenuRef"
       class="items-center justify-between hidden gap-6 lg:gap-12 text-black mlg:flex"
     >
       <NuxtLink class="nav-link" to="/" active-class="active">Home</NuxtLink>
@@ -41,6 +48,7 @@
       >
       <div
         v-if="route.path.startsWith('/resources')"
+        ref="resourcesDesktopRef"
         class="relative"
         @mouseenter="showResourcesDropdown = true"
         @mouseleave="showResourcesDropdown = false"
@@ -49,6 +57,8 @@
           class="nav-link flex items-center gap-1"
           to="/resources"
           :class="{ active: isResourcesActive }"
+          aria-haspopup="true"
+          :aria-expanded="showResourcesDropdown"
         >
           Resources
           <svg
@@ -105,7 +115,10 @@
 
     <!-- Mobile Dropdown -->
     <div
-      class="absolute flex mlg:hidden transition-all duration-300 ease-in-out flex-col items-start z-50 shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 group-[.open]:max-h-[26cm] top-full"
+      ref="mobileMenuRef"
+      class="absolute flex mlg:hidden transition-all duration-300 ease-in-out flex-col items-start z-50 shadow-main justify-center w-full gap-3 overflow-hidden bg-white px-4 top-full"
+      :class="isOpen ? 'py-4 max-h-[60vh]' : 'py-0 max-h-0'"
+      :aria-hidden="!isOpen"
     >
       <NuxtLink class="nav-link" to="/" active-class="active">Home</NuxtLink>
       <NuxtLink class="nav-link" to="/features" active-class="active"
@@ -114,8 +127,11 @@
       <div class="relative w-full">
         <button
           @click="toggleResourcesDropdown"
+          ref="resourcesMobileRef"
           class="nav-link w-full text-left flex items-center gap-1 border-none bg-transparent"
           :class="{ active: isResourcesActive }"
+          aria-haspopup="true"
+          :aria-expanded="showResourcesDropdown"
         >
           Resources
           <svg
@@ -133,18 +149,20 @@
             />
           </svg>
         </button>
-        <div v-show="showResourcesDropdown" class="pl-4 flex flex-col gap-1">
-          <NuxtLink
-            class="block px-4 py-2 hover:bg-gray-100"
-            to="/resources/blog"
-            >Blog</NuxtLink
-          >
-          <NuxtLink
-            class="block px-4 py-2 hover:bg-gray-100"
-            to="/resources/case-study"
-            >Case Study</NuxtLink
-          >
-        </div>
+        <transition name="slide-down">
+          <div v-show="showResourcesDropdown" class="pl-4 flex flex-col gap-1">
+            <NuxtLink
+              class="block px-4 py-2 hover:bg-gray-100"
+              to="/resources/blog"
+              >Blog</NuxtLink
+            >
+            <NuxtLink
+              class="block px-4 py-2 hover:bg-gray-100"
+              to="/resources/case-study"
+              >Case Study</NuxtLink
+            >
+          </div>
+        </transition>
       </div>
       <NuxtLink class="nav-link" to="/about-us" active-class="active"
         >About Us</NuxtLink
@@ -152,8 +170,8 @@
       <NuxtLink class="nav-link" to="/contact" active-class="active"
         >Contact Us</NuxtLink
       >
-      <button>Log In</button>
-      <button class="solid-btn">Sign Up</button>
+      <button class="w-full text-left px-4 py-2">Log In</button>
+      <button class="solid-btn w-full">Sign Up</button>
     </div>
   </div>
 </template>
@@ -163,6 +181,10 @@ import { useRoute } from "vue-router";
 const isOpen = ref(false);
 const route = useRoute();
 const showResourcesDropdown = ref(false);
+const desktopMenuRef = ref<HTMLElement | null>(null);
+const resourcesDesktopRef = ref<HTMLElement | null>(null);
+const mobileMenuRef = ref<HTMLElement | null>(null);
+const resourcesMobileRef = ref<HTMLElement | null>(null);
 
 const isResourcesActive = computed(() => {
   // Active for /resources, /resources/blog, /resources/case-study, and /blog/[slug] (blog details)
@@ -177,10 +199,25 @@ const toggleResourcesDropdown = () => {
   showResourcesDropdown.value = !showResourcesDropdown.value;
 };
 
-// Close dropdown when clicking outside
+// Close dropdowns/menus when clicking outside of nav
 const handleClickOutside = (event: Event) => {
   const target = event.target as HTMLElement;
-  if (!target.closest(".relative")) {
+  const clickedInsideDesktop =
+    resourcesDesktopRef.value?.contains(target) ||
+    desktopMenuRef.value?.contains(target);
+  const clickedInsideMobile =
+    resourcesMobileRef.value?.contains(target) ||
+    mobileMenuRef.value?.contains(target);
+
+  // If clicked outside desktop resources, close desktop dropdown
+  if (!clickedInsideDesktop) {
+    showResourcesDropdown.value = false;
+  }
+
+  // If clicked outside mobile menu, close mobile menu
+  if (!clickedInsideMobile) {
+    isOpen.value = false;
+    // also close resources dropdown on mobile
     showResourcesDropdown.value = false;
   }
 };
@@ -191,6 +228,13 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("click", handleClickOutside);
+});
+
+// Lock body scroll when mobile menu is open
+watch(isOpen, (val) => {
+  if (process.client) {
+    document.body.style.overflow = val ? "hidden" : "";
+  }
 });
 </script>
 
@@ -228,5 +272,28 @@ onUnmounted(() => {
   .nav-link.active {
     border-bottom-color: transparent;
   }
+}
+
+/* slide-down transition for mobile submenu */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+.slide-down-enter-to,
+.slide-down-leave-from {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.solid-btn {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
 </style>

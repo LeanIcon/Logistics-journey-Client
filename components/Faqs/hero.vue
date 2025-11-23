@@ -10,9 +10,9 @@
     </div>
     <div class="highest-width relative text-center z-10 py-10 sm:py-14 w-full">
       <h2 class="">
-        Frequently Asked <br> <span class="text-[#225AD6]">Questions</span>
+        Frequently Asked <br> <p class="text-[#225AD6] text-[32px] lg:text-[43px] font-bold pt-2">Questions</p>
       </h2>
-      <p class="max-w-2xl mx-auto mt-4">Here are answers to the most common questions about Logistic Journey and how it can support your logistics operations.</p>
+      <p class="text-black max-w-2xl mx-auto mt-8">Here are answers to the most common questions about Logistic Journey and how it can support your logistics operations.</p>
     </div>
   </section>
 </template>
@@ -21,5 +21,12 @@
 
 </script>
 
-<style scoped> 
+<style scoped>
+  h2 {
+    @apply text-[32px] lg:text-[43px] leading-[60px] font-bold ;
+  } 
+  
+  span {
+    @apply text-[32px] lg:text-[43px] font-bold;
+  }
 </style>

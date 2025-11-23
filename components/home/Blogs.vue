@@ -55,7 +55,7 @@
       :animate="inView ? { opacity: 1 } : { opacity: 0 }"
       :transition="{ duration: 1.4 }"
     >
-      <OtherInsights :posts="insightsList" />
+      <OtherInsights :posts="insightsList" :showHeading="false" />
     </motion.div>
 
     <motion.div
@@ -64,11 +64,11 @@
       :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
       :transition="{ duration: 0.8 }"
     >
-      <NuxtLink
+      <!-- <NuxtLink
         to="/resources/blog"
         class="text-blue-600 font-medium hover:underline"
         >See more →</NuxtLink
-      >
+      > -->
     </motion.div>
   </div>
 </template>

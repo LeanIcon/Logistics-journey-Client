@@ -10,15 +10,28 @@
     </div>
     <div class="highest-width relative text-start z-10 py-10 sm:py-14 w-full">
       <h2 class="">
-        Privacy Policy
+        {{ policyTitle || 'Privacy Policy' }}
       </h2>
-      <p class="mt-4">Latest update 24 September, 2025</p>
+      <p class="mt-4">Latest update {{ formattedDate || '24 September, 2025' }}</p>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+import { useApi } from '~/composables/useApi'
 
+const { getPolicyBySlug } = useApi()
+
+const policyTitle = computed(() => {
+  // For now, return static title. In future, can fetch from API
+  return 'Privacy Policy'
+})
+
+const formattedDate = computed(() => {
+  // For now, return static date. In future, can format from API response
+  return '24 September, 2025'
+})
 </script>
 
 <style scoped> 
