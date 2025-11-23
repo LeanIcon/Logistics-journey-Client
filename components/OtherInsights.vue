@@ -5,9 +5,9 @@
       :key="post.id"
       class=" rounded-2xl p-4 hover:shadow-lg transition bg-white"
     >
-      <NuxtImg
+      <img
         :src="post.featured_image?.url || '/images/Blog/Tech.png'"
-        alt="blog image"
+        :alt="post.featured_image?.alt || post.title"
         class="w-full h-56 object-cover rounded-xl mb-4"
         loading="lazy"
       />
