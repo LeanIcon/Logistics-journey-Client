@@ -85,7 +85,7 @@
                                 </svg>
                             </span>
                             <p class="block text-base antialiased font-normal leading-relaxed text-inherit">
-                               Unlimited Journey Creation
+                               Unlimited Trip Sheet Creation
                             </p>
                         </li>
                         <li class="flex items-center gap-2">
@@ -118,7 +118,7 @@
                                 </svg>
                             </span>
                             <p class="block text-base antialiased font-normal leading-relaxed text-inherit">
-                                Unlimited Order Creation
+                                Unlimited Trip Creation
                             </p>
                         </li>
                         <li class="flex items-center gap-2">

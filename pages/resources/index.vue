@@ -1,9 +1,13 @@
 <template>
-  <BlogBlogGrid />
+  <div>
+    
+  </div>
 </template>
 
-<script setup>
-import BlogBlogGrid from "../../components/resources/blog/BlogGrid.vue";
+<script lang="ts" setup>
+
 </script>
 
-<style scoped></style>
+<style>
+
+</style>

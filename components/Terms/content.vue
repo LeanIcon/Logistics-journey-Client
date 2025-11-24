@@ -1,7 +1,7 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-       <main class="policy-main" v-if="termsContent">
+       <main class="policy-main prose prose-blue" v-if="termsContent">
         <div v-html="renderedContent"></div>
       </main>
       <main class="policy-main" v-else>

@@ -1,23 +1,12 @@
 <template>
-  <section class="mt-20">
+  <section class="">
     <!-- Breadcrumb -->
-    <nav
-      class="flex items-center gap-2 text-sm text-gray-500 mb-6"
-      aria-label="Breadcrumb"
-    >
-      <NuxtLink to="/resources/blog" class="hover:text-blue-600">Blog</NuxtLink>
-      <svg
-        class="w-4 h-4 opacity-60"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-      <span class="text-blue-600">{{ blog.title }}</span>
-    </nav>
+     <div class="flex gap-4 mb-8">
+        <NuxtLink to="/resources/blog"><p>Blog</p> </NuxtLink>   
+        <p>&gt</p>
+        <p class="text-[#225AD6]"> {{ blog?.title }}</p> 
+      </div>
+  
     <!-- Category + Date -->
 
     <!-- Title -->
@@ -31,10 +20,10 @@
     <!-- Author + Reading time -->
     <div
       v-if="blog.author?.name || blog.reading_time"
-      class="flex items-center gap-3 mb-8 text-gray-600 text-sm"
+      class="flex items-center gap-3 mb-6 text-gray-600 text-sm"
     >
       <!-- Author, Date, Read Time (inline, subtle) -->
-      <div class="flex items-center gap-2 mb-8 text-gray-500 text-sm">
+      <div class="flex items-center gap-2 mb-6 text-gray-500 text-sm">
         <span class="font-medium text-gray-900">{{ blog.author?.name }}</span>
         <span v-if="blog.published_at">•</span>
         <span v-if="blog.published_at">

@@ -1,5 +1,5 @@
 <template>
-  <div class="highest-width sm:py-8 bg-white">
+  <div class="highest-width max-w-6xl sm:py-8 bg-white">
     <div class="flex sm:hidden -mb-[4cm] justify-end z-40">
       <img class="" src="/images/Rectangle 4991.png" alt="">
     </div>

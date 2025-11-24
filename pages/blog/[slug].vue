@@ -1,5 +1,5 @@
 <template>
-  <div class="highest-width max-w-6xl mx-auto pt-6 pb-20">
+  <div class="highest-width max-w-6xl mx-auto py-20 prose prose-blue">
     <div v-if="!blog && !blogError" class="text-center py-10 text-gray-400">
       Loading blog...
     </div>
@@ -7,7 +7,7 @@
       Failed to load blog post.
     </div>
     <BlogContent v-else :blog="blog" />
-    <OtherInsights :posts="otherPosts" class="mt-24 max-w-6xl mx-auto"/>
+    <OtherInsights :posts="otherPosts" class="my-12 max-w-6xl mx-auto"/>
   </div>
   <HomeTransform />
 </template>
@@ -67,7 +67,5 @@ watch(blogError, (val) => {
 </script>
 
 <style>
-  a {
-    font-weight: 300;
-  }
+ 
 </style>
