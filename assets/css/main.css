@@ -6,7 +6,6 @@
 @tailwind utilities;
 
 :root {
-  --font-gilroy: "Gilroy", sans-serif;
   --breakpoint-xss: 280px;
   --breakpoint-xs: 375px;
   --breakpoint-mlg: 820px;
@@ -25,6 +24,8 @@
 }
 
 button {
+  font-family: "Poppins";
+  font-size: 15px;
   @apply items-center px-5 py-3 border border-[#225AD6] rounded-lg font-light transition duration-300;
 }
 
@@ -43,7 +44,6 @@ button {
 h1 {
   @apply text-[34px] lg:text-[48px] xl:text-[50px] lg:leading-[60px] font-bold -mt-1;
 }
-
 
 h2 {
   @apply text-[32px] lg:text-[43px] leading-[47px] font-bold -mt-1;
@@ -74,19 +74,14 @@ span {
   font-weight: 400;
 }
 
-button {
-  font-family: var(--font-gilroy);
-  font-size: 15px;
-}    
-
 header {
-  font-family: var(--font-gilroy);
+  font-family: "Poppins";
   font-weight: 700;
   padding: 20px 0;
-}     
+}
 
 nav {
-  font-family: var(--font-gilroy);
+  font-family: "Poppins";
   font-weight: 500;
 }
 
@@ -95,7 +90,7 @@ nav a {
 }
 
 footer {
-  font-family: var(--font-gilroy);
+  font-family: "Poppins";
   font-weight: 400;
   text-align: center;
   padding: 20px 0;

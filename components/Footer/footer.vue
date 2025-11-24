@@ -66,7 +66,7 @@
 
                 <p class="text-[12px] mt-3 text-gray-300">
                 By subscribing you agree to our
-                <NuxtLink to="/policy"><span class="underline text-[12px]">Privacy Policy</span></NuxtLink> and provide consent to
+                <NuxtLink to="/policy"><span class="underline text-[12px] font-light">Privacy Policy</span></NuxtLink> and provide consent to
                 receive updates from our company.
                 </p>
             </div>
@@ -189,7 +189,7 @@
 
         <!-- Bottom Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-sm text-gray-300">
-            <p>
+            <p class="font-extralight">
                 Copyright © 2025 Analytical Technologies. Based in South Africa. All rights reserved.
             </p>
 
@@ -343,6 +343,10 @@ const scrollToTop = () => {
     h3, p, ul, span, li, a, button {
         color: white;
         text-align: start;
+    }
+
+    a {
+      font-weight: 300;
     }
 
     li{

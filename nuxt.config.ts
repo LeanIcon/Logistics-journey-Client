@@ -21,12 +21,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Logistics Journey",
+      title: "Logistic Journey",
       meta: [
         {
           name: 'description',
           content:
-            'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.',
+            'Logistic Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.',
         },
         {
           name: 'keywords',
@@ -34,8 +34,8 @@ export default defineNuxtConfig({
         },
 
         // Open Graph 
-        { property: 'og:title', content: 'Logistics Journey' },
-        { property: 'og:description', content: 'Logistics Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.' },
+        { property: 'og:title', content: 'Logistic Journey' },
+        { property: 'og:description', content: 'Logistic Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.' },
         { property: 'og:image', content: '/Navbar/2/Logistics Journey Logo.png' }, // ideally 1200x630 px with logo + background
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '512' },
@@ -46,33 +46,18 @@ export default defineNuxtConfig({
         // Twitter (optional)
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Logistics Journey' },
-        { name: 'twitter:description', content: 'Logistics Journey gives you full control, real-time visibility, and reliable deliveries.' },
+        { name: 'twitter:description', content: 'Logistic Journey gives you full control, real-time visibility, and reliable deliveries.' },
         { name: 'twitter:image', content: '/Navbar/2/Logistics Journey Logo.png' },
       ],
       
       link: [
         { rel: 'icon', type: 'image/png', sizes:'16x16', href: '/Navbar/2/Logistics Journey Logo.png' },
-        // Preload critical fonts
+        // Preload Google Fonts Poppins stylesheet for performance
         {
           rel: "preload",
-          as: "font",
-          href: "/fonts/Gilroy-Regular.ttf",
-          type: "font/ttf",
-          crossorigin: "anonymous",
-        },
-        {
-          rel: "preload",
-          as: "font",
-          href: "/fonts/Gilroy-Medium.ttf",
-          type: "font/ttf",
-          crossorigin: "anonymous",
-        },
-        {
-          rel: "preload",
-          as: "font",
-          href: "/fonts/Gilroy-Bold.ttf",
-          type: "font/ttf",
-          crossorigin: "anonymous",
+          as: "style",
+          href: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
+          onload: "this.onload=null;this.rel='stylesheet'",
         },
       ],
     },
