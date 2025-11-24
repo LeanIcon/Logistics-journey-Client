@@ -1,7 +1,8 @@
 <template>
-  <div class="highest-width py-20">
+  <div class="highest-width py-24">
     <h1 class="text-3xl font-bold mb-14">Case Studies</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div v-if="loading" class="text-center text-gray-600">Loading...</div>
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <NuxtLink
         v-for="caseStudy in caseStudies"
         :key="caseStudy.id"
@@ -28,10 +29,9 @@
         </div>
       </NuxtLink>
     </div>
-
-    <FeatureCTA class="mt-36"/>
   <!-- <HomeTestimonials /> -->
   </div>
+    <HomeStart class="mb-24 max-w-6xl"/>
     <HomeTransform />
 </template>
 
@@ -41,12 +41,16 @@ import { fetchCaseStudiesList } from '@/api/caseStudies';
 import type { CaseStudy } from '@/api/caseStudies';
 
 const caseStudies = ref<CaseStudy[]>([]);
+const loading = ref(true);
 
 onMounted(async () => {
+  loading.value = true;
   try {
     caseStudies.value = await fetchCaseStudiesList();
   } catch (error) {
     console.error('Error fetching case studies:', error);
+  } finally {
+    loading.value = false;
   }
 });
 </script>

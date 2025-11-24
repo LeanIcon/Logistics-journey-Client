@@ -1,6 +1,6 @@
 <template>
   <section class="py-8 bg-white">
-    <div class="max-w-[1440px] mx-auto px-4">
+    <div class="">
       <!-- Header -->
       <div
         class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6"
