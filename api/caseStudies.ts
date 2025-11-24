@@ -3,10 +3,12 @@ export interface CaseStudy {
   title: string;
   slug: string;
   featured_image: { url?: string | null; alt?: string | null } | null;
+  banner: string;
   client?: {
     name?: string;
     logo?: string | null;
     quote?: string | null;
+    avatar?: string;
     quote_author?: string | null;
     quote_author_title?: string | null;
   };

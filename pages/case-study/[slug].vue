@@ -1,305 +1,116 @@
 <template>
-  <div class="highest-width mx-auto pt-6 pb-20">
-    <CaseStudyHeader
-      :title="caseStudy?.title"
-      :client="caseStudy?.client?.name"
-      :breadcrumbTitle="caseStudy?.title"
-    />
-    <CaseStudyHero
-      :image="caseStudy?.featured_image?.url"
-      :client="caseStudy?.client?.name"
-      :clientLogo="caseStudy?.client?.logo"
-      :industry="caseStudy?.sidebar?.industry"
-      :location="caseStudy?.sidebar?.location"
-      :engagementType="caseStudy?.sidebar?.engagement_type"
-      :implementationPeriod="caseStudy?.sidebar?.implementation_period"
-      :introduction="caseStudy?.content?.introduction"
-    />
-
-    <!-- Main content + sidebar (table of contents) -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 mt-6">
-      <div class="lg:col-span-2">
-        <div class="prose max-w-none">
-          <section id="the-problem">
-            <CaseStudyProblem :problems="problemItems" />
-          </section>
-
-          <section id="the-solution">
-            <CaseStudySolution :solutions="solutionItems" />
-          </section>
-
-          <section id="the-result">
-            <CaseStudyResult :results="resultItems" />
-          </section>
-
-          <div
-            v-if="caseStudy?.content?.the_road_ahead"
-            id="the-road-ahead"
-            class="mt-8"
-          >
-            <CaseStudyRoadAhead
-              :roadAhead="decodeHtml(caseStudy?.content?.the_road_ahead)"
-            />
-          </div>
-
-          <section id="key-takeaway">
-            <CaseStudyKeyTakeaway
-              :takeaway="decodeHtml(caseStudy?.content?.key_takeaway)"
-            />
-          </section>
-
-          <section id="testimonial">
-            <CaseStudyTestimonial
-              :testimonial="testimonialText"
-              :author="testimonialAuthor"
-            />
-          </section>
+  <div class="highest-width max-w-7xl mx-auto py-12 px-4 prose prose-blue overflow-auto">
+    <div v-if="error" class="text-red-600 font-semibold">
+      Error loading case study details.
+    </div>
+    <div v-else-if="loading" class="text-gray-600">
+      Loading case study...
+    </div>
+    <div v-else-if="caseStudy">
+      <div class="mlg:flex gap-12 justify-between items-start mb-12 w-full">
+      <div class="mlg:w-[65%]">
+        <div class="flex gap-4 mb-8">
+          <NuxtLink to="/resources/case-study"><p>Case Study</p> </NuxtLink>   
+          <p>&gt</p>
+          <p class="text-[#225AD6]"> {{ caseStudy?.title }}</p> 
         </div>
+        <h1 class="text-4xl font-bold mb-6">{{ caseStudy?.title }}</h1>
+        <img
+          :src="caseStudy.content?.banner || '/images/Blog/Tech.png'"
+          :alt="caseStudy.content?.banner?.alt || caseStudy.title"
+          class="w-full h-64 object-cover rounded mb-6"
+        />
+        <section v-if="caseStudy.client">
+          <p v-html="caseStudy?.content?.introduction"></p>
+        </section>
       </div>
-
-      <div>
-        <!-- Sidebar: table of contents / post details (click to scroll) -->
-        <nav class="bg-white rounded-lg p-4 sticky top-28">
-          <ul class="space-y-2 text-sm">
-            <li>
-              <button
-                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
-                :class="{
-                  'bg-blue-600 text-white rounded-md':
-                    activeId === 'the-problem',
-                  'bg-transparent text-black': activeId !== 'the-problem',
-                }"
-                @click="scrollTo('the-problem')"
-              >
-                The Problem
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
-                :class="{
-                  'bg-blue-600 text-white rounded-md':
-                    activeId === 'the-solution',
-                  'bg-transparent text-black': activeId !== 'the-solution',
-                }"
-                @click="scrollTo('the-solution')"
-              >
-                What We Did to Solve It
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
-                :class="{
-                  'bg-blue-600 text-white rounded-md':
-                    activeId === 'the-result',
-                  'bg-transparent text-black': activeId !== 'the-result',
-                }"
-                @click="scrollTo('the-result')"
-              >
-                The Result
-              </button>
-            </li>
-            <li>
-              <button
-                class="w-full text-left px-3 py-2 border-0 rounded transition-colors focus:outline-none focus:ring-0"
-                :class="{
-                  'bg-blue-600 text-white rounded-md':
-                    activeId === 'the-road-ahead',
-                  'bg-transparent text-black': activeId !== 'the-road-ahead',
-                }"
-                @click="scrollTo('the-road-ahead')"
-              >
-                The Road Ahead
-              </button>
-            </li>
+     
+      <div class="border-r mt-3 self-stretch"></div>
+      <div class="mlg:w-[30%]">
+        <aside v-if="caseStudy.sidebar" class="mt-3 p-4 bg-[#E9EFFD80] rounded">
+          <section v-if="caseStudy.client">
+            <!-- <h2 class="text-2xl font-semibold mb-2">Client: {{ caseStudy.client.name }}</h2> -->
+            <img
+              v-if="caseStudy.client.logo"
+              :src="caseStudy.client.logo"
+              :alt="caseStudy.client.name"
+              class="w-32 mb-6 mlg:mb-20"
+            />
+            <!-- <blockquote class="italic text-gray-700 border-l-4 border-blue-500 pl-4 mb-4">
+              "{{ caseStudy.client.quote }}" <br />
+              <span class="font-semibold">{{ caseStudy.client.quote_author }}</span>,
+              <em>{{ caseStudy.client.quote_author_title }}</em>
+            </blockquote> -->
+          
+          </section>
+          <ul class="">
+            <li class=""><strong>Industry:</strong> {{ caseStudy.sidebar.industry }}</li>
+            <li class=""><strong>Location:</strong> {{ caseStudy.sidebar.location }}</li>
+            <li class=""><strong>Engagement Type:</strong> {{ caseStudy.sidebar.engagement_type }}</li>
+            <li class=""><strong>Implementation Period:</strong> {{ caseStudy.sidebar.implementation_period }}</li>
+            <li class=""><strong>Solution:</strong> {{ caseStudy.sidebar.solution }}</li>
           </ul>
-        </nav>
+        </aside>
       </div>
+      </div>
+      <section v-if="caseStudy.content" >
+       <div>
+            <h2>The Problem</h2>
+            <div v-html="caseStudy.content.the_problem" class="mb-4"></div>
+       </div>
+        <div>
+            <h2>The Solution</h2>
+            <div v-html="caseStudy.content.the_solution" class="mb-4"></div>
+       </div>
+       <div>
+            <h2>The Result</h2>
+             <div v-html="caseStudy.content.the_result" class="mb-4"></div>
+       </div>
+       <div>
+            <h2>The Road Ahead</h2>
+             <div v-html="caseStudy.content.the_result" class="mb-4"></div>
+       </div>
+
+
+       
+       
+       
+        <div v-html="caseStudy.content.the_road_ahead" class="mb-4"></div>
+      </section>
+    </div>
+    <div v-else>
+      <p>Case study not found.</p>
     </div>
   </div>
+      <HomeTransform />
 </template>
 
-<script setup>
-import { ref, computed, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { fetchCaseStudyBySlug } from "~/api/caseStudies";
-import CaseStudyHeader from "~/components/resources/case-study/CaseStudyHeader.vue";
-import CaseStudyHero from "~/components/resources/case-study/CaseStudyHero.vue";
-import CaseStudyProblem from "~/components/resources/case-study/CaseStudyProblem.vue";
-import CaseStudySolution from "~/components/resources/case-study/CaseStudySolution.vue";
-import CaseStudyResult from "~/components/resources/case-study/CaseStudyResult.vue";
-import CaseStudyRoadAhead from "~/components/resources/case-study/CaseStudyRoadAhead.vue";
-import CaseStudyKeyTakeaway from "~/components/resources/case-study/CaseStudyKeyTakeaway.vue";
-import CaseStudyTestimonial from "~/components/resources/case-study/CaseStudyTestimonial.vue";
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { fetchCaseStudyBySlug } from '@/api/caseStudies';
+import type { CaseStudy } from '@/api/caseStudies';
 
 const route = useRoute();
-const slug = String(route.params.slug || "");
+const slug = route.params.slug as string;
 
-// Server-side fetch for SEO using useAsyncData (works in Nuxt 3)
-const { data: fetched, error: fetchError } = await useAsyncData(
-  `case-study-${slug}`,
-  () => fetchCaseStudyBySlug(slug),
-  { server: true }
-);
+const caseStudy = ref<CaseStudy | null>(null);
+const loading = ref(true);
+const error = ref(false);
 
-const caseStudy = ref(fetched.value ?? null);
-
-if (fetchError.value || !caseStudy.value) {
-  throw createError({ statusCode: 404, statusMessage: "Case study not found" });
-}
-
-// Helpers: decode HTML and parse <li> lists to string[] (safe on server)
-function decodeHtml(input) {
-  if (!input) return "";
+onMounted(async () => {
+  loading.value = true;
   try {
-    if (typeof document !== "undefined") {
-      const t = document.createElement("textarea");
-      t.innerHTML = input;
-      return t.value;
-    }
-  } catch (e) {}
-  return String(input)
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ");
-}
-
-function htmlListToArray(input) {
-  const raw = decodeHtml(input);
-  if (!raw) return [];
-  try {
-    if (typeof document !== "undefined") {
-      const container = document.createElement("div");
-      container.innerHTML = raw;
-      const lis = Array.from(container.querySelectorAll("li"));
-      if (lis.length)
-        return lis.map((li) => li.textContent?.trim() || "").filter(Boolean);
-    }
-  } catch (e) {}
-  const liRegex = /<li[^>]*>(.*?)<\/li>/gi;
-  const matches = [];
-  let m;
-  while ((m = liRegex.exec(raw))) {
-    const inner = m[1] ?? "";
-    const text = inner.replace(/<[^>]+>/g, "").trim();
-    if (text) matches.push(text);
+    caseStudy.value = await fetchCaseStudyBySlug(slug);
+  } catch (e) {
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
-  if (matches.length) return matches;
-  const brSplit = raw
-    .split(/<br\s*\/?>|\n/)
-    .map((s) => s.replace(/<[^>]+>/g, "").trim())
-    .filter(Boolean);
-  return brSplit.length ? brSplit : [];
-}
-
-// Normalized computed props for child components
-const problemItems = computed(() => {
-  const raw = caseStudy.value?.content?.the_problem;
-  if (!raw) return [];
-  if (Array.isArray(raw)) return raw;
-  const items = htmlListToArray(raw);
-  return items.length ? items : [decodeHtml(raw)];
 });
-
-const solutionItems = computed(() => {
-  const raw = caseStudy.value?.content?.the_solution;
-  if (!raw) return [];
-  if (Array.isArray(raw)) return raw;
-  const items = htmlListToArray(raw);
-  return items.length ? items : [decodeHtml(raw)];
-});
-
-const resultItems = computed(() => {
-  const raw = caseStudy.value?.content?.the_result;
-  if (!raw) return [];
-  if (Array.isArray(raw)) return raw;
-  const items = htmlListToArray(raw);
-  return items.length ? items : [decodeHtml(raw)];
-});
-
-const testimonialText = computed(() =>
-  decodeHtml(
-    caseStudy.value?.client?.quote ||
-      caseStudy.value?.content?.testimonial ||
-      ""
-  )
-);
-
-const testimonialAuthor = computed(
-  () =>
-    caseStudy.value?.client?.quote_author || caseStudy.value?.client?.name || ""
-);
-
-// Scroll-to and scroll-spy state
-const activeId = ref("the-problem");
-
-function scrollTo(id) {
-  if (typeof document === "undefined") return;
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    activeId.value = id;
-  }
-}
-
-// Observe sections to update activeId while scrolling
-import { onUnmounted } from "vue";
-
-if (typeof window !== "undefined") {
-  let observer = null;
-  onMounted(() => {
-    try {
-      window.requestAnimationFrame(() => {
-        const ids = [
-          "the-problem",
-          "the-solution",
-          "the-result",
-          "key-takeaway",
-          "the-road-ahead",
-          "testimonial",
-        ];
-        observer = new IntersectionObserver(
-          (entries) => {
-            // Find the first visible section in viewport
-            const visible = entries.filter((ent) => ent.isIntersecting);
-            if (visible.length) {
-              // Sort by boundingClientRect.top (closest to top)
-              visible.sort(
-                (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
-              );
-              activeId.value = visible[0].target.id || "the-problem";
-            }
-          },
-          { root: null, rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-        );
-        ids.forEach((id) => {
-          const el = document.getElementById(id);
-          if (el) observer.observe(el);
-        });
-      });
-    } catch (e) {
-      // ignore
-    }
-  });
-
-  onUnmounted(() => {
-    if (observer) {
-      observer.disconnect();
-      observer = null;
-    }
-  });
-}
 </script>
 
-
 <style>
-  p, span {
-    color:black;
-    font-weight: 300;
-  }
-  
+   
+
 </style>

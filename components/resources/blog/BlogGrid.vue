@@ -2,7 +2,7 @@ p
 <template>
   <div class="highest-width mx-auto px-4 mt-24 pb-16">
     <!-- Header: Latest Blog & Top Reads -->
-    <div class="flex flex-col lg:flex-row gap-8 mb-12">
+    <div class="flex flex-col lg:flex-row gap-16 lg:gap-8 mb-28">
       <!-- Latest Blog -->
       <div class="bg-white flex flex-col gap-4 w-full lg:w-[848px]">
         <h2 class="text-2xl font-semibold mb-4">Latest Blog</h2>
@@ -13,13 +13,11 @@ p
         </div>
 
         <div v-else-if="latestPost">
-          <NuxtLink :to="`/blog/${latestPost.slug}`">
             <img
               :src="latestPost.featured_image?.url || '/images/Blog/Tech.png'"
               :alt="latestPost.featured_image?.alt || latestPost.title"
-              class="w-[720px] h-[405px] object-cover rounded-lg mx-auto mb-4 hover:opacity-90 transition-opacity"
+              class="w-[720px] h-[405px] object-cover rounded-lg mb-4"
             />
-          </NuxtLink>
           <h3 class="text-xl font-semibold mb-2">{{ latestPost.title }}</h3>
           <p class="text-gray-600">{{ latestPost.excerpt }}</p>
           <p class="text-sm text-gray-500 mt-2">
@@ -38,20 +36,20 @@ p
 
       <!-- Top Reads -->
       <div
-        class="bg-white flex flex-col gap-4 w-full lg:w-[592px] min-h-[833px] max-h-[833px]"
+        class="bg-white flex flex-col gap-4 w-full lg:w-[592px]"
       >
-        <h2 class="text-2xl font-semibold mb-4">Top Reads</h2>
+        <h2 class="text-2xl font-semibold ">Top Reads</h2>
         <div class="flex flex-col gap-4">
           <NuxtLink
             v-for="(read, i) in topReads"
             :key="i"
             :to="`/blog/${read.slug}`"
-            class="flex gap-3 items-center bg-white hover:bg-gray-50 transition-colors p-2 rounded-lg"
+            class="xss:flex gap-6 items-center bg-white hover:bg-gray-50 transition-colors p-2 rounded-lg"
           >
             <img
               :src="read.featured_image?.url || '/images/Blog/Tech.png'"
               :alt="read.featured_image?.alt || read.title"
-              class="w-[260px] h-[146px] object-cover rounded-md"
+              class="w-[260px] h-[146px] object-cover rounded-md mb-2 xss:mb-0"
             />
             <div class="flex-1">
               <span
@@ -74,7 +72,7 @@ p
     <CategoryFilter />
   </div>
 
-  <FeatureCTA class="mb-20"/>
+  <HomeStart class="mb-20 max-w-6xl"/>
   <!-- <HomeTestimonials /> -->
   <HomeTransform />
 </template>

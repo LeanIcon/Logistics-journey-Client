@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "@vueuse/motion": "^3.0.3",
     "markdown-it": "^14.1.0",
     "motion-v": "^1.7.4",

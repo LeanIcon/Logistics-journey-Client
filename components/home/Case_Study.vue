@@ -78,15 +78,15 @@
           >
             <div>
               <img
-                class="w-16 h-16 object-cover rounded-full border-4 border-red-400 shadow-2xl"
-                :src="featured?.client?.logo || '/images/b12.png'"
+                class="w-16 h-16 object-cover rounded-full border-4 p-1 bg-[#00000006] border-red-400 shadow-xl"
+                :src="featured?.client?.avatar || '/images/avatar.jpg'"
               />
             </div>
             <div>
               <h6 class="text-start text-lg font-semibold">
                 {{ featured.client?.quote_author || featured.client?.name }}
               </h6>
-              <span class="text-start text-xs opacity-80">{{
+              <span class="font-light text-start text-xs">{{
                 featured.client?.quote_author_title || ""
               }}</span>
             </div>

@@ -2,7 +2,7 @@
   <div class="bg-[#eef4f9]  sm:flex">
     <div class="highest-width text-center space-y-6 py-20">
         <div class="text-center space-y-6 pb-20">
-            <h2 class="text-3xl md:text-4xl font-bold">{{ data?.headline || 'So we built Logistics Journey' }}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold">{{ data?.headline || 'So we built Logistic Journey' }}</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-left">

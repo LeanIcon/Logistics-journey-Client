@@ -1,7 +1,7 @@
 <template>
   <div class="highest-width policy-wrap">
     <div class="policy-container">
-      <main class="policy-main" v-if="policyContent">
+      <main class="policy-main prose prose-blue" v-if="policyContent">
         <div v-html="renderedContent"></div>
       </main>
       <main class="policy-main" v-else>
@@ -66,7 +66,7 @@
         <h2 id="data-retention">Data Retention</h2>
         <p>We retain personal information only as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.</p>
 
-        <h2 id="your-rights">Data Security</h2>
+        <h2 id="your-rights">Your Data Protection Rights</h2>
         <p>Depending on your location, you may have the following rights:</p>
         <ul>
           <li>Access, correct, or delete your personal information.</li>

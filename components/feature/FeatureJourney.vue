@@ -7,13 +7,13 @@
       :transition="{ duration: 0.8 }"
     >
       <h2 class=" mb-6">{{ journeyData?.headline || 'Plan Every Journey With Ease' }}</h2>
-      <p class="text-[#23272A] text-mlg mb-8">{{ journeyData?.description || 'Simple complex logistics planing. With Logistic Journey, you can create, assign, and track delivery routes in minutes - reducing dispatcher stress and keeping drivers on scehdule.' }}</p>
+      <p class="text-[#23272A] text-mlg mb-8">{{ journeyData?.description || 'Simple complex logistics planning. With Logistic Journey, you can create, assign, and track delivery routes in minutes - reducing dispatcher stress and keeping drivers on schedule.' }}</p>
       <ul class="space-y-6 feature-list">
         <li v-for="feature in journeyData?.features || [
           { title: 'Customizable Journey Setup', description: 'Define routes, assign drivers, and set delivery dates with just a few clicks.' },
           { title: 'Order Integration', description: 'Import and manage orders directly within each journey.' },
           { title: 'Cost Tracking', description: 'Automatically calculate delivery, fuel, and extra costs for better budget control.' },
-          { title: 'Driver & Vehicle Assignment', description: 'Ensure the right driver and vehicle are matcherd for each job.' }
+          { title: 'Driver & Vehicle Assignment', description: 'Ensure the right driver and vehicle are matched for each job.' }
         ]" :key="feature.title" class="flex items-start gap-3">
           <span class="mt-1"><svg width="20" height="20" fill="none"><circle cx="10" cy="10" r="10" fill="#225AD6"/><path d="M7 10l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="text-gray-800"><span class="font-medium  feature-title">{{ feature.title }}</span> – <span class="font-light text-black">{{ feature.description }}</span></span>

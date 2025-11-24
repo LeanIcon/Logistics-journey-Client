@@ -65,8 +65,8 @@
                 </div>
 
                 <p class="text-[12px] mt-3 text-gray-300">
-                By subscribing you agree to with our
-                <NuxtLink to="/policy"><span class="underline text-[12px]">Privacy Policy</span></NuxtLink> and provide consent to
+                By subscribing you agree to our
+                <NuxtLink to="/policy"><span class="underline text-[12px] font-light">Privacy Policy</span></NuxtLink> and provide consent to
                 receive updates from our company.
                 </p>
             </div>
@@ -189,8 +189,8 @@
 
         <!-- Bottom Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-sm text-gray-300">
-            <p>
-                Copyright © 2025 Anlytical Technologies. Based in South Africa. All rights reserved.
+            <p class="font-extralight">
+                Copyright © 2025 Analytical Technologies. Based in South Africa. All rights reserved.
             </p>
 
             <!-- Back to top -->
@@ -343,5 +343,14 @@ const scrollToTop = () => {
     h3, p, ul, span, li, a, button {
         color: white;
         text-align: start;
+    }
+
+    a {
+      font-weight: 300;
+    }
+
+    li{
+      list-style: none;
+      line-height: normal;
     }
 </style>
