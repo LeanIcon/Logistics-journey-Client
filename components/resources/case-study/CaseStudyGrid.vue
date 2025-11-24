@@ -404,3 +404,9 @@ function setupScrollSpy() {
   }
 }
 </script>
+<style>
+   p, span {
+    color:black;
+    font-weight: 300;
+  }
+</style>

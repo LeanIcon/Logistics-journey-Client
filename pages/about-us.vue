@@ -10,6 +10,7 @@
     <about-insight />
     <!-- <about-ready :data="getBlockData('DualCta')" /> -->
   </div>
+  <home-transform />
 </template>
 
 <!-- 

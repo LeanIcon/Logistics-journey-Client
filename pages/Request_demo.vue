@@ -162,7 +162,7 @@ o<template>
   <section class="highest-width py-16">
     <div class=" text-center px-6 md:px-12 space-y-5">
         <h2>Not ready for demo? Get access to free account</h2>
-        <p>Email the team at <span class="underline">support@logisticjourney.com</span> to get access to Logistics Journey</p>
+        <p>Email the team at <a href="mailto:support@logisticjourney.com"><span class="underline font-light text-base">support@logisticjourney.com</span></a> to get access to Logistics Journey</p>
     </div>
 
     <div class="flex md:hidden text-center mt-12 justify-center items-center">   
@@ -176,8 +176,7 @@ o<template>
             </svg>
           </div>
           <h2 class="mb-4">Phone Support</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-          <span class="underline">+27 11 568 7109</span>     
+          <a href="tel:+27 11 568 7109"><p class="underline">+27 11 568 7109</p> </a>    
        </div>
 
        <div>
@@ -188,8 +187,7 @@ o<template>
             </svg>
           </div>
           <h2 class="mb-4">Email Support</h2>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-          <span class="underline">support@logisticjourney.com</span>     
+           <a href="mailto:support@logisticjourney.com"><p class="underline">support@logisticjourney.com</p> </a>      
        </div>
 
        <div>

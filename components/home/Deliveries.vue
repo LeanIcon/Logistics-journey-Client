@@ -100,6 +100,6 @@ h2 {
   @apply text-3xl md:text-4xl font-bold;
 }
 p {
-  @apply text-base leading-relaxed;
+  @apply text-base leading-relaxed text-[#343A40];
 }
 </style>

@@ -29,7 +29,7 @@
             v-for="(point, index) in why_chooseData?.points || fallbackPoints"
             :key="index"
             :class="[
-            'flex items-center bg-white p-2 rounded-full w-fit shadow-sm',
+            'flex gap-1 items-center bg-white p-2 rounded-full w-fit shadow-sm',
             (index >= (why_chooseData?.points?.length || fallbackPoints.length) - 2) ? 'lg:ml-12' : ''
             ]"
         >
@@ -93,5 +93,7 @@ onMounted(async () => {
 
 
 <style>
-
+    p {
+      color: #343A40;
+    }
 </style>

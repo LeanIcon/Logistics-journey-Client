@@ -20,7 +20,7 @@
           </h1>
 
           <!-- Dynamic subheadline and fallback -->
-          <p class="mb-6 text-base font-normal leading-7">
+          <p class="mb-6 text-base text-[#343A40] font-normal leading-7">
             {{
               heroData?.subheadline ||
               'Logistic Journey gives you full control, real-time visibility, and reliable deliveries—without the chaos of paper and spreadsheets.'

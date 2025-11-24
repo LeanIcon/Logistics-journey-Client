@@ -10,7 +10,7 @@
       :transition="{ duration: 0.8 }"
     >
       <div
-        class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center justify-center max-w-24 mx-auto"
+        class="bg-[#FEF5E7] flex space-x-1 p-3 rounded-full text-center items-center justify-center max-w-24 mx-auto"
       >
         <svg
           width="16"
@@ -40,7 +40,7 @@
             fill="#DF900A"
           />
         </svg>
-        <span class="text-[15px] font-light" style="color: #df900a">Blogs</span>
+        <span class="text-[15px] font-normal" style="color: #df900a">Blogs</span>
       </div>
       <h2>Insights & Updates</h2>
       <p class="max-w-lg mx-auto">
@@ -120,11 +120,11 @@ onMounted(() => {
 
 <style>
 p {
-  color: gray;
+  color: #343A40;
 }
 span {
   font-weight: 10;
-  color: gray;
+  color: #343A40;
 }
 a {
   font-size: 14px;

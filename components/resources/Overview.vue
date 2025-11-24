@@ -77,7 +77,7 @@
                 {{
                   post.published_at
                     ? new Date(post.published_at).toLocaleDateString()
-                    : "Date not available"
+                    : ""
                 }}
                 •
                 {{ post.type }}

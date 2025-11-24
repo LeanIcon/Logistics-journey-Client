@@ -32,10 +32,10 @@
             fill="#DF900A"
           />
         </svg>
-        <span class="text-[15px] font-light" style="color: #df900a">How it works</span>
+        <span class="text-[15px] font-normal" style="color: #df900a">How it works</span>
       </div>
       <h2>{{ howItWorksData?.title || 'How To Get Started With Logistics Journey' }}</h2>
-      <p class="max-w-lg mx-auto">
+      <p class="max-w-lg mx-auto text-[#343A40]">
         {{ howItWorksData?.description || 'From setup to delivery, we make logistics simple, smart, and efficient. Get started in minutes and manage your entire operation with ease.' }}
       </p>
     </div>

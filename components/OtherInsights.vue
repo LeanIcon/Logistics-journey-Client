@@ -3,7 +3,7 @@
     <div
       v-for="post in posts"
       :key="post.id"
-      class=" rounded-2xl p-4 hover:shadow-lg transition bg-white"
+      class="p-4 hover:shadow-lg transition bg-white"
     >
       <img
         :src="post.featured_image?.url || '/images/Blog/Tech.png'"

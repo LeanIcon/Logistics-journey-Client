@@ -41,7 +41,7 @@
               fill="#DF900A"
             />
           </svg>
-          <span class="text-[15px] font-light" style="color: #df900a">Resources</span>
+          <span class="text-[15px] font-normal" style="color: #df900a">Resources</span>
         </div>
         <h2>Case Study</h2>
       </motion.div>
