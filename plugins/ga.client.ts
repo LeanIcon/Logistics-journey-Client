@@ -1,7 +1,7 @@
 // ~/plugins/ga.client.ts
 export default defineNuxtPlugin(() => {
   const script = document.createElement("script");
-  script.src = "https://www.googletagmanager.com/gtag/js?id=G-0Y26KC2S47";
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-ST3S57LEHB";
   script.async = true;
 
   script.onload = () => {
@@ -15,7 +15,7 @@ export default defineNuxtPlugin(() => {
 
     // Send initial page view
     gtag("js", new Date());
-    gtag("config", "G-0Y26KC2S47", {
+    gtag("config", "G-ST3S57LEHB", {
       page_path: window.location.pathname,
     });
 
@@ -23,7 +23,7 @@ export default defineNuxtPlugin(() => {
     const router = useRouter();
     router.afterEach((to) => {
       if (typeof window.gtag === "function") {
-        window.gtag("config", "G-0Y26KC2S47", {
+        window.gtag("config", "G-ST3S57LEHB", {
           page_path: to.fullPath,
         });
       }

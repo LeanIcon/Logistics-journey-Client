@@ -283,6 +283,8 @@ const handleSubmit = async () => {
     // Generate token for the action 'newsletter_signup'
     const token = await recaptchaInstance?.executeRecaptcha('newsletter_signup')
 
+    // console.log(token)
+
     // Defensive check for token validity before submission
     if (!token || typeof token !== 'string' || token.length === 0) {
       formErrors.value = { general: ['reCAPTCHA token is invalid or empty. Please try again.'] }
