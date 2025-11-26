@@ -12,7 +12,7 @@
             :transition="{ duration: 0.8 }"
           >
             <div class="flex items-center gap-2">
-              <span class="text-primary inline-flex items-center gap-2 bg-[#f8e0c3] rounded-full px-4 py-2 text-sm font-medium shadow-sm">
+              <span class="text-primary inline-flex items-center gap-2 bg-[#FEF5E7] rounded-full px-4 py-2 text-sm font-medium shadow-sm">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.4001 4.62683C13.4001 4.98683 13.2068 5.3135 12.9001 5.48016L11.7401 6.10683L10.7534 6.6335L8.70676 7.74016C8.48676 7.86016 8.24676 7.92016 8.0001 7.92016C7.75343 7.92016 7.51343 7.86016 7.29343 7.74016L3.1001 5.48016C2.79343 5.3135 2.6001 4.98683 2.6001 4.62683C2.6001 4.26683 2.79343 3.94016 3.1001 3.7735L4.41343 3.06683L5.4601 2.50016L7.29343 1.5135C7.73343 1.2735 8.26676 1.2735 8.70676 1.5135L12.9001 3.7735C13.2068 3.94016 13.4001 4.26683 13.4001 4.62683Z" fill="#DF900A"/>
                   <path d="M6.5999 8.52676L2.6999 6.58009C2.3999 6.42676 2.05323 6.44676 1.76657 6.62009C1.4799 6.79343 1.31323 7.10009 1.31323 7.43343V11.1201C1.31323 11.7601 1.66657 12.3334 2.2399 12.6201L6.1399 14.5668C6.27323 14.6334 6.4199 14.6668 6.56657 14.6668C6.7399 14.6668 6.91323 14.6201 7.06657 14.5201C7.35323 14.3468 7.5199 14.0401 7.5199 13.7068V10.0201C7.52657 9.38676 7.17323 8.81343 6.5999 8.52676Z" fill="#DF900A"/>
@@ -24,7 +24,7 @@
               </span>
             </div>
 
-            <h2 class="text-4xl font-bold text-gray-900">{{ data?.section?.headline || 'Logistic Journey' }}</h2>
+            <h2>{{ data?.section?.headline || 'Logistic Journey' }}</h2>
             <div v-if="data?.paragraphs && data.paragraphs.length > 0" v-for="paragraph in data.paragraphs" :key="paragraph" class="text-gray-600 leading-relaxed">
               <p>{{ paragraph }}</p>
             </div>
@@ -52,13 +52,13 @@
           </motion.div>
 
           <motion.div 
-            class="md:w-1/2"
+            class="md:w-1/2 pt-6 md:pt-0"
             :initial="{ x: 100, opacity: 0 }"
             :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
             :transition="{ duration: 0.8 }"
           >
             <img
-              src="/images/About/logistic/meeting.jpg"
+              :src= "data?.image?.url || '/images/About/about-us-first-section.jpg'"
               alt="Logistics Journey Team Meeting"
               class="rounded-xl w-full"
             />
@@ -80,6 +80,10 @@ defineProps<{
     section: {
       headline: string
     }
+    image?: {
+        path: string
+        url: string
+      }
     paragraphs: string[]
   }
 }>()

@@ -96,9 +96,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-h2 {
-  @apply text-3xl md:text-4xl font-bold;
-}
 p {
   @apply text-base leading-relaxed text-[#343A40];
 }
