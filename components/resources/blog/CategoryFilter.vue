@@ -63,8 +63,8 @@
           class="bg-white hover:shadow-lg transition overflow-hidden block"
         >
           <img
-            :src="post.featured_image?.url ? post.featured_image.url : '/images/Blog/Automation.png'"
-            :alt="post.featured_image?.alt || post.title"
+            :src="post.featured_image"
+            :alt="post.featured_image || post.title"
             class="w-full h-48 object-cover rounded-md"
           />
           <div class="p-5">

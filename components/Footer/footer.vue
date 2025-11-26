@@ -189,8 +189,8 @@
 
         <!-- Bottom Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-sm text-gray-300">
-            <p class="font-extralight">
-                Copyright © 2025 Analytical Technologies. Based in South Africa. All rights reserved.
+            <p class="font-extralight text-sm">
+                Copyright © 2025 Anylytical Technologies. Based in South Africa. All rights reserved.
             </p>
 
             <!-- Back to top -->
@@ -282,8 +282,6 @@ const handleSubmit = async () => {
 
     // Generate token for the action 'newsletter_signup'
     const token = await recaptchaInstance?.executeRecaptcha('newsletter_signup')
-
-    // console.log(token)
 
     // Defensive check for token validity before submission
     if (!token || typeof token !== 'string' || token.length === 0) {

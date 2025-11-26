@@ -8,8 +8,8 @@
           :animate="inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }"
           :transition="{ duration: 0.8 }"
         >
-          <img v-if="data?.image?.path" :src="data.image.path" :alt="data.image.alt || 'Logistics Journey team'" class="rounded-xl w-full" />
-        <img v-else src="/public/images/About/people.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
+          <img v-if="data?.image?.url" :src="data.image.url" :alt="data.image.alt || 'Logistics Journey team'" class="rounded-xl w-full" />
+        <img v-else src="/public/images/About/about-first-section.jpg" alt="Logistics Journey team" class="rounded-xl w-full" />
         </motion.div>
         
         <motion.div 
@@ -18,11 +18,11 @@
           :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
           :transition="{ duration: 0.8 }"
         >
-          <h3 v-if="data?.intro" class="text-xl font-semibold mb-2 text-gray-800">
-            {{ data.intro }}
+          <h3 v-if="data?.intro" class="text-xl font-medium -mb-4 text-gray-800">
+            {{ data?.intro }}
           </h3>
           
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight">
+          <h2>
             {{ data?.headline || 'Technology alone doesn\'t change an industry. People do!' }}
           </h2>
           
@@ -58,8 +58,8 @@ defineProps<{
       text: string
     }
     image?: {
-      path: string
       url: string
+      path: string
       alt: string
     }
   }

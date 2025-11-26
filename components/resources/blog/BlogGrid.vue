@@ -14,8 +14,8 @@ p
 
         <div v-else-if="latestPost">
             <img
-              :src="latestPost.featured_image?.url || '/images/Blog/Tech.png'"
-              :alt="latestPost.featured_image?.alt || latestPost.title"
+              :src="latestPost.featured_image || '/images/Blog/Tech.png'"
+              :alt="latestPost.featured_image || latestPost.title"
               class="w-[720px] h-[405px] object-cover rounded-lg mb-4"
             />
           <h3 class="text-xl font-semibold mb-2">{{ latestPost.title }}</h3>
@@ -47,8 +47,8 @@ p
             class="xss:flex gap-6 items-center bg-white hover:bg-gray-50 transition-colors p-2 rounded-lg"
           >
             <img
-              :src="read.featured_image?.url || '/images/Blog/Tech.png'"
-              :alt="read.featured_image?.alt || read.title"
+              :src="read.featured_image"
+              :alt="read.featured_image || read.title"
               class="w-[260px] h-[146px] object-cover rounded-md mb-2 xss:mb-0"
             />
             <div class="flex-1">

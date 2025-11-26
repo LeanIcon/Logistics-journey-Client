@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-cover py-[2cm] xs:py-[3cm] lg:py-[3cm] xl:py-[5cm] relative bg-[url('/images/transform.jpg')]">
+    <div class="bg-cover py-[2cm] xs:py-[3cm] lg:py-[3cm] xl:py-[5cm] relative bg-[url('/images/transform.png')]">
         <div class="rounded-lg absolute left-0 right-0 top-0 bottom-0">
         </div>
         <div class="highest-width flex h-full items-center">

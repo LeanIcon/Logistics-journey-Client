@@ -6,10 +6,7 @@ export interface Post {
   slug: string;
   excerpt: string;
   type: string;
-  featured_image: {
-    url: string;
-    alt: string;
-  };
+  featured_image: string;
   author: {
     id: number;
     name: string;

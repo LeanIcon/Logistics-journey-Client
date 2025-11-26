@@ -74,11 +74,11 @@
             to="/resources/blog"
             >Blog</NuxtLink
           >
-          <NuxtLink
+          <!-- <NuxtLink
             class="font-light block px-4 py-2 hover:bg-gray-100"
             to="/resources/case-study"
             >Case Study</NuxtLink
-          >
+          > -->
         </div>
       </div>
      
@@ -102,14 +102,14 @@
     <div
       class="absolute flex mlg:hidden transition-all duration-300 ease-in-out flex-col items-start z-50 shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 group-[.open]:max-h-[26cm] top-full"
     >
-      <NuxtLink class="nav-link" to="/" active-class="active">Home</NuxtLink>
-      <NuxtLink class="nav-link" to="/features" active-class="active"
+      <NuxtLink @click="isOpen = false" class="nav-link" to="/" active-class="active">Home</NuxtLink>
+      <NuxtLink @click="isOpen = false" class="nav-link" to="/features" active-class="active"
         >Features</NuxtLink
       >
       <div class="relative w-full">
         <div
-          @click="toggleResourcesDropdown"
-          class="nav-link w-full text-left flex items-center gap-1 border-none bg-transparent"
+          @click.stop="toggleResourcesDropdown"
+          class="nav-link text-left flex items-center gap-1 border-none bg-transparent"
           :class="{ active: isResourcesActive }"
         >
           Resources
@@ -128,23 +128,24 @@
             />
           </svg>
         </div>
-        <div v-show="showResourcesDropdown" class="pl-4 flex flex-col gap-1">
+        <div v-show="showResourcesDropdown" class="pl-4 gap-1 relative z-50">
           <NuxtLink
-            class="px-4 font-light py-2 hover:bg-gray-100 w-full h-full"
+            @click="isOpen = false"
+            class="block px-4 font-light py-2 hover:bg-gray-100"
             to="/resources/blog"
             >Blog</NuxtLink
           >
-          <NuxtLink
-            class="px-4 font-light py-2 hover:bg-gray-100 w-full h-full"
+          <!-- <NuxtLink
+            class="block px-4 font-light py-2 hover:bg-gray-100"
             to="/resources/case-study"
             >Case Study</NuxtLink
-          >
+          > -->
         </div>
       </div>
-      <NuxtLink class="nav-link" to="/about-us" active-class="active"
+      <NuxtLink @click="isOpen = false" class="nav-link" to="/about-us" active-class="active"
         >About Us</NuxtLink
       >
-      <NuxtLink class="nav-link" to="/contact" active-class="active"
+      <NuxtLink @click="isOpen = false" class="nav-link" to="/contact" active-class="active"
         >Contact Us</NuxtLink
       >
        <a href="https://app.logisticjourney.com" target="_blank"

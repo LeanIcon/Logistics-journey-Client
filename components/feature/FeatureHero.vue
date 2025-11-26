@@ -17,7 +17,7 @@
     <!-- Heading -->
     <h1 class="mb-8">
       <span v-html="headlineParts.before" class="text-black  text-[34px] lg:text-[45px] xl:text-[47px] lg:leading-[60px] font-bold -mt-1"></span>
-      <span class="border-l-2 rounded-md xs:rounded-none p-3 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">{{ headlineParts.highlight }}</span>
+      <span class="border-l-2 rounded-md xs:rounded-none p-1 xs:p-0 xs:border-l-[#225AD6] bg-[#DF900A] xs:bg-transparent xs:bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-white xs:text-[#225AD6]" style="font-weight: 800;">{{ headlineParts.highlight }}</span>
     </h1>
 
     <!-- Description -->

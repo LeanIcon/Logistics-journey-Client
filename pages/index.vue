@@ -10,7 +10,7 @@
     <home-pricing />
     <home-blogs />
     <!-- <home-testimonials /> -->
-    <home-case-study />
+    <!-- <home-case-study /> -->
     <home-mobile_app />
     <home-faqs />
     <home-transform />
