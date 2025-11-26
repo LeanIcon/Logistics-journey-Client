@@ -1,10 +1,11 @@
 // ~/plugins/ga.client.ts
 export default defineNuxtPlugin(() => {
-  const script = document.createElement("script");
-  script.src = "https://www.googletagmanager.com/gtag/js?id=G-ST3S57LEHB";
-  script.async = true;
+  if (process.server) return;
 
-  script.onload = () => {
+  const measurementId = "G-ST3S57LEHB";
+
+  try {
+    // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
 
     function gtag(...args: any[]) {
@@ -13,25 +14,39 @@ export default defineNuxtPlugin(() => {
 
     window.gtag = gtag;
 
-    // Send initial page view
+    // Load GA script
+    const script = document.createElement("script");
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    script.async = true;
+    script.defer = true;
+
+    script.onerror = () => {
+      console.warn("GA script failed to load");
+    };
+
+    document.head.appendChild(script);
+
+    // Initialize gtag config immediately (don't wait for script load)
     gtag("js", new Date());
-    gtag("config", "G-ST3S57LEHB", {
+    gtag("config", measurementId, {
       page_path: window.location.pathname,
+      send_page_view: true,
     });
 
     // Track SPA route changes
     const router = useRouter();
     router.afterEach((to) => {
       if (typeof window.gtag === "function") {
-        window.gtag("config", "G-ST3S57LEHB", {
+        window.gtag("event", "page_view", {
           page_path: to.fullPath,
+          page_title: to.name || document.title,
         });
       }
     });
-  };
 
-  document.head.appendChild(script);
+    console.log("GA initialized with measurement ID:", measurementId);
+  } catch (error) {
+    console.error("GA initialization error:", error);
+  }
 });
-
-export {};
 
