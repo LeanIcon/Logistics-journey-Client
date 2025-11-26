@@ -1,4 +1,3 @@
-p
 <template>
   <div class="highest-width mx-auto px-4 mt-24 pb-16">
     <!-- Header: Latest Blog & Top Reads -->
