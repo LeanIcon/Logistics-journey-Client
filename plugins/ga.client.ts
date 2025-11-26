@@ -31,16 +31,16 @@ export default defineNuxtPlugin(() => {
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
     script.onload = () => {
-      console.log("GA script loaded");
+      // console.log("GA script loaded");
     };
     script.onerror = () => {
-      console.warn("GA script failed to load");
+      // console.warn("GA script failed to load");
     };
     document.head.appendChild(script);
 
-    console.log("GA (G-ST3S57LEHB) initialized with explicit page_view event");
+    // console.log("GA (G-ST3S57LEHB) initialized with explicit page_view event");
   } catch (error) {
-    console.error("Failed to initialize GA:", error);
+    // console.error("Failed to initialize GA:", error);
   }
 
   // Track SPA route changes with explicit page_view events
@@ -54,10 +54,10 @@ export default defineNuxtPlugin(() => {
           page_title: to.meta.title || document.title,
           page_location: window.location.href,
         });
-        console.log("GA page_view tracked:", to.fullPath);
+        // console.log("GA page_view tracked:", to.fullPath);
       }
     } catch (error) {
-      console.error("Failed to track page view:", error);
+      // console.error("Failed to track page view:", error);
     }
   });
 });
