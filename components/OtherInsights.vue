@@ -7,7 +7,7 @@
     >
       <img
         :src="post.featured_image"
-        :alt="post.featured_image || post.title"
+        :alt="post.featured_image.title || post.title"
         class="w-full h-56 object-cover rounded-xl mb-4"
         loading="lazy"
       />
