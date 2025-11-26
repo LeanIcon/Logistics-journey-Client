@@ -22,6 +22,13 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Logistic Journey",
+      script: [
+        {
+          type: "text/javascript",
+          innerHTML: `window.dataLayer = window.dataLayer || [];`,
+          tagPosition: "head",
+        },
+      ],
       meta: [
         {
           name: 'description',
