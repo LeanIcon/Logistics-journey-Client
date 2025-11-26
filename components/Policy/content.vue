@@ -4,7 +4,10 @@
       <main class="policy-main prose prose-blue" v-if="policyContent">
         <div v-html="renderedContent"></div>
       </main>
-      <main class="policy-main" v-else>
+      <main v-else>
+        ...Loading
+      </main>
+      <!-- <main class="policy-main" v-else>
         <h2 id="background">Background</h2>
 
         <p class="lead text-[#16181B]">Logistic Journey is committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect information when you use our website, applications, and services.</p>
@@ -97,7 +100,7 @@
           <span class="font-semibold text-[#16181B]">Email:</span> <a class="underline" href="mailto:support@logisticjourney.com">support@logisticjourney.com</a><br>
           <span class="font-semibold text-[#16181B]">Phone:</span> <span class="underline text-[#16181B]">+27 11 568 7109</span>
         </address>
-      </main>
+      </main> -->
 
       <!-- <aside class="policy-toc mlg:fixed mlg:z-50 right-[100px] xl:right-[200px]" aria-label="Table of contents" v-if="tocItems.length > 0">
         <nav>
