@@ -4,7 +4,7 @@
     <home-deliveries />
     <home-journey_solutions />
     <home-why-choose />
-    <home-start />
+    <home-cta-start />
     <home-tools />
     <home-how-it-works />
     <home-pricing />
