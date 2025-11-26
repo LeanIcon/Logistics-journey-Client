@@ -55,7 +55,7 @@
       :animate="inView ? { opacity: 1 } : { opacity: 0 }"
       :transition="{ duration: 1.4 }"
     >
-      <OtherInsights :posts="insightsList" />
+      <OtherInsights :posts="otherPosts" />
     </motion.div>
 
     <motion.div
@@ -80,7 +80,7 @@ import { ref, onMounted } from "vue";
 import { motion } from "motion-v";
 import { useInView } from "~/composables/useInView";
 import OtherInsights from "~/components/OtherInsights.vue";
-import { blogPosts } from "~/data/blogs.js";
+import { fetchAllPosts } from "~/api/posts";
 
 const { inView, sectionRef } = useInView(0.2);
 
@@ -90,11 +90,11 @@ type Insight = {
   slug: string;
   excerpt: string;
   published_at: string;
-  featured_image: { url: string; alt: string };
+  featured_image: string;
   categories: { name: string }[];
 };
 
-const insightsList = ref<Insight[]>([]);
+const otherPosts = ref<Insight[]>([]);
 
 function slugify(text: string) {
   return text
@@ -105,16 +105,23 @@ function slugify(text: string) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-onMounted(() => {
-  insightsList.value = blogPosts.map((b) => ({
-    id: b.id,
-    title: b.title,
-    slug: slugify(b.title),
-    excerpt: b.excerpt,
-    published_at: b.date,
-    featured_image: { url: b.image, alt: b.title },
-    categories: b.type ? [{ name: b.type }] : [],
-  }));
+onMounted(async () => {
+  try {
+    const resp = await fetchAllPosts(1);
+    const items = resp?.data || [];
+    // Keep behavior aligned with pages/blog/[slug].vue: use a subset of fetched posts
+    otherPosts.value = items.slice(0, 2).map((p: any) => ({
+      id: p.id,
+      title: p.title,
+      slug: p.slug || slugify(p.title || ""),
+      excerpt: p.excerpt || p.description || "",
+      published_at: p.published_at || p.publishedAt || p.date || "",
+      featured_image: p.featured_image || p.image || "",
+      categories: p.categories || (p.type ? [{ name: p.type }] : []),
+    }));
+  } catch (error) {
+    console.error("Error fetching posts for home insights:", error);
+  }
 });
 </script>
 
