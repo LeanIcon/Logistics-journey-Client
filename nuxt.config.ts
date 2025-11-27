@@ -52,7 +52,7 @@ export default defineNuxtConfig({
 
         // Twitter (optional)
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Logistics Journey' },
+        { name: 'twitter:title', content: 'Logistic Journey' },
         { name: 'twitter:description', content: 'Logistic Journey gives you full control, real-time visibility, and reliable deliveries.' },
         { name: 'twitter:image', content: '/Navbar/2/Logistics Journey Logo.png' },
       ],

@@ -11,7 +11,7 @@
       <p class="max-w-lg mx-auto">
         {{
           problemData?.description ||
-          "Without real-time visibility, your fleet becomes a silent money drain. Here's what it's costing you today."
+          "Without real-time visibility, your fleet becomes a silent money drain. Here's what it's costing you."
         }}
       </p>
     </motion.div>
