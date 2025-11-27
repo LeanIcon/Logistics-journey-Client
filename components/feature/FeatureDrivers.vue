@@ -9,7 +9,7 @@
     >
       <img
         class="w-full max-w-2xl rounded-3xl object-cover "
-        src="/public/images/Feature/Feature2/phone-map.jpg"
+        :src=" driverData?.image.url || '/images/Feature/Feature2/phone-map.jpg'"
         alt="Feature image"
       />
       <!-- background effect  -->

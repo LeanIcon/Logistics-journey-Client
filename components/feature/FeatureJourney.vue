@@ -27,15 +27,15 @@
         :transition="{ duration: 0.8 }"
     >
       <img
-        class="hidden mlg:flex w-full rounded-3xl object-cover"
-        src="/public/images/Feature/feature_journey.png"
+        class="w-full rounded-3xl object-cover"
+        :src=" journeyData?.image || '/images/Feature/feature_journey.png'"
         alt="Feature image"
       />
-      <img
+      <!-- <img
         class="flex mlg:hidden w-full rounded-3xl object-cover"
         src="/public/images/Feature/feature_journey2.png"
         alt="Feature image"
-      />
+      /> -->
     </motion.div>
 
   </section>

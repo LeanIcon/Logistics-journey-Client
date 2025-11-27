@@ -7,7 +7,7 @@
       :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
       :transition="{ duration: 0.8 }"
     >
-      <img src="/public/images/Feature/map.jpg" alt="Feature image" class="w-full max-w-2xl rounded-3xl object-cover" />
+      <img :src=" dashboardData?.left_column.map.url || '/images/Feature/map.jpg'" alt="Feature image" class="w-full max-w-2xl rounded-3xl object-cover" />
       <!-- background effect  -->
       <div class="absolute inset-0 -z-10 bg-[#E9EEFF] rounded-3xl scale-105"></div>
     </motion.div>

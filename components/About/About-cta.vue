@@ -16,8 +16,8 @@
             </div>
 
             <div class="hidden sm:flex w-1/2">
-                <img v-if="data?.image?.path" class="rounded-r-xl w-full h-full object-cover" :src="data.image.path" :alt="data.image.alt || 'About CTA'">
-                <img v-else class="rounded-r-xl w-full h-full object-cover" src="/images/About/Image.png" alt="About CTA">
+                <img v-if="data?.image?.url" class="rounded-r-xl w-full h-full object-cover" :src="data.image.url" :alt="data.image.alt || 'About CTA'">
+                <img v-else class="rounded-r-xl w-full h-full object-cover" src="/images/About/cta-about_us.png" alt="About CTA">
             </div>
         </div>
          <div class="flex sm:hidden -mt-[4cm] z-4">

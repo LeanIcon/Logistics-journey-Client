@@ -16,7 +16,7 @@
       </div>
 
       <div class="hidden sm:flex w-1/2">
-        <img class="rounded-r-2xl" src="/images/Feature/Feature2/cta-delivery.jpg" alt="bike_delivery">
+        <img class="rounded-r-2xl" :src="ctaData?.image?.url || '/images/Feature/Feature2/cta-delivery.jpg'" alt="bike_delivery">
       </div>
     </div>
     <div class="flex sm:hidden -mt-[4cm] z-4">
@@ -33,6 +33,7 @@ const props = withDefaults(
     data?: {
       headline?: string
       buttons?: { text: string; link?: string }[]
+      image?: { url: string }
     }
   }>(),
   {

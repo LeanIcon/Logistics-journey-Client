@@ -91,7 +91,7 @@
         </div>
         
         <div class="md:w-1/2 mt-8 md:mt-0">
-        <img class="w-full" src="/public/images/contact.png" alt="">
+        <img class="w-full" src="/public/images/contact_us.png" alt="">
         </div>
       </div>
     </section>
