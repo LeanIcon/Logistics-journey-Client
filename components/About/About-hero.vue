@@ -6,7 +6,7 @@
 
     <div class="highest-width relative z-10 text-center px-4 sm:px-6 py-10 sm:py-20 max-w-5xl mx-auto">
       <h1 class="text-white drop-shadow">
-        {{ data?.section?.headline || "Everyday, millions of deliveries are set in motion. Each one is a promise" }}
+        {{ data?.section?.headline || "Every day, millions of deliveries are set in motion. Each one is a promise" }}
       </h1>
       <p class="mt-4 text-white text-base sm:text-lg md:text-2xl font-medium drop-shadow">{{ data?.section?.subheadline || "\"We'll get it to you\"" }}</p>
     </div>
