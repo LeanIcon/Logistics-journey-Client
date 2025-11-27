@@ -15,7 +15,7 @@
             </div>
 
             <div class="hidden sm:flex w-1/2">
-                <img class="rounded-r-2xl" :src=" heroData?.mobile_image || '/images/startHome.png'" alt="">
+                <img class="rounded-r-2xl" :src=" heroData?.image || '/images/About/cta-about_us.png'" alt="">
             </div>
         </div>
          <div class="flex sm:hidden -mt-[4cm] z-4">

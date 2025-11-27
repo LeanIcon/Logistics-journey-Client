@@ -1,5 +1,5 @@
 <template>
-  <div class=" sm:flex relative w-full min-h-[220px] sm:min-h-[260px]  items-center justify-center overflow-hidden">
+  <div class=" sm:flex relative w-full min-h-[320px] sm:min-h-[460px]  items-center justify-center overflow-hidden">
     <img v-if="data?.image?.url" :src="data.image.url" :alt="data.image.alt || 'About Hero'" class="absolute inset-0 w-full h-full object-cover object-center z-0" />
     <img v-else src="/public/images/About/about-us-hero.jpg" alt="About Hero" class="absolute inset-0 w-full h-full object-cover object-center z-0" />
     <div class="absolute inset-0 bg-black/50 z-0"></div>

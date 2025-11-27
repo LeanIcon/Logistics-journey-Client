@@ -16,7 +16,7 @@
             :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
             :transition="{ duration: 0.8 }"
         >
-            <img src="/public/images/map.png" alt="">
+            <img :src= "why_chooseData?.feature_image">
         </motion.div>
             
        <motion.div
@@ -79,6 +79,7 @@ onMounted(async () => {
       const data = why_chooseBlock.data;
       why_chooseData.value = {
         title: data.title || "Why Choose Logistic Journey",
+        feature_image: data.feature_image || "/images/whyChoose.png",
         description:
           data.description ||
           "Discover how Logistic Journey can help optimize your fleet management and improve business operations.",
