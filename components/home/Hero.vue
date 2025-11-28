@@ -54,7 +54,7 @@
           <div class="hidden md:flex items-center justify-end col-span-1">
             <img
               class="rounded-md"
-              :src="heroData?.background?.image || '/public/images/Header/1/close-up-delivery-person-with-parcel 1.png'"
+              :src="heroData?.background?.image || '/images/Header/1/close-up-delivery-person-with-parcel 1.png'"
               alt="header image"
             />
           </div>
