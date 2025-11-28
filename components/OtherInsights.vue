@@ -18,8 +18,9 @@
         >
           {{ post.categories[0].name }}
         </span>
-        <span class="font-light text-xs text-gray-500">{{
-          new Date(post.published_at).toLocaleDateString()
+        <span v-if="post.published_at" class="font-light text-xs text-gray-500">{{
+          new Date(post.published_at).toLocaleDateString() 
+          || ''
         }}</span>
       </div>
       <h3 class="text-left text-lg font-semibold mb-2">{{ post.title }}</h3>

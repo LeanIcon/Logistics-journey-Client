@@ -3,7 +3,7 @@
     <div class="highest-width  mx-auto">
 
       <div class="text-center mb-16">
-        <h2>{{ data?.headline || 'Introduce the Team' }}</h2>
+        <h2>{{ data?.headline || 'Our Core Leadership' }}</h2>
       </div>
 
       <!-- Team Members Grid -->

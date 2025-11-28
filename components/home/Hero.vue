@@ -10,12 +10,12 @@
         >
           <!-- Dynamic headline and fallback -->
           <h1 class="mb-8">
-            {{ heroData?.headline || 'Smarter Deliveries. Happier Customers.' }}
+            {{ heroData?.headline || 'Making Every Journey' }}
             <span
               class="border-l-2 border-l-[#225AD6] bg-gradient-to-r from-[#225bd66d] via-[#225bd630] to-[#225bd600] text-[#225AD6]"
               style="font-weight: 800;"
             >
-              {{ heroData?.highlight_text || 'Lower Costs!' }}
+              {{ heroData?.highlight_text || 'Count' }}
             </span>
           </h1>
 
@@ -47,14 +47,14 @@
           <div class="hidden md:flex justify-end -mb-28">
             <img
               class="rounded-md"
-              :src="heroData?.background?.image || '/images/Header/Header 2/1/Group 1000008814.png'"
+              src="/public/images/Header/Header 2/1/Group 1000008814.png"
               alt="header image"
             />
           </div>
           <div class="hidden md:flex items-center justify-end col-span-1">
             <img
               class="rounded-md"
-              src="/public/images/Header/1/close-up-delivery-person-with-parcel 1.png"
+              :src="heroData?.background?.image || '/public/images/Header/1/close-up-delivery-person-with-parcel 1.png'"
               alt="header image"
             />
           </div>
@@ -98,7 +98,7 @@ onMounted(async () => {
   try {
     const response = await getPagesBySlug('home')
     const blocks = response?.data?.blocks || []
-    const heroBlock = blocks.find((b: any) => b.type === 'Hero')
+    const heroBlock = blocks.find((b: any) => b.type === 'Home Hero')
 
     if (heroBlock && heroBlock.data) {
       heroData.value = heroBlock.data
