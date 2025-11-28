@@ -74,7 +74,7 @@ onMounted(async () => {
   try {
     const response = await getPagesBySlug('home')
     const blocks = response?.data?.blocks || []
-    const heroBlock = blocks.find((b: any) => b.type === 'Hero')
+    const heroBlock = blocks.find((b: any) => b.type === 'Home Hero')
 
     if (heroBlock?.data) {
       heroData.value = heroBlock.data

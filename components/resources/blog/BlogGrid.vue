@@ -19,7 +19,7 @@
             />
           <h3 class="text-xl font-semibold mb-2">{{ latestPost.title }}</h3>
           <p class="text-gray-600">{{ latestPost.excerpt }}</p>
-          <p class="text-sm text-gray-500 mt-2">
+          <p v-if="latestPost.published_at" class="text-sm text-gray-500 mt-2">
             {{ new Date(latestPost.published_at).toLocaleDateString() }}
           </p>
           <NuxtLink
@@ -58,7 +58,7 @@
                 {{ read.categories?.[0]?.name || "Uncategorized" }}
               </span>
               <div class="font-semibold text-sm mb-1">{{ read.title }}</div>
-              <div class="text-xs text-gray-500 font-light">
+              <div v-if="read.published_at" class="text-xs text-gray-500 font-light">
                 {{ new Date(read.published_at).toLocaleDateString() }}
               </div>
             </div>
