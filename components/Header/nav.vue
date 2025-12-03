@@ -1,6 +1,6 @@
 <template>
   <div
-    class="group highest-width relative flex flex-wrap items-center justify-between w-full bg-white pt-4 pb-3 border-b border-gray-300 shrink-0"
+    class="group highest-width relative flex flex-wrap items-center justify-between w-full bg-white pt-4 pb-3 border-b border-gray-300 shrink-0 mx-auto"
     :class="{ open: isOpen }"
   >
     <!-- Logo -->
@@ -95,7 +95,7 @@
       <a href="https://app.logisticjourney.com" target="_blank"
         ><button>Log In</button></a
       >
-      <button class="solid-btn">Get Started Now</button>
+      <NuxtLink to="/Request_demo"><button class="solid-btn">Get Started Now</button></NuxtLink>
     </div>
 
     <!-- Mobile Dropdown -->
@@ -151,7 +151,7 @@
        <a href="https://app.logisticjourney.com" target="_blank"
         ><button>Log In</button></a
       >
-      <button class="solid-btn">Sign Up</button>
+      <!-- <button class="solid-btn">Sign Up</button> -->
     </div>
   </div>
 </template>

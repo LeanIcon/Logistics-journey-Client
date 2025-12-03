@@ -1,5 +1,6 @@
 <template>
-  <div class="highest-width bg-[#FAFAFA] py-24" ref="sectionRef">
+  <div class="bg-[#FAFAFA] py-24">
+  <div class="highest-width" ref="sectionRef">
     <!-- Section Title -->
     <motion.div 
       class="text-center space-y-6 pb-20 mx-auto"
@@ -55,6 +56,7 @@
         </div>
       </motion.div>
     </div>
+  </div>
   </div>
 </template>
 

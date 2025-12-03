@@ -1,6 +1,6 @@
 <template>
-    <div class="py-20 lg:py-36 w-full items-center justify-center bg-gray-200 bg-cover bg-no-repeat":style="{
-        backgroundImage: `url(${DualCtaData?.image.url || '/images/transform.png'})`
+    <div class="py-20 md:py-48 w-full items-center justify-center bg-gray-200 bg-cover bg-no-repeat":style="{
+        backgroundImage: `url(${DualCtaData?.image.url || '/images/transform3.png'})`
         }">
         <div class="h">
             <div class="highest-width h-full relative">

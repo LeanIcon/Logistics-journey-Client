@@ -15,12 +15,12 @@
   body {
     font-family: "Poppins";
     /* font-family: var(--font-gilroy); */
-    @apply max-w-[1440px] mx-auto;
+    @apply  mx-auto;
   }
 }
 
 .highest-width {
-        @apply mx-auto px-4 sm:px-6 lg:px-16;
+        @apply max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-16;
 }
 
 button {
