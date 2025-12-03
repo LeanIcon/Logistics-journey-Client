@@ -76,7 +76,7 @@
           <div class="xs:-mr-[5cm] z-40 -mt-8"><home-rate class=""/></div> 
           <img
             class="xs:max-w-[10cm] md:max-w-[12cm] rounded-md"
-            src="/public/images/Header/1/close-up-delivery-person-with-parcel 1.png"
+            :src="heroData?.background?.image || '/images/Header/1/close-up-delivery-person-with-parcel 1.png'"
             alt="header image"
           />
         </div>

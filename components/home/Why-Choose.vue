@@ -35,6 +35,7 @@
         >
             <svg
             width="20"
+            class="shrink-0"
             height="20"
             viewBox="0 0 24 24"
             fill="none"
@@ -45,7 +46,7 @@
                 fill="#225AD6"
             />
             </svg>
-            <p class="whitespace-nowrap">{{ point }}</p>
+            <p class="">{{ point }}</p>
         </div>
         </motion.div>
   </div>

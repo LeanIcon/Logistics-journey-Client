@@ -190,7 +190,7 @@
         <!-- Bottom Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between text-center md:text-left text-sm text-gray-300">
             <p class="font-extralight text-sm">
-                Copyright © 2025 Anylytical Technologies. Based in South Africa. All rights reserved.
+                Copyright © 2026 Anylytical Technologies. Based in South Africa. All rights reserved.
             </p>
 
             <!-- Back to top -->
