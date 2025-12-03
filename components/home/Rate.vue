@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white rounded-xl shadow-[0_6px_25px_-10px_rgba(0,0,0,0.25)] flex items-center justify-between p-2 lg:p-3 w-full max-w-[300px] md:max-w-[375px] xl:max-w-sm mx-auto"
+    class="bg-white rounded-xl shadow-[0_6px_25px_-10px_rgba(0,0,0,0.25)] flex items-center justify-between p-2 lg:p-3 w-full max-w-[310px] md:max-w-[374px] xl:max-w-[394px] mx-auto"
   >
     <!-- Date -->
     <div

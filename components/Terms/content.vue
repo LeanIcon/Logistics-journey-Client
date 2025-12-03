@@ -136,8 +136,34 @@ const loading = ref(true)
 const termsContent = ref<PolicyData | null>(null)
 const tocItems = ref<TocItem[]>([])
 
+const config = useRuntimeConfig();
+
+const normalizeContent = (html: string) => {
+  if (!html) return html;
+  // Convert root-relative src/href attributes (e.g. `/storage/...`) to absolute URLs
+  // using the configured apiBase (e.g. https://cms.logisticjourney.com)
+  try {
+    const base = (config?.public?.apiBase || '').replace(/\/$/, '');
+    if (!base) return html;
+
+    // src or href attributes that start with a single slash
+    html = html.replace(/(src|href)=("|')\/([^"']*)/gi, (m, attr, q, rest) => {
+      return `${attr}=${q}${base}/${rest}`;
+    });
+
+    // Also fix src attributes without quotes (rare)
+    html = html.replace(/(src|href)=\/(\S+)/gi, (m, attr, rest) => {
+      return `${attr}="${base}/${rest.replace(/\s+/, '')}"`;
+    });
+
+    return html;
+  } catch (e) {
+    return html;
+  }
+};
+
 const renderedContent = computed(() => {
-  return termsContent.value ? termsContent.value.content : '';
+  return termsContent.value ? normalizeContent(termsContent.value.content) : '';
 });
 
 const generateToc = (html: string) => {
