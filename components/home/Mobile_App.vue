@@ -1,7 +1,7 @@
 <template>
-    <div class="overflow-hidden" ref="sectionRef">
-        <div class="hidden sm:flex gap-6 justify-between items-center py-20 mx-auto">
-            <motion.div class="highest-width space-y-6 pb-8"
+    <div class="the-width mx-auto overflow-hidden" ref="sectionRef">
+        <div class="hidden sm:flex gap-6 justify-between items-center pl-4 sm:pl-6 lg:pl-16 py-20">
+            <motion.div class="space-y-6 pb-8"
                 :initial="{ x: -100, opacity: 0 }"
                 :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
                 :transition="{ duration: 0.8 }"
@@ -51,5 +51,7 @@
 </script>
 
 <style>
-
+    .the-width {
+  @apply max-w-[1500px];
+}
 </style>

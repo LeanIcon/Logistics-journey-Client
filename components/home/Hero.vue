@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="the-width bg-white mx-auto">
     <div class="flex flex-col mx-auto bg-[#E9EFFD] md:bg-white pt-12 md:pb-24 xl:pb-32">
       <div class="flex flex-col md:flex-row w-full md:gap-5 justify-between items-center">
         <motion.div
@@ -112,5 +112,9 @@ onMounted(async () => {
 <style scoped>
 h1 {
   @apply text-[34px] lg:text-[45px] xl:text-[47px] lg:leading-[60px] font-bold -mt-1;
+}
+
+.the-width {
+  @apply max-w-[1500px];
 }
 </style>

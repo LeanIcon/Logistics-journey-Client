@@ -5,7 +5,7 @@
         </div>
         <div class="rounded-2xl flex items-center bg-[#225AD6] mx-auto">
             <div class="px-8 py-10 sm:py-0 space-y-6 text-center sm:text-start mx-auto sm:w-1/2">
-                <h2 class="text-[24px] xss:text-[32px] lg:text-[43px] leading-[47px] font-bold -mt-1 text-white mb-6">
+                <h2 class="text-[24px] xss:text-[32px] lg:text-[43px] leading-[47px] font-normal -mt-1 text-white max-w-md mb-6">
                     {{ data?.headline || 'Stop firefighting. Start delivering with confidence.' }}
                 </h2>
                 <NuxtLink :to="data?.button?.url || '/Request_demo'">
