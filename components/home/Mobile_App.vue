@@ -1,6 +1,6 @@
 <template>
     <div class="the-width mx-auto overflow-hidden" ref="sectionRef">
-        <div class="hidden sm:flex gap-6 justify-between items-center pl-4 sm:pl-6 lg:pl-16 py-20">
+        <div class="hidden md:flex gap-6 justify-between items-center pl-4 md:pl-6 lg:pl-16 py-20">
             <motion.div class="space-y-6 pb-8"
                 :initial="{ x: -100, opacity: 0 }"
                 :animate="inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }"
@@ -10,8 +10,9 @@
                 <p class="">
                     Download the app for real-time updates, navigation, and seamless deliveries.
                 </p>
-                <div class="max-w-[180px]">
-                    <img src="/public/images/qr.png" alt="">   
+                <div class="flex gap-6 max-w-[160px]">   
+                    <img src="/public/images/logistics-playstore.png" alt="">  
+                    <img src="/public/images/logistic=appstore.png" alt=""> 
                 </div> 
             </motion.div> 
             <motion.div
@@ -23,8 +24,8 @@
             </motion.div>
         </div>
 
-        <div class="flex sm:hidden overflow-hidden">
-            <motion.div class="highest-width xss:flex gap-6 justify-between items-center py-20 mx-auto"
+        <div class="flex md:hidden overflow-hidden">
+            <motion.div class="highest-width gap-6 justify-between items-center py-20 mx-auto"
                 :initial="{ y: 100, opacity: 0 }"
                 :animate="inView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }"
                 :transition="{ duration: 0.8 }"
@@ -35,8 +36,9 @@
                         Download the app for real-time updates, navigation, and seamless deliveries.
                     </p>           
                 </div> 
-                <div class="max-w-[120px] xss:max-w-[180px]">
-                    <img src="/public/images/qr.png" alt="">   
+                <div class="max-w-[80px] xss:max-w-[160px] flex gap-3 xss:gap-6">
+                    <img src="/public/images/logistics-playstore.png" alt="">  
+                    <img src="/public/images/logistic=appstore.png" alt=""> 
                 </div> 
             </motion.div>
         </div>
